@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .register-form {
+    padding: 20px;
+  }
+  
+  .register-form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: "Apple-system", sans-serif;
+    font-size: 26px;
+    font-weight: normal;
+  }
+  
+  .register-form p {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .register-form input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #ebebeb;
+  }
+  
+  .register-form input:focus {
+    outline: none;
+  }
+  
+  .register-form button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #d1a654;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .register-form button[type="submit"]:hover {
+    background-color: #b88945;
+  }
+  
+  .register-form a.link-gold {
+    color: #d1a654;
+    text-decoration: none;
+  }
+  .social-login a.link-gold1 {
+    color: #171511;
+    text-decoration: none;
+  }
+  .register-form a.link-gold:hover {
+    color: #171511;
+    text-decoration: none;
+  }
+  .social-login a.link-gold1:hover {
+    color: #b88945;
+    text-decoration: underline;
+  }
+  
+  .social-login {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .social-login p {
+    margin-bottom: 10px;
+  }
+  
+  .social-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .social-buttons button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 48%;
+    color: white;
+    font-size: 16px;
+    position: relative;
+  }
+  
+  .social-buttons .facebook {
+    background-color: #3b5998;
+  }
+  
+  .social-buttons .google {
+    background-color: #db4437;
+  }
+  
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+    position: relative;
+    /* border-right: 1px solid rgba(0, 0, 0, 0.3); */
+  }
+  
+  .icon-container i{
+    font-size: 24px;
+    color: white;
+  }
+  
+  .icon-container i:after {
+    position: absolute;
+    display: block;
+    content: "";
+    left: 40px;
+    top: -9px;
+    width: 1px;
+    background-color: #4d4a45;
+    height: 42px;
+  }
+  
+  .text-container {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
