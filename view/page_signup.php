@@ -1,17 +1,16 @@
 <main>
   <div class="wrapper">
-    <div class="container-login">
-      <form class="login-form">
-        <h2>ĐĂNG NHẬP</h2>
+    <div class="container-signup">
+      <form class="register-form">
+        <h2>ĐĂNG KÝ</h2>
         <p>
-          Nếu bạn chưa có tài khoản,
-          <a href="#" class="link-gold">đăng ký tại đây</a>
+          Đã có tài khoản, đăng nhập <a href="#" class="link-gold">tại đây</a>
         </p>
+        <input type="text" name="fullname" placeholder="Họ và Tên" required />
         <input type="email" name="email" placeholder="Email" required />
         <input type="password" name="password" placeholder="Mật khẩu" required />
-        <button type="submit">Đăng Nhập</button>
-        <div class="social-login">
-          <a href="#" class="link-gold1">Quên mật khẩu</a>
+        <button type="submit">Đăng ký</button>
+        <div class="social-signup">
           <p>Hoặc đăng nhập bằng</p>
           <div class="social-buttons">
             <button class="facebook">
