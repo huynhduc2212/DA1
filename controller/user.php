@@ -17,4 +17,5 @@ if ($_GET['act']) {
     }
 }
 
+include_once 'view/template_near_footer.php';
 include_once 'view/template_footer.php';

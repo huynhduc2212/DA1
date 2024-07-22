@@ -393,7 +393,7 @@ h3 {
   list-style: none;
   padding: 0;
   z-index: 1;
-  min-height: 400px;
+  min-height: auto;
 }
 .swiper-wrapper {
   position: relative;
@@ -568,7 +568,7 @@ a {
   overflow: hidden;
   margin: 0 0 6px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.4;
   min-height: 40px;
   overflow: hidden;
@@ -579,7 +579,7 @@ a {
 }
 .product-action .product-info .price-box {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   color: #f02757;
   display: flex;
   align-items: center;
@@ -762,7 +762,6 @@ ul.tabs li {
 }
 .section_mailchimp {
   padding: 0;
-  margin-top: -180px;
 }
 .section_mailchimp .mailchimp {
   max-width: 620px;
