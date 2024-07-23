@@ -11,5 +11,5 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets_user/css/style.css" />
   <link rel="stylesheet" href="assets_user/css/login.css" />
-  <link rel="stylesheet" href="assets_user/css/singup.css" />
+  <link rel="stylesheet" href="assets_user/css/signup.css" />
 </head>

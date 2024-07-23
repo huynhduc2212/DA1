@@ -10,7 +10,7 @@
         <input type="email" name="email" placeholder="Email" required />
         <input type="password" name="password" placeholder="Mật khẩu" required />
         <button type="submit">Đăng ký</button>
-        <div class="social-signup">
+        <div class="social-login">
           <p>Hoặc đăng nhập bằng</p>
           <div class="social-buttons">
             <button class="facebook">
