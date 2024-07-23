@@ -11,7 +11,7 @@
 }
 
 .login-form {
-  padding: 20px;
+  padding: 0px;
 }
 
 .login-form h2 {
@@ -23,6 +23,7 @@
 }
 
 .login-form p {
+  font-size: 14px;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -60,7 +61,10 @@
   text-decoration: none;
 }
 .social-login a.link-gold1 {
+  font-size: 14px;
   color: #171511;
+  display: block;
+  margin: 15px 0;
   text-decoration: none;
 }
 .login-form a.link-gold:hover {
@@ -114,7 +118,7 @@
   justify-content: center;
   width: 30%;
   height: 100%;
-  border-right: 1px solid rgba(0, 0, 0, 0.3); /* Đường gạch dọc */
+  position: relative;
 }
 
 .icon-container i {
@@ -122,9 +126,22 @@
   color: white;
 }
 
+.icon-container i:after {
+  position: absolute;
+  display: block;
+  content: "";
+  left: 45px;
+  top: -9px;
+  width: 1px;
+  background-color: #4d4a45;
+  height: 42px;
+}
+
 .text-container {
   width: 70%;
   display: flex;
+  font-size: 13px;
+  color: white;
   align-items: center;
   justify-content: center;
 }

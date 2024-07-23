@@ -5,7 +5,6 @@ include_once 'model/connect.php';
 include_once 'view/template_head.php';
 include_once 'view/template_header.php';
 
-
 if ($_GET['act']) {
     switch ($_GET['act']) {
         case 'home':

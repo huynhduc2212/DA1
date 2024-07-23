@@ -14,16 +14,16 @@
           <p>Hoặc đăng nhập bằng</p>
           <div class="social-buttons">
             <button class="facebook">
-              <div class="icon-container">
+              <a class="icon-container">
                 <i class="fab fa-facebook-f"></i>
-              </div>
-              <div class="text-container">Facebook</div>
+              </a>
+              <a class="text-container">Facebook</a>
             </button>
             <button class="google">
-              <div class="icon-container">
+              <a class="icon-container">
                 <i class="fab fa-google-plus-g"></i>
-              </div>
-              <div class="text-container">Google</div>
+              </a>
+              <a class="text-container">Google</a>
             </button>
           </div>
         </div>

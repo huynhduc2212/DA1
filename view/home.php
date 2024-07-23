@@ -15,62 +15,6 @@
                         </div>
                 </div>
         </section>
-        <section class="section_service">
-                <div class="container">
-                        <div class="swiper-container">
-                                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                                        <div class="swiper-slide" style="width: 228px; margin-right: 20px;">
-                                                <div class="item">
-                                                        <div class="image">
-                                                                <img width="150" height="150" src="assets_user/img/image_service1.webp" alt="Cảm kết chất lượng">
-                                                        </div>
-                                                        <div class="text">
-                                                                <h3>Cảm kết chất lượng</h3>
-                                                                <p>Bồi hoàn gấp 10 lần giá trị sản phẩm nếu phát hiện hàng giả.</p>
-                                                        </div>
-                                                </div>
-
-                                        </div>
-                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
-                                                <div class="item">
-                                                        <div class="image">
-                                                                <img width="150" height="150" src="assets_user/img/image_service2.webp" alt="Đảm bảo vệ sinh ATTP">
-                                                        </div>
-                                                        <div class="text">
-                                                                <h3>Đảm bảo vệ sinh ATTP</h3>
-                                                                <p>Quy trình sản xuất khép kín, theo tiêu chuẩn về VSATTP của bộ y tế.</p>
-                                                        </div>
-                                                </div>
-
-                                        </div>
-                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
-                                                <div class="item">
-                                                        <div class="image">
-                                                                <img width="150" height="150" src="assets_user/img/image_service3.webp" alt="Đổi trả sản phẩm">
-                                                        </div>
-                                                        <div class="text">
-                                                                <h3>Đổi trả sản phẩm</h3>
-                                                                <p>Đổi trả sản phẩm trong vòng 24h kể từ thời điểm nhận hàng</p>
-                                                        </div>
-                                                </div>
-
-                                        </div>
-                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
-                                                <div class="item">
-                                                        <div class="image">
-                                                                <img width="150" height="150" src="assets_user/img/image_service4.webp" alt="Giao hàng">
-                                                        </div>
-                                                        <div class="text">
-                                                                <h3>Giao hàng</h3>
-                                                                <p>Giao hàng toàn quốc, thanh toán COD ngay tại nơi nhận hàng.</p>
-                                                        </div>
-                                                </div>
-
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-        </section>
         <section class="section_flash_sale">
                 <div class="container">
                         <div class="block-wraper">
@@ -132,7 +76,7 @@
                         </div>
                 </div>
         </section>
-        <section class="section_mission">
+        <!-- <section class="section_mission">
                 <div class="container">
                         <div class="block-title">
                                 <h2>Sứ mệnh</h2>
@@ -148,7 +92,7 @@
                                 </div>
                         </div>
                 </div>
-        </section>
+        </section> -->
         <section class="section_product_new section_product">
                 <div class="container">
                         <div class="block-title">
@@ -479,7 +423,7 @@
                         </div>
                 </div>
         </section>
-        <section class="section_product_special">
+        <!-- <section class="section_product_special">
                 <div class="container">
                         <div class="block-title">
                                 <h2>
@@ -493,6 +437,62 @@
                                 </div>
                                 <div class="special-image">
                                         <img width="758" height="491" src="assets_user/img/section_product_special_image.webp" alt="Lofi Nest">
+                                </div>
+                        </div>
+                </div>
+        </section> -->
+        <section class="section_service">
+                <div class="container">
+                        <div class="swiper-container">
+                                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                                        <div class="swiper-slide" style="width: 228px; margin-right: 20px;">
+                                                <div class="item">
+                                                        <div class="image">
+                                                                <img width="150" height="150" src="assets_user/img/image_service1.webp" alt="Cảm kết chất lượng">
+                                                        </div>
+                                                        <div class="text">
+                                                                <h3>Cảm kết chất lượng</h3>
+                                                                <p>Bồi hoàn gấp 10 lần giá trị sản phẩm nếu phát hiện hàng giả.</p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
+                                                <div class="item">
+                                                        <div class="image">
+                                                                <img width="150" height="150" src="assets_user/img/image_service2.webp" alt="Đảm bảo vệ sinh ATTP">
+                                                        </div>
+                                                        <div class="text">
+                                                                <h3>Đảm bảo vệ sinh ATTP</h3>
+                                                                <p>Quy trình sản xuất khép kín, theo tiêu chuẩn về VSATTP của bộ y tế.</p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
+                                                <div class="item">
+                                                        <div class="image">
+                                                                <img width="150" height="150" src="assets_user/img/image_service3.webp" alt="Đổi trả sản phẩm">
+                                                        </div>
+                                                        <div class="text">
+                                                                <h3>Đổi trả sản phẩm</h3>
+                                                                <p>Đổi trả sản phẩm trong vòng 24h kể từ thời điểm nhận hàng</p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
+                                                <div class="item">
+                                                        <div class="image">
+                                                                <img width="150" height="150" src="assets_user/img/image_service4.webp" alt="Giao hàng">
+                                                        </div>
+                                                        <div class="text">
+                                                                <h3>Giao hàng</h3>
+                                                                <p>Giao hàng toàn quốc, thanh toán COD ngay tại nơi nhận hàng.</p>
+                                                        </div>
+                                                </div>
+
+                                        </div>
                                 </div>
                         </div>
                 </div>

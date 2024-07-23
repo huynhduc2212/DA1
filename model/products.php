@@ -2,13 +2,13 @@
 
 // Hàm lấy sản phẩm theo danh mục
 function getProductsByCategory($id) {
-    $sql = "SELECT * FROM products WHERE id_category = ?";
+    $sql = "SELECT * FROM products WHERE id_category = ? order by id_product desc";
     return pdo_query($sql, $id);
 }
 
 // Hàm lấy tất cả sản phẩm
 function getAllProducts() {
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM products order by id_product desc";
     return pdo_query($sql);
 }
 
@@ -19,9 +19,9 @@ function calculateDiscountPrice($price, $discount_percentage, $round_to = 50000)
     return $rounded_price;
 }
 
-// Hàm lấy sản phẩm có mã giảm trên 12%
+// Hàm lấy sản phẩm có mã giảm trên 10%
 function getDiscountedProducts()
 {
-    $sql = "SELECT * FROM products WHERE discount_percentage > 10";
+    $sql = "SELECT * FROM products WHERE discount_percentage > 10  order by id_product desc";
     return pdo_query($sql); 
 }
