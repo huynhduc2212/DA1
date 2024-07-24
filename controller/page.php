@@ -6,21 +6,21 @@ include_once 'view/template_head.php';
 include_once 'view/template_header.php';
 
 if ($_GET['act']) {
-    switch ($_GET['act']) {
-        case 'home':
-            include_once "model/products.php";
-            include_once "model/categories.php";
-            $html_product_new = "";
-            $products = getProductByCategory_Home();
-            foreach ($products as $item) {
-                extract($item);
-                $discounted_price = calculateDiscountPrice($price, $discount_percentage);
-                if ($discount_percentage > 0) {
-                    $giamgia = '<span class="smart">' . $discount_percentage . '%</span>';
-                } else {
-                    $giamgia = '';
-                }
-                $html_product_new .= '<div class="swiper-slide" style="width: 300px; margin-right: 20px;">
+        switch ($_GET['act']) {
+                case 'home':
+                        include_once "model/products.php";
+                        include_once "model/categories.php";
+                        $html_product_new = "";
+                        $products = getProductByCategory_Home();
+                        foreach ($products as $item) {
+                                extract($item);
+                                $discounted_price = calculateDiscountPrice($price, $discount_percentage);
+                                if ($discount_percentage > 0) {
+                                        $giamgia = '<span class="smart">' . $discount_percentage . '%</span>';
+                                } else {
+                                        $giamgia = '';
+                                }
+                                $html_product_new .= '<div class="swiper-slide" style="width: 300px; margin-left: 10px;  margin-right: 10px;">
                             <div class="item_product_main">
                                     <form class="variants product-action" action="" method="post">
                                             <div class="product-thumbnail">
@@ -31,12 +31,11 @@ if ($_GET['act']) {
                                             </div>
                                             <div class="product-info">
                                                     <h3 class="product-name">
-                                                            <a href="#" title="' . $name . '">' . $name . '</a>
+                                                            <a href="#" title="' . $name . '">' . ($name) . '</a>
                                                     </h3>
                                                     <div class="price-box">
                                                             <span class="price">' . number_format($discounted_price, 0, ',', '.') . 'đ</span>
-                                                            ' . $discount_percentage . '
-                                                             <span class="compare-price">' . number_format($price, 0, ',', '.') . '₫</span>
+                                            ' . ($discount_percentage > 0 ? '<span class="compare-price">' . number_format($price, 0, ',', '.') . '₫</span>' : '') . '
                                                     </div>
                                             </div>
                                             <div class="product-btn d-none d-xl-block">
@@ -49,14 +48,14 @@ if ($_GET['act']) {
                                     </form>
                             </div>
                     </div>';
-            }
+                        }
 
-            include_once 'view/home.php';
-            break;
-        default:
-            # 404 - trang web không tồn tại!
-            break;
-    }
+                        include_once 'view/page_home.php';
+                        break;
+                default:
+                        # 404 - trang web không tồn tại!
+                        break;
+        }
 }
 include_once 'view/template_near_footer.php';
 include_once 'view/template_footer.php';

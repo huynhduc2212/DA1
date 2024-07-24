@@ -3,11 +3,11 @@
 // Hàm lấy sản phẩm theo danh mục
 function getProductsByCategory($id)
 {
-    $sql = "SELECT * FROM products WHERE id_category = ? order by id_product desc";
+    $sql = "SELECT * FROM products WHERE id_category = ? order by id desc";
     return pdo_query($sql, $id);
 }
 
-// Hàm lấy tất cả sản phẩm
+// Hàm lấy ra những sản phẩm mới nhất
 function getAllProducts()
 {
     $sql = "SELECT * FROM products order by id desc limit 4";
@@ -29,17 +29,18 @@ function getDiscountedProducts()
     return pdo_query($sql);
 }
 
-// Hàm lấy tất cả tên danh mục
+// Hàm lấy id danh mục
 function getAllCategory()
 {
-    $sql = "SELECT * FROM categories order by id_category asc ";
-}
-
-function getProductByCategory_Home()
-{
-    $sql = "SELECT * FROM products
-    left join categories on products.id_category = categories.id
-    WHERE categories.home = 1";
+    $sql = "SELECT * FROM categories order by id desc ";
     return pdo_query($sql);
 }
 
+
+function getProductByCategory_Home()
+{
+    $sql = "SELECT * FROM categories
+    left join products on products.id_category = categories.id
+    WHERE categories.home = 1";
+    return pdo_query($sql);
+}

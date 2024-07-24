@@ -1,4 +1,3 @@
-
 <body>
   <div class="top-bar">
     <div class="container">
@@ -49,20 +48,21 @@
                   <div class="container">
                     <ul class="level0">
                       <li class="level1">
-                        <a href="">Tổ yến tinh chế</a>
+                        <a href="?mod=product&act=product&category_id=1">Tổ yến tinh chế</a>
                       </li>
                       <li class="level1">
-                        <a href="">Tổ yến thô</a>
+                        <a href="?mod=product&act=product&category_id=2">Tổ yến thô</a>
                       </li>
                       <li class="level1">
-                        <a href="">Tổ yến chưng sẵn</a>
+                        <a href="?mod=product&act=product&category_id=3">Tổ yến chưng sẵn</a>
                       </li>
                       <li class="level1">
-                        <a href="">Món soup</a>
+                        <a href="?mod=product&act=product&category_id=4">Món soup</a>
                       </li>
                       <li class="level1">
-                        <a href="">Nước yến</a>
+                        <a href="?mod=product&act=product&category_id=5">Nước yến</a>
                       </li>
+                      <!-- <?php echo $html_category_list;?> -->
                     </ul>
                   </div>
                 </div>
