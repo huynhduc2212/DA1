@@ -10,19 +10,19 @@ if ($_GET['act']) {
     switch ($_GET['act']) {
         case 'product':
             include_once "model/products.php";
-            // $categories = getAllCategory();
-            // $html_category_list = '';
-            // foreach ($categories as $category) {
-            //     extract($category);
-            //     $html_category_list .= '
-            //     <li class="level1">
-            //         <a href="?mod=product&act=product&category_id=' . $id . '">' . $name . '</a>
-            //     </li>';
-            // }
+            $categories = getAllCategory();
+            $html_category_list = '';
+            foreach ($categories as $category) {
+                extract($category);
+                $html_category_list .= '
+                <li class="level1">
+                    <a href="?mod=product&act=product&category_id=' . $id . '">' . $name . '</a>
+                </li>';
+            }
             if (isset($_GET['category_id'])) {
                 $category_id = $_GET['category_id'];
                 $products = getProductsByCategory($category_id);
-                $html_product_list = '';
+                $html_product_list = "";
                 foreach ($products as $item) {
                     extract($item);
                     $discounted_price = calculateDiscountPrice($price, $discount_percentage);
@@ -60,6 +60,9 @@ if ($_GET['act']) {
                 }
             }
             include_once "view/product_categories.php";
+            break;
+        case 'productDetails':
+            include_once "view/product_details.php";
             break;
         default:
             # 404 - trang web không tồn tại!

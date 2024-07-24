@@ -49,8 +49,16 @@ if ($_GET['act']) {
                             </div>
                     </div>';
                         }
-
                         include_once 'view/page_home.php';
+                        break;
+                case 'contact';
+                        include_once "view/template_banner.php";
+                        include_once "view/page_contact.php";
+                        break;
+                case 'blog';
+                        include_once "view/template_banner.php";
+
+                        include_once "view/page_blog.php";
                         break;
                 default:
                         # 404 - trang web không tồn tại!

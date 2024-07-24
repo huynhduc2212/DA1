@@ -47,7 +47,7 @@
                 <div class="mega-content">
                   <div class="container">
                     <ul class="level0">
-                      <li class="level1">
+                      <!-- <li class="level1">
                         <a href="?mod=product&act=product&category_id=1">Tổ yến tinh chế</a>
                       </li>
                       <li class="level1">
@@ -61,15 +61,15 @@
                       </li>
                       <li class="level1">
                         <a href="?mod=product&act=product&category_id=5">Nước yến</a>
-                      </li>
-                      <!-- <?php echo $html_category_list;?> -->
+                      </li> -->
+                      <?php echo $html_category_list;?>
                     </ul>
                   </div>
                 </div>
               </li>
-              <li class="nav-item"><a href="">Tin tức</a></li>
+              <li class="nav-item"><a href="?mod=page&act=blog">Tin tức</a></li>
               <!-- <li class="nav-item"><a href="">Cẩm nang</a></li> -->
-              <li class="nav-item"><a href="">Liên hệ</a></li>
+              <li class="nav-item"><a href="?mod=page&act=contact">Liên hệ</a></li>
             </ul>
           </nav>
         </div>

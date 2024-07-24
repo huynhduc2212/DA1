@@ -36,7 +36,7 @@ function getAllCategory()
     return pdo_query($sql);
 }
 
-
+// Hàm lấy các sản phẩm thuộc danh mục được đánh dấu là home
 function getProductByCategory_Home()
 {
     $sql = "SELECT * FROM categories
