@@ -37,12 +37,12 @@
                                                                         foreach ($products as $product) {
                                                                                 $discounted_price = calculateDiscountPrice($product['price'], $product['discount_percentage']);
                                                                         ?>
-                                                                                <div class="swiper-slide" style="width: 228px; margin-right: 20px;">
+                                                                                <div class="swiper-slide" style="width: 228px; margin-left: 10px; margin-right: 10px;">
                                                                                         <div class="item_product_main">
                                                                                                 <form class="variants product-action" action="" method="post">
                                                                                                         <div class="product-thumbnail">
                                                                                                                 <a href="#" class="image_thumb scale_hover" title="<?php echo $product['name']; ?>" style="height: 196px;">
-                                                                                                                        <img width="480" height="480" src="assets_user/img/<?php echo $product['img']; ?>" alt="<?php echo $product['name']; ?>">
+                                                                                                                        <img width="480" height="480" src="assets_user/img/<?php echo $product['thumbnail']; ?>" alt="<?php echo $product['name']; ?>">
                                                                                                                 </a>
                                                                                                                 <span class="smart">- <?php echo $product['discount_percentage']; ?>%</span>
                                                                                                         </div>
@@ -68,6 +68,7 @@
                                                                         <?php
                                                                         }
                                                                         ?>
+
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -97,7 +98,7 @@
                 <div class="container">
                         <div class="block-title">
                                 <h2>
-                                        <a href="#" title="Tổ yến chưng sẵn">Tổ yến chưng sẵn</a>
+                                        <a href="#" title="Tổ yến chưng sẵn"><?php echo getCategory_Home() ?></a>
                                 </h2>
                         </div>
                         <div class="row-bd">
@@ -105,47 +106,7 @@
                                         <div class="block-product">
                                                 <div class="swiper-container" style="cursor: grab;">
                                                         <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                                                                <?php
-                                                                $products = getProductsByCategory(3);
-                                                                foreach ($products as $product) {
-                                                                        $discounted_price = calculateDiscountPrice($product['price'], $product['discount_percentage']);
-                                                                ?>
-                                                                        <div class="swiper-slide" style="width: 300px; margin-right: 20px;">
-                                                                                <div class="item_product_main">
-                                                                                        <form class="variants product-action" action="" method="post">
-                                                                                                <div class="product-thumbnail">
-                                                                                                        <a href="#" class="image_thumb scale_hover" title="Yến chưng khang phục 2" style="height: 258px;">
-                                                                                                                <img width="480" height="480" src="assets_user/img/<?php echo $product['img']; ?>" alt="<?php echo $product['name']; ?>">
-
-                                                                                                        </a>
-                                                                                                        <?php if ($product['discount_percentage'] > 0) : ?>
-                                                                                                                <span class="smart"><?php echo $product['discount_percentage']; ?>%</span>
-                                                                                                        <?php endif; ?>
-                                                                                                </div>
-                                                                                                <div class="product-info">
-                                                                                                        <h3 class="product-name">
-                                                                                                                <a href="#" title="<?php echo $product['name']; ?>"><?php echo $product['name']; ?></a>
-                                                                                                        </h3>
-                                                                                                        <div class="price-box">
-                                                                                                                <span class="price"><?php echo number_format($discounted_price, 0, ',', '.'); ?>đ</span>
-                                                                                                                <?php if ($product['discount_percentage'] > 0) : ?>
-                                                                                                                        <span class="compare-price"><?php echo number_format($product['price'], 0, ',', '.'); ?>₫</span>
-                                                                                                                <?php endif; ?>
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                                <div class="product-btn d-none d-xl-block">
-                                                                                                        <div class="actions-primary btn-views">
-                                                                                                                <button class="btn-cart" type="button" title="Thêm vào giỏ hàng">
-                                                                                                                        Thêm vào giỏ hàng
-                                                                                                                </button>
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                        </form>
-                                                                                </div>
-                                                                        </div>
-                                                                <?php
-                                                                }
-                                                                ?>
+                                                                <?=$html_product_new;?>
                                                         </div>
                                                 </div>
                                         </div>
@@ -297,95 +258,6 @@
                                                                                         </form>
                                                                                 </div>
                                                                         </div>
-                                                                </div>
-                                                                <div class="swiper-wrapper" style="width: 1280px; transform: translate3d(0px, 0px, 0px);margin-top: 20px;">
-                                                                        <div class="swiper-slide" style="width: 300px; margin-right: 20px;margin-right: 20px;">
-                                                                                <div class="item_product_main">
-                                                                                        <form class="variants product-action" action="" method="post">
-                                                                                                <div class="product-thumbnail">
-                                                                                                        <a href="#" class="image_thumb scale_hover" title="Tổ yến tinh chế loại 2" style="height: 196px;">
-                                                                                                                <img width="480" height="480" src="assets_user/img/ezgif-com-webp-to-jpg-7-15a2056f-35a4-4ad8-891c-9fb85d59ce58-961bb2fe-bfbf-4b3a-be9c-0e63c8bec06f.webp" alt="Tổ yến tinh chế loại 2">
-                                                                                                        </a>
-                                                                                                        <span class="smart">- 9%</span>
-                                                                                                        <span class="smart">- 9%</span>
-                                                                                                </div>
-                                                                                                <div class="product-info">
-                                                                                                        <h3 class="product-name">
-                                                                                                                <a href="#" title="Tổ yến tinh chế loại 2">Tổ yến tinh chế loại 2</a>
-                                                                                                        </h3>
-                                                                                                        <div class="price-box">
-                                                                                                                <span class="price">2.150.000đ</span>
-                                                                                                                <span class="compare-price">2.350.000₫</span>
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                                <div class="product-btn d-none d-xl-block">
-                                                                                                        <div class="actions-primary btn-views">
-                                                                                                                <button class="btn-cart" type="button" title="Thêm vào giỏ hàng">
-                                                                                                                        Thêm vào giỏ hàng
-                                                                                                                </button>
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                        </form>
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="swiper-slide" style="width: 300px; margin-right: 20px;">
-                                                                                <div class="item_product_main">
-                                                                                        <form class="variants product-action" action="" method="post">
-                                                                                                <div class="product-thumbnail">
-                                                                                                        <a href="#" class="image_thumb scale_hover" title="Tổ yến tinh chế loại 1" style="height: 196px;">
-                                                                                                                <img width="480" height="480" src="assets_user/img/ezgif-com-webp-to-jpg-4-22cafcf8-ff8d-4f35-83c7-c04882005b53.webp" alt="Tổ yến tinh chế loại 1">
-                                                                                                        </a>
-                                                                                                        <span class="smart">- 9%</span>
-                                                                                                        <span class="smart">- 9%</span>
-                                                                                                </div>
-                                                                                                <div class="product-info">
-                                                                                                        <h3 class="product-name">
-                                                                                                                <a href="#" title="Tổ yến tinh chế loại 1">Tổ yến tinh chế loại 1</a>
-                                                                                                        </h3>
-                                                                                                        <div class="price-box">
-                                                                                                                <span class="price">2.150.000đ</span>
-                                                                                                                <span class="compare-price">2.350.000₫</span>
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                                <div class="product-btn d-none d-xl-block">
-                                                                                                        <div class="actions-primary btn-views">
-                                                                                                                <button class="btn-cart" type="button" title="Thêm vào giỏ hàng">
-                                                                                                                        Thêm vào giỏ hàng
-                                                                                                                </button>
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                        </form>
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="swiper-slide" style="width: 300px; margin-right: 20px;">
-                                                                                <div class="item_product_main">
-                                                                                        <form class="variants product-action" action="" method="post">
-                                                                                                <div class="product-thumbnail">
-                                                                                                        <a href="#" class="image_thumb scale_hover" title="Tổ yến rút lông xuất khẩu" style="height: 196px;">
-                                                                                                                <img width="480" height="480" src="assets_user/img/ezgif-com-webp-to-jpg-3-fb37e369-6fd4-4b2b-a003-6d7b49aae776.webp" alt="Tổ yến rút lông xuất khẩu">
-                                                                                                        </a>
-                                                                                                        <span class="smart">- 9%</span>
-                                                                                                        <span class="smart">- 5%</span>
-                                                                                                </div>
-                                                                                                <div class="product-info">
-                                                                                                        <h3 class="product-name">
-                                                                                                                <a href="#" title="Tổ yến rút lông xuất khẩu">Tổ yến rút lông xuất khẩu</a>
-                                                                                                        </h3>
-                                                                                                        <div class="price-box">
-                                                                                                                <span class="price">5.300.000đ</span>
-                                                                                                                <span class="compare-price">5.600.000₫</span>
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                                <div class="product-btn d-none d-xl-block">
-                                                                                                        <div class="actions-primary btn-views">
-                                                                                                                <button class="btn-cart" type="button" title="Thêm vào giỏ hàng">
-                                                                                                                        Thêm vào giỏ hàng
-                                                                                                                </button>
-                                                                                                        </div>
-                                                                                                </div>
-                                                                                        </form>
-                                                                                </div>
-                                                                        </div>
                                                                         <div class="swiper-slide" style="width: 300px; margin-right: 20px;">
                                                                                 <div class="item_product_main">
                                                                                         <form class="variants product-action" action="" method="post">
@@ -445,7 +317,7 @@
                 <div class="container">
                         <div class="swiper-container">
                                 <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                                        <div class="swiper-slide" style="width: 228px; margin-right: 20px;">
+                                        <div class="swiper-slide" style="width: 228px; margin-right: 15px;margin-left: 15px;">
                                                 <div class="item">
                                                         <div class="image">
                                                                 <img width="150" height="150" src="assets_user/img/image_service1.webp" alt="Cảm kết chất lượng">
@@ -457,7 +329,7 @@
                                                 </div>
 
                                         </div>
-                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
+                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 15px;margin-left: 15px;">
                                                 <div class="item">
                                                         <div class="image">
                                                                 <img width="150" height="150" src="assets_user/img/image_service2.webp" alt="Đảm bảo vệ sinh ATTP">
@@ -469,7 +341,7 @@
                                                 </div>
 
                                         </div>
-                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
+                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 15px;margin-left: 15px;">
                                                 <div class="item">
                                                         <div class="image">
                                                                 <img width="150" height="150" src="assets_user/img/image_service3.webp" alt="Đổi trả sản phẩm">
@@ -481,7 +353,7 @@
                                                 </div>
 
                                         </div>
-                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 30px;">
+                                        <div class="swiper-slide" style="width: 292.5px; margin-right: 15px;margin-left: 15px;">
                                                 <div class="item">
                                                         <div class="image">
                                                                 <img width="150" height="150" src="assets_user/img/image_service4.webp" alt="Giao hàng">
@@ -573,6 +445,3 @@
                 </div>
         </section>
 </div>
-<!-- <div class="bg-footer">
-        <img src="assets_user/img/footer-bg.webp" class="img-responsion" alt="Lofi Nest">
-</div> -->

@@ -68,7 +68,7 @@
                 </div>
               </li>
               <li class="nav-item"><a href="">Tin tức</a></li>
-              <li class="nav-item"><a href="">Cẩm nang</a></li>
+              <!-- <li class="nav-item"><a href="">Cẩm nang</a></li> -->
               <li class="nav-item"><a href="">Liên hệ</a></li>
             </ul>
           </nav>

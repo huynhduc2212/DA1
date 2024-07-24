@@ -385,6 +385,11 @@ h3 {
 .section_service {
   padding: 40px 0;
 }
+.section_service .swiper-container .swiper-wrapper{
+  justify-content: center;
+  align-items: center;
+}
+
 .swiper-container {
   margin-left: auto;
   margin-right: auto;
@@ -393,7 +398,6 @@ h3 {
   list-style: none;
   padding: 0;
   z-index: 1;
-  min-height: auto;
 }
 .swiper-wrapper {
   position: relative;
@@ -410,7 +414,7 @@ h3 {
   height: initial !important;
   position: relative;
   transition-property: transform;
-  
+  padding-top: 15px;
 }
 .section_service .item {
   text-align: center;
@@ -448,6 +452,9 @@ img {
   padding: 40px 0px 0px;
   background: #fff;
 }
+.section_flash_sale .swiper-container .swiper-wrapper.swiper-slide{
+  justify-content: center;
+}
 .section_flash_sale .block-wraper {
   padding: 20px;
   background: linear-gradient(280.89deg, rgba(232, 210, 179, 0.3) -58.55%, rgba(191, 159, 112, 0.3) 99.7%);
@@ -460,7 +467,7 @@ img {
 }
 .block-title {
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 .block-title h2 {
@@ -497,8 +504,8 @@ img {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  /* margin-right: -10px;
-  margin-left: -10px; */
+  margin-right: -10px;
+  margin-left: -10px;
 }
 .row-bd1{
   flex: 0 0 100%;
@@ -625,11 +632,10 @@ p {
   text-align: center;
 }
 .section_product .block-title h2 {
-  padding-top: 30px;
   display: inline-block;
   padding-bottom: 20px;
+  padding-top: 25px;
 }
-
 .section_product .block-title h2:before {
   content: '';
   width: 80px;
@@ -648,8 +654,14 @@ p {
 .section_product_tab {
   padding: 40px 0;
 }
-.section_product_tab .block-title {
-  margin-bottom: 25px;
+.section_product_tab .swiper-wrapper{
+  flex-wrap: wrap;
+}
+.section_product_new .swiper-wrapper{
+  flex-wrap: wrap;
+}
+.section_flash_sale .swiper-wrapper{
+  flex-wrap: wrap;
 }
 .section_product_tab .block-title h2 {
   display: inline-block;
@@ -678,6 +690,13 @@ ul.tabs li.current {
 .section_product_tab .tabs-title li.current span, .section_product_tab .tabs-title li:hover span {
   background: #bf9f70;
   color: #fff;
+}
+.section_product_tab .tab-content.current {
+  opacity: 1;
+  height: auto;
+  position: relative;
+  min-height: 60px;
+  
 }
 .section_product_tab .tabs-title li {
   margin: 0px 5px;
