@@ -11,6 +11,7 @@ if ($_GET['act']) {
             include_once "model/products.php";
             include_once "model/categories.php";
             include_once "model/view.php";
+            $product_sale = getDiscountedProducts();
             $products = getProductByCategory_Home();
             // show theo danh mục
             if (isset($_GET['idcategory']) && (is_numeric($_GET['idcategory'])) && ($_GET['idcategory']) > 0) {
@@ -23,6 +24,9 @@ if ($_GET['act']) {
             $categories = getCategory_Home_List();
 
             include_once 'view/page_home.php';
+            break;
+        case 'cart':
+            include_once "view/page_cart.php";
             break;
         case 'contact';
             include_once "view/template_banner.php";

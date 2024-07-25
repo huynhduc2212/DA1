@@ -5,6 +5,7 @@ function dbConnection()
     $username = "root";
     $password = "";
     $dbname = "lofinest";
+    // $port = "3307";
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
