@@ -4,11 +4,11 @@
 include_once 'model/connect.php';
 include_once 'view/template_head.php';
 include_once 'view/template_header.php';
-include_once 'view/template_banner.php';
 
 if ($_GET['act']) {
     switch ($_GET['act']) {
         case 'product':
+            include_once 'view/template_banner.php';
             include_once "model/products.php";
             $categories = getAllCategory();
             $html_category_list = '';
@@ -62,6 +62,7 @@ if ($_GET['act']) {
             include_once "view/product_categories.php";
             break;
         case 'productDetails':
+            include_once 'view/template_banner.php';
             include_once "view/product_details.php";
             break;
         default:

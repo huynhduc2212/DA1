@@ -35,11 +35,11 @@
               <li class="nav-item"><a href="?mod=page&act=home">Trang chủ</a></li>
               <li class="nav-item">
                 <a href="" class="link-item">Giới thiệu </a>
-                <i class="fa fa-caret-down"></i>
+                <!-- <i class="fa fa-caret-down"></i>
                 <ul class="item-small">
                   <li><a href="">Xây dựng nhà yến trọn gói</a></li>
                   <li><a href="">Yêu tố giúp nuôi yến</a></li>
-                </ul>
+                </ul> -->
               </li>
               <li class="nav-item">
                 <a href="" class="link-item">Sản phẩm </a>
@@ -47,7 +47,7 @@
                 <div class="mega-content">
                   <div class="container">
                     <ul class="level0">
-                      <!-- <li class="level1">
+                      <li class="level1">
                         <a href="?mod=product&act=product&category_id=1">Tổ yến tinh chế</a>
                       </li>
                       <li class="level1">
@@ -61,8 +61,8 @@
                       </li>
                       <li class="level1">
                         <a href="?mod=product&act=product&category_id=5">Nước yến</a>
-                      </li> -->
-                      <?php echo $html_category_list;?>
+                      </li>
+                      <!-- <?php echo $html_category_list;?> -->
                     </ul>
                   </div>
                 </div>

@@ -1,10 +1,15 @@
 <?php
-
 // Hàm lấy sản phẩm theo danh mục
-function getProductsByCategory($id)
+function getProductsByCategory($idcategory)
 {
-    $sql = "SELECT * FROM products WHERE id_category = ? order by id desc";
-    return pdo_query($sql, $id);
+    $sql = "SELECT * FROM products WHERE 1";
+    if ($idcategory > 0) {
+        $sql .= " AND id_category = ? order by id desc";
+        return pdo_query($sql, $idcategory);
+    } else {
+        $sql .= " order by id desc";
+        return pdo_query($sql);
+    }
 }
 
 // Hàm lấy ra những sản phẩm mới nhất
