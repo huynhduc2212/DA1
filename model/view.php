@@ -1,16 +1,16 @@
 <?php
-function show_sp($products)
+function show_sp_home($products)
 {
-    $html_product_new = "";
-    foreach ($products as $item) {
-        extract($item);
-        $discounted_price = calculateDiscountPrice($price, $discount_percentage);
-        if ($discount_percentage > 0) {
-            $giamgia = '<span class="smart">' . $discount_percentage . '%</span>';
-        } else {
-            $giamgia = '';
-        }
-        $html_product_new .= '<div class="swiper-slide" style="width: 300px; margin-left: 10px;  margin-right: 10px;">
+   $html_product_new = "";
+   foreach ($products as $item) {
+      extract($item);
+      $discounted_price = calculateDiscountPrice($price, $discount_percentage);
+      if ($discount_percentage > 0) {
+         $giamgia = '<span class="smart">' . $discount_percentage . '%</span>';
+      } else {
+         $giamgia = '';
+      }
+      $html_product_new .= '<div class="swiper-slide" style="width: 300px; margin-left: 10px;  margin-right: 10px;">
                             <div class="item_product_main">
                                     <form class="variants product-action" action="" method="post">
                                             <div class="product-thumbnail">
@@ -38,6 +38,6 @@ function show_sp($products)
                                     </form>
                             </div>
                     </div>';
-    }
-    return $html_product_new;
+   }
+   return $html_product_new;
 }

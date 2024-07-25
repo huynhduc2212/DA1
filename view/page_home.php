@@ -1,6 +1,6 @@
 <?php
-$html_product_new = show_sp($products);
-$html_product_category = show_sp($products_category);
+$html_product_new = show_sp_home($products);
+$html_product_category = show_sp_home($products_category);
 if ($idcategory > 0) $actAll = '';
 else $actAll = 'current';
 $html_categories = '<li class="tab-link has-content ' . $actAll . '">

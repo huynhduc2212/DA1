@@ -1,3 +1,6 @@
+<?php
+$html_product_category = show_sp_home($products_category);
+?>
 <main>
     <div class="bg-home">
         <div class="layout-collection">
@@ -149,7 +152,7 @@
                                     </div>
                                 </div> -->
                                 <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                                    <?php echo $html_product_list; ?>
+                                    <?php echo $html_product_category; ?>
                                 </div>
                             </div>
                         </div>
