@@ -14,14 +14,14 @@ function show_sp_home($products)
                             <div class="item_product_main">
                                     <form class="variants product-action" action="" method="post">
                                             <div class="product-thumbnail">
-                                                    <a href="#" class="image_thumb scale_hover" title="" style="height: 258px;">
+                                                    <a href="?mod=product&act=productDetails" class="image_thumb scale_hover" title="" style="height: 258px;">
                                                             <img width="480" height="480" src="assets_user/img/' . $thumbnail . '" alt="' . $name . '">
                                                     </a>
                                                     ' . $giamgia . '
                                             </div>
                                             <div class="product-info">
                                                     <h3 class="product-name">
-                                                            <a href="#" title="' . $name . '">' . ($name) . '</a>
+                                                            <a href="?mod=product&act=productDetails" title="' . $name . '">' . ($name) . '</a>
                                                     </h3>
                                                     <div class="price-box">
                                                             <span class="price">' . number_format($discounted_price, 0, ',', '.') . 'đ</span>
@@ -102,7 +102,7 @@ function showProductFlashSales($products)
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">
-                        <a href="#" title="' . $name . '">' . $name . '</a>
+                        <a href="?mod=product&act=productDetails" title="' . $name . '">' . $name . '</a>
                     </h3>
                     <div class="price-box">
                         <span class="price">' . number_format($discounted_price, 0, ',', '.') . 'đ</span>

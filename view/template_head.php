@@ -13,4 +13,6 @@
   <link rel="stylesheet" href="assets_user/css/login.css" />
   <link rel="stylesheet" href="assets_user/css/signup.css" />
   <link rel="stylesheet" href="assets_user/css/product_categories.css">
+  <link rel="stylesheet" href="assets_user/css/product_details.css">
+  <link rel="stylesheet" href="assets_user/css/cart.css">
 </head>

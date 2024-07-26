@@ -21,6 +21,7 @@ if ($_GET['act']) {
             break;
         case 'productDetails':
             include_once 'view/template_banner.php';
+            include_once "model/products.php";
             include_once "view/product_details.php";
             break;
         default:
