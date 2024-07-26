@@ -1,51 +1,81 @@
 /* Start :: Product categories */
+.list-category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  font-size: 14px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.list-category li {
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: 1px solid #bf9f70;
+  margin: 0 20px;
+}
+
+.list-category li:hover {
+  background-color: #bf9f70;
+}
+
+.list-category li a {
+  color: #bf9f70;
+  text-decoration: none;
+}
+
+.list-category li a:hover {
+  color: #fff;
+}
+
 .bread-crumb {
-    margin-bottom: 40px;
-    min-height: 275px;
-    display: flex;
-    align-items: center;
-  }
-  .bread-crumb .title-breadcrumb {
-    color: #bf9f70;
-    font-size: 36px;
-    max-width: 900px;
-  }
-  .breadcrumb {
-    margin: 0;
-    font-size: 16px;
-    padding: 10px 0px;
-    border-radius: 0;
-    font-weight: 400;
-    line-height: 24px;
-    width: 100%;
-    max-width: 900px;
-  }
-  .breadcrumb li {
-    display: inline;
-  }
-  .breadcrumb li > a {
-    color: #333;
-  }
-  .breadcrumb li .mr_lr {
-    padding: 0px 3px;
-    color: #333;
-  }
-  .breadcrumb li span {
-    display: inline;
-    color: #333;
-  }
-  
-  .bread-crumb .cate {
-    color: #bf9f70;
-  }
-  
-  .breadcrumb li .mr_lr svg {
-    width: 10px;
-    height: 10px;
-    margin-top: -2px;
-  }
-  .block-product .swiper-wrapper {
-    flex-wrap: wrap;
-  }
-  
-  /* End :: Product categories */
+  margin-bottom: 40px;
+  min-height: 275px;
+  display: flex;
+  align-items: center;
+}
+.bread-crumb .title-breadcrumb {
+  color: #bf9f70;
+  font-size: 36px;
+  max-width: 900px;
+}
+.breadcrumb {
+  margin: 0;
+  font-size: 16px;
+  padding: 10px 0px;
+  border-radius: 0;
+  font-weight: 400;
+  line-height: 24px;
+  width: 100%;
+  max-width: 900px;
+}
+.breadcrumb li {
+  display: inline;
+}
+.breadcrumb li > a {
+  color: #333;
+}
+.breadcrumb li .mr_lr {
+  padding: 0px 3px;
+  color: #333;
+}
+.breadcrumb li span {
+  display: inline;
+  color: #333;
+}
+
+.bread-crumb .cate {
+  color: #bf9f70;
+}
+
+.breadcrumb li .mr_lr svg {
+  width: 10px;
+  height: 10px;
+  margin-top: -2px;
+}
+.block-product .swiper-wrapper {
+  flex-wrap: wrap;
+}
+
+/* End :: Product categories */

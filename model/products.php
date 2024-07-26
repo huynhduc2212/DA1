@@ -50,7 +50,7 @@ function getProductByCategory_Home()
   return pdo_query($sql);
 }
 
-hàm hiển thị chi tiết sản phẩm
+// hàm hiển thị chi tiết sản phẩm
 function getProductDetails($id)
 {
   $sql = "SELECT p.*, c.name as category_name, group_concat(i.img order by i.display_order asc seperator ',') as images

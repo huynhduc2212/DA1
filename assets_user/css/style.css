@@ -460,11 +460,7 @@ img {
   background: linear-gradient(280.89deg, rgba(232, 210, 179, 0.3) -58.55%, rgba(191, 159, 112, 0.3) 99.7%);
   border-radius: 10px;
 }
-.section_flash_sale .block-title {
-  margin-bottom: 30px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #fff;
-}
+
 .block-title {
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -936,7 +932,7 @@ h4 {
 }
 
 .footer .mid-footer .item svg {
-  width: 30px;
+  width: 25px;
   height: 30px;
   margin-right: 10px;
 }
