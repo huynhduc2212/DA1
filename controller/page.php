@@ -20,13 +20,17 @@ if ($_GET['act']) {
                 $idcategory = 0;
             }
             $products_category = getProductsByCategory($idcategory);
-
             $categories = getCategory_Home_List();
 
             include_once 'view/page_home.php';
             break;
         case 'cart':
+            include_once "view/template_banner.php";
             include_once "view/page_cart.php";
+            break;
+        case 'about':
+            include_once "view/template_banner.php";
+            include_once "view/page_about.php";
             break;
         case 'contact';
             include_once "view/template_banner.php";

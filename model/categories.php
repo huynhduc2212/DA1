@@ -11,3 +11,4 @@ function getCategory_Home_List()
     $sql = "SELECT * FROM categories order by name desc";
     return pdo_query($sql);
 }
+

@@ -34,7 +34,7 @@
             <ul class="nav-list">
               <li class="nav-item"><a href="?mod=page&act=home">Trang chủ</a></li>
               <li class="nav-item">
-                <a href="" class="link-item">Giới thiệu </a>
+                <a href="?mod=page&act=about" class="link-item">Giới thiệu </a>
                 <!-- <i class="fa fa-caret-down"></i>
                 <ul class="item-small">
                   <li><a href="">Xây dựng nhà yến trọn gói</a></li>
@@ -62,7 +62,7 @@
                       <li class="level1">
                         <a href="?mod=product&act=product&category_id=5">Nước yến</a>
                       </li>
-                      <!-- <?php echo $html_category_list;?> -->
+                      <!-- <?php echo $html_category_list; ?> -->
                     </ul>
                   </div>
                 </div>

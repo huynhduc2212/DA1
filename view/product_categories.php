@@ -1,17 +1,29 @@
 <?php
 $html_product_category = show_sp_home($products_category);
+$html_categories = '';
+foreach ($categories as $item) {
+    extract($item);
+    if ($id == $category_id) {
+        $act = 'active';
+    } else {
+        $act = '';
+    }
+    $html_categories .= '<li class="tab-link has-content ' . $act . '">
+                                                    <a href="?mod=product&act=product&category_id=' . $id . '#ghim">
+                                                        <span title="' . $name . '">' . $name . '</span>
+                                                    </a>
+                         </li>';
+}
 ?>
 <main>
     <div class="bg-home">
         <div class="layout-collection">
             <div class="container">
+                <a href="" id="ghim"></a>
                 <ul class="list-category">
-                    <li class="item active"><a href="">Tổ yến tinh chế</a></li>
-                    <li class="item"><a href="">Tổ yến thô</a></li>
-                    <li class="item"><a href="">Tổ yến chưng sẵn</a></li>
-                    <li class="item"><a href="">Món soup</a></li>
-                    <li class="item"><a href="">Nước yến</a></li>
+                    <?php echo $html_categories ?>
                 </ul>
+
                 <div class="row-bd">
                     <div class="row-bd1">
                         <div class="block-product">

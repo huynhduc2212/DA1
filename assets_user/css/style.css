@@ -299,6 +299,19 @@ body {
   height: 20px;
 }
 
+.viewmore {
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  padding: 8px 24px;
+  border: none;
+  width: 60%;
+  background-color: #bf9f70;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
 .header-cart .icon span {
   width: 18px;
   position: absolute;
@@ -679,7 +692,7 @@ p {
 .section_product_tab .tabs-title {
   margin-bottom: 40px;
   text-transform: none;
-}
+} 
 ul.tabs li.current {
   color: #bf9f70;
 }
@@ -892,6 +905,7 @@ h4 {
   margin-bottom: 25px;
 }
 .row2 {
+  padding-left: 50px;
   flex: 0 0 16.666667%;
   max-width: 16.666667%;
 }

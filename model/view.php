@@ -29,10 +29,13 @@ function show_sp_home($products)
                                                     </div>
                                             </div>
                                             <div class="product-btn d-none d-xl-block">
-                                                    <div class="actions-primary btn-views">
-                                                            <button class="btn-cart" type="button" title="Thêm vào giỏ hàng">
-                                                                    Thêm vào giỏ hàng
+                                                    <div class="actions-primary btn-views"><button class="btn-cart" type="button" title="Thêm vào giỏ hàng">
+                                                            <a href="?mod=page&act=cart">
+                                                                   <span>Thêm vào giỏ hàng</span>
+                                                                      </a>
                                                             </button>
+                                                          
+                                    
                                                     </div>
                                             </div>
                                     </form>

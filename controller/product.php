@@ -10,6 +10,7 @@ if ($_GET['act']) {
         case 'product':
             include_once 'view/template_banner.php';
             include_once "model/products.php";
+            include_once "model/categories.php";
             include_once "model/view.php";
             if (isset($_GET['category_id']) && (is_numeric($_GET['category_id'])) && ($_GET['category_id']) > 0) {
                 $category_id = $_GET['category_id'];
@@ -17,6 +18,7 @@ if ($_GET['act']) {
                 $category_id = 0;
             }
             $products_category = getProductsByCategory($category_id);
+            $categories = getCategory_Home_List();
             include_once "view/product_categories.php";
             break;
         case 'productDetails':

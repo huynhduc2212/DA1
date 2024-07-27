@@ -10,22 +10,19 @@
 }
 
 .list-category li {
-  border-radius: 10px;
-  padding: 10px 20px;
-  border: 1px solid #bf9f70;
   margin: 0 20px;
 }
 
-.list-category li:hover {
-  background-color: #bf9f70;
-}
-
-.list-category li a {
+.list-category li a span {
+  border-radius: 50px;
+  display: block;
+  border: 1px solid #bf9f70;
+  padding: 10px 20px;
   color: #bf9f70;
-  text-decoration: none;
 }
 
-.list-category li a:hover {
+.list-category li a span.active {
+  background-color: #bf9f70;
   color: #fff;
 }
 
