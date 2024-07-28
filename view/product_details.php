@@ -1,3 +1,37 @@
+<?php
+$html_product_new = show_sp_home($products);
+$html_product_category = show_sp_home_category($products_category);
+extract($product_details);
+
+$discounted_price = calculateDiscountPrice($price, $discount_percentage);
+$discount_html = $discount_percentage > 0 ? '<span class="smart">' . $discount_percentage . '%</span>' : '';
+$html_price = '
+<div class="price-box clearfix">
+    <span class="special-price">
+        <span class="price product-price">' . number_format($discounted_price, 0, ',', '.') . 'đ</span>
+    </span>';
+if ($discount_percentage > 0) {
+  $html_price .= '
+    <span class="old-price">
+        <del class="price product-price-old">' . number_format($price, 0, ',', '.') . 'đ</del>
+    </span>';
+}
+$html_price .= '</div>';
+
+// Xử lí hiển thị ảnh
+$mainImage = $product_images[0]['img'] ?? '';;
+$thumbnail_images = array_slice($product_images, 0, 3);
+$list_img = '';
+foreach ($thumbnail_images as $index => $image) {
+  $list_img .= '
+    <div class="swiper-slide" style="width: 116px; margin-right: 10px;" data-hash="' . ($index + 1) . '">
+        <div class="p-100">
+            <img src="assets_user/img/' . $image['img'] . '" alt="' . ($name) . '" class="lazy thumb">
+        </div>
+    </div>';
+}
+$html_product_related = showProductRelated($product_related);
+?>
 <main>
   <div class="bg-home">
     <section class="product layout-product">
@@ -8,44 +42,23 @@
               <div class="product-image-block relative">
                 <div class="swiper-container gallery-top">
                   <div class="swiper-wrapper" id="lightgallery">
-                    <a href="assets_user/img/toyentinhche2_1.webp" class="swiper-slide swiper-slide-active" title="Click để xem" style="width: 620px;" data-hash="0">
-                      <img id="main-image" height="540" width="540" src="assets_user/img/toyentinhche2_1.webp" alt="Tổ yến tinh chế loại 2" class="img-responsive mx-auto d-block lazy">
+                    <a href="assets_user/img/<?= $mainImage ?>" class="swiper-slide swiper-slide-active" title="Click để xem" style="width: 620px;" data-hash="0">
+                      <img id="main-image" height="540" width="540" src="assets_user/img/<?= $mainImage ?>" alt="Tổ yến tinh chế loại 2" class="img-responsive mx-auto d-block lazy">
                     </a>
                   </div>
                 </div>
                 <div class="swiper-container gallery-thumbs swiper-container-free-mode swiper-container-thumbs">
                   <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="width: 116px; margin-right: 10px;" data-hash="0">
-                      <div class="p-100">
-                        <img src="assets_user/img/toyentinhche2_1.webp" alt="Tổ yến tinh chế loại 2" class="lazy thumb">
-                      </div>
-                    </div>
-                    <div class="swiper-slide" style="width: 116px; margin-right: 10px;" data-hash="1">
-                      <div class="p-100">
-                        <img src="assets_user/img/toyentinhche2_2.webp" alt="Tổ yến tinh chế loại 2" class="lazy thumb">
-                      </div>
-                    </div>
-                    <div class="swiper-slide" style="width: 116px; margin-right: 10px;" data-hash="2">
-                      <div class="p-100">
-                        <img width="116px" src="assets_user/img/toyentinhche4_2.webp" alt="Tổ yến tinh chế loại 2" class="lazy thumb">
-                      </div>
-                    </div>
+                    <?= $list_img ?>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-12 col-lg-6 col-right">
               <div class="details-pro">
-                <h1 class="title-product">Tổ yến tinh chế loại 2</h1>
+                <h1 class="title-product"><?= $name ?></h1>
                 <form action="" class="form-inline">
-                  <div class="price-box clearfix">
-                    <span class="special-price">
-                      <span class="price product-price">2.150.000₫</span>
-                    </span>
-                    <span class="old-price">
-                      <del class="price product-price-old">2.350.000₫</del>
-                    </span>
-                  </div>
+                  <?= $html_price ?>
                   <div class="form-product">
                     <div class="product-promotion rounded-sm" id="lofi-salebox">
                       <div class="product-promotion__heading">
@@ -101,7 +114,7 @@
                     <div id="tab-1" class="tab-1 tab-content content_extab current">
                       <div class="rte product_getcontent">
                         <div class="ba-text-fpt has-height">
-                          <p>được làm sạch hoàn toàn từ thiên nhiên dựa theo quy chuẩn vệ sinh an toàn thực phẩm có đầy đủ chứng nhận của Bộ Y tế.</p>
+                          <textarea name="des"><?= $des ?></textarea>
                         </div>
                       </div>
                     </div>
@@ -124,34 +137,7 @@
           <div class="margin-am">
             <div class="product-relate-swiper swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" style="cursor: grab;">
               <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                <div class="swiper-slide" style="width: 236px; margin-right: 10px; margin-left: 10px;">
-                  <div class="item_product_main">
-                    <form class="variants product-action" action="" method="post">
-                      <div class="product-thumbnail">
-                        <a href="#" class="image_thumb scale_hover" title="Yến chưng khang phục 2" style="height: 204px;">
-                          <img width="480" height="480" src="assets_user/img/ezgif-com-webp-to-jpg-7-15a2056f-35a4-4ad8-891c-9fb85d59ce58-961bb2fe-bfbf-4b3a-be9c-0e63c8bec06f.webp" alt="Tổ yến tinh chế loại 2">
-                        </a>
-                        <span class="smart">- 9%</span>
-                      </div>
-                      <div class="product-info">
-                        <h3 class="product-name">
-                          <a href="#" title="Tổ yến tinh chế loại 2">Tổ yến tinh chế loại 2</a>
-                        </h3>
-                        <div class="price-box">
-                          <span class="price">2.150.000đ</span>
-                          <span class="compare-price">2.350.000₫</span>
-                        </div>
-                      </div>
-                      <div class="product-btn d-none d-xl-block">
-                        <div class="actions-primary btn-views">
-                          <button class="btn-cart" type="button" title="Thêm vào giỏ hàng">
-                            Thêm vào giỏ hàng
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+                <?= $html_product_related ?>
               </div>
             </div>
           </div>

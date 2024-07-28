@@ -1,6 +1,6 @@
 <?php
 // Hàm lấy sản phẩm theo danh mục
-function getProductsByCategory($idcategory)
+function getProductsByCategory($idcategory, $limit = null, $trang = null)
 {
   $sql = "SELECT * FROM products WHERE 1";
   if ($idcategory > 0) {
@@ -10,6 +10,38 @@ function getProductsByCategory($idcategory)
     $sql .= " order by id desc";
     return pdo_query($sql);
   }
+
+  // phân trang
+  if ($trang == 1) {
+    $limitfrom = 0;
+  } else {
+    $limitfrom = (($trang - 1) * $limit) - 1;
+  }
+  if ($limit > 0) {
+    $sql .= " limit " . $limitfrom . "," . $limit;
+  }
+  return pdo_query($sql);
+}
+
+// hàm hiển thị số trang 
+function get_so_trang($dssp, $trang)
+{
+  $sotrang = ceil(count($dssp) / SO_SP_TRANG);
+  $dssotrang = "";
+
+  if (isset($_GET['category_id']) && ($_GET['category_id'] > 0)) {
+    $iddm = "&category_id=" . $_GET['category_id'];
+  } else $iddm = "";
+
+  $currentUrl = "index.php?mod=product&act=product" . $iddm;
+  for ($i = 1; $i <= $sotrang; $i++) {
+    if ($trang == $i) {
+      $dssotrang .= "<a href='" . $currentUrl . "&trang=" . $i . "' style='background-color: #bf9f70; color: white; border: none;'>" . $i . "</a>";
+    } else {
+      $dssotrang .= "<a href='" . $currentUrl . "&trang=" . $i . "'>" . $i . "</a>";
+    }
+  }
+  return $dssotrang;
 }
 
 // Hàm lấy ra những sản phẩm mới nhất
@@ -34,13 +66,6 @@ function getDiscountedProducts()
   return pdo_query($sql);
 }
 
-// Hàm lấy id danh mục
-function getAllCategory()
-{
-  $sql = "SELECT * FROM categories order by id desc ";
-  return pdo_query($sql);
-}
-
 // Hàm lấy các sản phẩm thuộc danh mục được đánh dấu là home
 function getProductByCategory_Home()
 {
@@ -53,12 +78,13 @@ function getProductByCategory_Home()
 // hàm hiển thị chi tiết sản phẩm
 function getProductDetails($id)
 {
-  $sql = "SELECT p.*, c.name as category_name, group_concat(i.img order by i.display_order asc seperator ',') as images
-            from products p
-            left join categories c on p.id_category = c.id
-            left join images i on p.id = i.id_product
-            where p.id = ?
-            group by p.id";
+  $sql = "SELECT * FROM products where id =?";
   return pdo_query_one($sql, $id);
 }
 
+// hàm lấy sản phẩm cùng thể loại
+function getProductRelated($iddm, $id, $limit)
+{
+  $sql = "SELECT * FROM products where id_category = ? and  id<>? order by name desc limit " . $limit;
+  return pdo_query($sql, $iddm, $id);
+}

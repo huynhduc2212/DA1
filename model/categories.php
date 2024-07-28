@@ -12,3 +12,5 @@ function getCategory_Home_List()
     return pdo_query($sql);
 }
 
+
+

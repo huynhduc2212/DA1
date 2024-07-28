@@ -3,7 +3,7 @@ $html_product_category = show_sp_home($products_category);
 $html_categories = '';
 foreach ($categories as $item) {
     extract($item);
-    if ($id == $category_id) {
+    if ($id > $category_id) {
         $act = 'active';
     } else {
         $act = '';
@@ -39,3 +39,6 @@ foreach ($categories as $item) {
         </div>
     </div>
 </main>
+<section id="pagination">
+    <?= $dssotrang ?>
+</section>
