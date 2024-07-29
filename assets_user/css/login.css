@@ -56,23 +56,26 @@
   background-color: #b88945;
 }
 
-.login-form a.link-gold {
+form a.link-gold {
   color: #d1a654;
   text-decoration: none;
 }
-.social-login a.link-gold1 {
-  font-size: 14px;
+
+form a.link-gold:hover {
   color: #171511;
+  text-decoration: underline;
+}
+
+.social-login > a {
+  font-size: 14px;
+  color: #d1a654;
   display: block;
   margin: 15px 0;
   text-decoration: none;
 }
-.login-form a.link-gold:hover {
+
+.social-login > a:hover {
   color: #171511;
-  text-decoration: underline;
-}
-.social-login a.link-gold1:hover {
-  color: #b88945;
   text-decoration: underline;
 }
 

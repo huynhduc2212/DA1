@@ -4,7 +4,6 @@
     if (!isset($_SESSION['giohang'])) {
         $_SESSION['giohang'] = [];
     }
-
     include_once "model/global.php";
     //điều hướng các controller
     if (isset($_GET['mod'])) {

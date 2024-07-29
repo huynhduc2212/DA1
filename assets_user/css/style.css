@@ -147,7 +147,8 @@ body {
 }
 
 .header-menu {
-  min-width: 961px;
+  /* min-width: 961px; */
+  min-width: 915px;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -263,6 +264,67 @@ body {
 .ul-control {
   display: flex;
   align-items: center;
+}
+
+.ul-control .header-user {
+  display: flex;
+  width: 40px;
+  margin-right: 5px;
+  height: 40px;
+  background: #bf9f70;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+}
+
+.ul-control .header-user .icon {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-user {
+  position: absolute;
+  display: none;
+  width: 120px;
+  list-style: none;
+  right: -60px;
+  border-radius: 4px;
+  top: 50px;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  height: 56px;
+}
+
+.option-user::before{
+  position: absolute;
+  top: -10px;
+  width: 100%;
+  content: "";
+  display: block;
+  background-color: none;
+  height: 12px;
+}
+
+.option-user li {
+  display: inline-block;
+  padding: 2px 10px;
+}
+
+.option-user li a {
+  font-size: 14px ;
+  color: #000;
+}
+
+.option-user li a:hover {
+  color: #bf9f70;
+}
+
+.ul-control .header-user:hover .option-user {
+  display: block;
 }
 
 .ul-control .header-search {
@@ -582,13 +644,14 @@ a {
   -webkit-box-orient: vertical;
   white-space: initial;
   overflow: hidden;
-  margin: 0 0 6px;
+  margin: 0;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
-  min-height: 40px;
+  min-height: 30px;
   overflow: hidden;
 }
+
 .product-action .product-info .product-name a {
   display: block;
   color: #231f20;
@@ -600,6 +663,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 7px;
 }
 .product-action .product-info .price-box .compare-price {
   text-decoration: line-through;
@@ -662,6 +726,10 @@ p {
 }
 .section_product_tab {
   padding: 40px 0;
+}
+.section_product_new .block-title{
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 .section_product_tab .swiper-wrapper{
   flex-wrap: wrap;
@@ -838,6 +906,12 @@ button, input {
   height: 50px;
   font-weight: bold;
 }
+
+.view-more {
+  margin-top: 10px;
+  color: #8E7146;
+  text-align: center;
+}
 /* End :: Home */
 
 /* Start :: footer */
@@ -988,3 +1062,18 @@ img {
   height: auto;
 }
 /* End :: footer */
+
+/* Điều hướng đường dẫn */
+.path a {
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+}
+
+.path a:hover {
+  color: #bf9f70;
+}
+
+.path span {
+  color: #bf9f70;
+}

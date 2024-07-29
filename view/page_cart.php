@@ -21,7 +21,7 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
                           <div class="grid__item cart_info">
                             <div class="ajaxcart__product-name-wrapper cart_name">
                               <a href="" class="ajaxcart__product-name h4" title="' . $tensp . '">' . $tensp . '</a>
-                              <a href="?mod=page&act=cart&ind='.$i.'" class="cart__btn-remove remove-item-cart ajaxifyCart--remove">Xóa</a>
+                              <a href="?mod=page&act=cart&ind=' . $i . '" class="cart__btn-remove remove-item-cart ajaxifyCart--remove">Xóa</a>
                             </div>
                             <div class="grid">
                               <div class="grid__item one-half text-right cart_prices">
@@ -47,7 +47,7 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
     $i++;
   }
   $html_cart .= ' 
-  <a href="?mod=page&act=cart&delcart=1">
+  <a href="?mod=page&act=cart&delcart=1" class="del-all">
   <button type="button">Xóa tất cả sản phẩm</button>
   </a>
   <div class="ajaxcart__footer ajaxcart__footer--fixed cart-footer">
@@ -68,7 +68,10 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
                       </div>
                     </div>';
 } else {
-  $html_cart = '<div class="">Không có sản phẩm nào trong giỏ hàng của bạn</div>';
+  $html_cart = '<div class= "box-cart">
+  <i class="fa-solid fa-cart-arrow-down empty-cart"></i>
+  <div class="text">Không có sản phẩm nào trong giỏ hàng của bạn</div>
+  </div>';
 }
 ?>
 <div class="bg-home">

@@ -36,7 +36,7 @@ foreach ($categories as $item) {
                     <h3 class="title">Yến sào</h3>
                     <p class="sub-title">Giá trị dinh dưỡng cao, nguồn cung cấp năng lượng tự nhiên</p>
                     <p class="desc">Hãy khám phá sự tinh túy của Yến Sào - một món quà quý giá mà thiên nhiên ban tặng. Với chất lượng đẳng cấp và giá trị dinh dưỡng cao, Yến Sào đã trở thành biểu tượng của sự sang trọng và sức khỏe.</p>
-                    <a href=""><button class="viewmore" title="Xem thêm" type="button">Xem thêm</button></a>
+                    <a href="?mod=product&act=product&category_id=3"><button class="viewmore" title="Xem thêm" type="button">Xem thêm</button></a>
                 </div>
             </div>
         </div>
@@ -107,6 +107,9 @@ foreach ($categories as $item) {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="view-more">
+                        << Xem thêm>>
                     </div>
                 </div>
             </div>

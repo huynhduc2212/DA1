@@ -12,5 +12,10 @@ function getCategory_Home_List()
     return pdo_query($sql);
 }
 
-
+function getCategory_Name($id)
+{
+    $sql = "SELECT * FROM categories where id = ".$id;
+    $dm = pdo_query_one($sql);
+    return $dm['name'];
+}
 

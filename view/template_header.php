@@ -14,8 +14,16 @@
         </div>
         <div class="top-bar-right">
           <ul>
-            <li><a href="?mod=user&act=login">Đăng nhập</a></li>
-            <li><a href="?mod=user&act=signup">Đăng kí</a></li>
+            <?php
+            if (isset($_SESSION['user']) && (count($_SESSION['user']) > 0)) {
+              echo '<li><a href="?mod=user&act=userupdate">' . $_SESSION['user']['username'] . '</a></li>
+            <li><a href="?mod=user&act=logout">Logout</a></li>';
+            } else {
+              echo '<li><a href="?mod=user&act=login">Đăng nhập</a></li>
+            <li><a href="?mod=user&act=signup">Đăng kí</a></li>';
+            }
+            ?>
+
             <li><a href="">Hệ thống cửa hàng</a></li>
             <li><a href="">Sản phẩm yêu thích</a></li>
           </ul>
@@ -62,7 +70,6 @@
                       <li class="level1">
                         <a href="?mod=product&act=product&category_id=5">Nước yến</a>
                       </li>
-                      <!-- <?php echo $html_category_list; ?> -->
                     </ul>
                   </div>
                 </div>
@@ -75,6 +82,15 @@
         </div>
         <div class="header-control">
           <div class="ul-control">
+            <div class="header-user">
+              <a href="" class="icon">
+                <i class="fa-solid fa-user"></i>
+              </a>
+              <ul class="option-user">
+                <li><a href="?mod=user&act=signup">Đăng kí</a></li>
+                <li><a href="?mod=user&act=login">Đăng nhập</a></li>
+              </ul>
+            </div>
             <div class="header-search">
               <a href="" class="icon">
                 <i class="fa-solid fa-magnifying-glass button-search"></i>
@@ -83,7 +99,7 @@
             <div class="header-cart">
               <a href="?mod=page&act=cart" class="icon">
                 <img src="https://bizweb.dktcdn.net/100/488/726/themes/911609/assets/shopping-cart.svg?1705829900945" alt="" />
-                <span>0</span>
+                <span><?= get_soluong_cart() ?></span>
               </a>
             </div>
           </div>

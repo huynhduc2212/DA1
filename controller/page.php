@@ -3,8 +3,6 @@
 //gọi dc: view, model
 include_once 'model/connect.php';
 include_once 'model/cart.php';
-include_once 'view/template_head.php';
-include_once 'view/template_header.php';
 
 if ($_GET['act']) {
     switch ($_GET['act']) {
@@ -23,6 +21,10 @@ if ($_GET['act']) {
             $products_category = getProductsByCategory($idcategory);
             $categories = getCategory_Home_List();
 
+            $pathpage = "Trang chủ";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
             include_once 'view/page_home.php';
             break;
         case 'cart':
@@ -58,22 +60,48 @@ if ($_GET['act']) {
                 header("Location: ?mod=page&act=cart");
             }
 
-            // view cart
+            $tendm = "Giỏ hàng";
+            $pathpage = "Trang chủ | " . $tendm;
+            // $pathpage_a = "<a href='index.php'>Trang chủ</a> > Giỏ hàng";
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
 
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_cart.php";
             break;
         case 'about':
+            $tendm = "Giới thiệu";
+            $pathpage = "Trang chủ | " . $tendm;
+            // $pathpage_a = "<a href='index.php'>Trang chủ</a> > Giới thiệu";
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_about.php";
             break;
         case 'contact';
+            $tendm = "Liên hệ";
+            $pathpage = "Trang chủ | " . $tendm;
+            // $pathpage_a = "<a href='index.php'>Trang chủ</a> > Liên hệ";
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_contact.php";
             break;
         case 'blog';
-            include_once "view/template_banner.php";
+            $tendm = "Tin tức";
+            $pathpage = "Trang chủ | " . $tendm;
+            // $pathpage_a = "<a href='index.php'>Trang chủ</a> > Tin tức";
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
 
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once "view/template_banner.php";
             include_once "view/page_blog.php";
             break;
         default:

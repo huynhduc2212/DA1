@@ -59,7 +59,7 @@
   color: #d1a654;
   text-decoration: none;
 }
-.social-login a.link-gold1 {
+.social-signup a.link-gold1 {
   color: #171511;
   text-decoration: none;
 }
@@ -67,17 +67,17 @@
   color: #171511;
   text-decoration: underline;
 }
-.social-login a.link-gold1:hover {
+.social-signup a.link-gold1:hover {
   color: #b88945;
   text-decoration: underline;
 }
 
-.social-login {
+.social-signup {
   text-align: center;
   margin-top: 20px;
 }
 
-.social-login p {
+.social-signup p {
   margin-bottom: 10px;
 }
 

@@ -179,4 +179,21 @@
   border: 1px solid #bf9f70;
   border-radius: 5px;
 }
+
+.del-all button {
+  color: #bf9f70;
+  background: none;
+  font-size: 14px;
+  border: none;
+  margin-top: 12px;
+}
+
+.box-cart {
+  text-align: center;
+}
+
+.empty-cart {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
 /* End :: cart */
