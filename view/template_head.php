@@ -17,46 +17,6 @@
   <link rel="stylesheet" href="assets_user/css/product_details.css">
   <link rel="stylesheet" href="assets_user/css/cart.css">
   <link rel="stylesheet" href="assets_user/css/blog.css">
-  <!-- <link rel="stylesheet" href="assets_user/css/checkout.css"> -->
+  <link rel="stylesheet" href="assets_user/css/checkout.css">
   <link rel="stylesheet" href="assets_user/css/contact.css">
-  <!-- <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.css" /> -->
 </head>
-<!-- <script type="importmap">
-  {
-        "imports": {
-          "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.js",
-          "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/42.0.2/"
-        }
-      }
-    </script>
-
-<script type="module">
-  import {
-    ClassicEditor,
-    Essentials,
-    Bold,
-    Italic,
-    Font,
-    Paragraph,
-  } from "ckeditor5";
-
-  ClassicEditor.create(document.querySelector("#des"), {
-      plugins: [Essentials, Bold, Italic, Font, Paragraph],
-      toolbar: {
-        items: [
-          "undo",
-          "redo",
-          "|",
-          "bold",
-          "italic",
-          "|",
-          "fontSize",
-          "fontFamily",
-          "fontColor",
-          "fontBackgroundColor",
-        ],
-      },
-    })
-    .then( /* ... */ )
-    .catch( /* ... */ );
-</script> -->

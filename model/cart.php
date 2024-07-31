@@ -13,18 +13,20 @@ function get_soluong_cart()
 
 function get_total()
 {
-    if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
-        $total = 0;
+    $total = 0;
+    if (isset($_SESSION['giohang']) && count($_SESSION['giohang']) > 0) {
         foreach ($_SESSION['giohang'] as $item) {
-            $thanhtien = $_POST['soluong'] * $_POST['giasp'];
+            $giasp = $item['giasp'];
+            $soluong = $item['soluong'];
+            $thanhtien = $soluong * $giasp;
             $total += $thanhtien;
         }
-    } else return $total = 0;
+    }
     return $total;
 }
 
-function insert_order_returnID($iduser, $fullname,$address,$total, $phone)
+function insert_order_returnID($iduser, $fullname, $address, $total, $phone, $email, $payment_method)
 {
-    $sql = "INSERT INTO orders (iduser, fullname, address , total, phone) values('$iduser','$fullname','$address','$total','$phone')";
+    $sql = "INSERT INTO orders (iduser, fullname, address , total, phone, email, payment_method) values('$iduser','$fullname','$address','$total','$phone','$email', '$payment_method')";
     return pdo_execute_returnID($sql);
 }

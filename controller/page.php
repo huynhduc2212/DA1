@@ -125,6 +125,22 @@ if ($_GET['act']) {
             break;
         case 'checkout':
             $iduser = 0;
+            if (!isset($_SESSION['user'])) {
+                $iduser = "";
+                $fullname = "";
+                $phone = "";
+                $address = "";
+                $email = "";
+
+                // đăng kí tài khoản => getLastID
+                $iduser = insert_user_returnID($fullname, $password, $email, $phone);
+            } else {
+                $iduser = $_SESSION['user']['id'];
+                $fullname = $_SESSION['user']['username'];
+                $phone = $_SESSION['user']['phone'];
+                $address = $_SESSION['user']['address'];
+                $email = $_SESSION['user']['email'];
+            }
             if (isset($_POST['btn_order'])) {
                 // lấy dữ liệu trên form : thông tin người đặt người nhận
                 // KH k0 là thành viên: người đặt người nhận là 1 - là thông tin trên form
@@ -133,20 +149,16 @@ if ($_GET['act']) {
                 $fullname = $_POST['fullname'];
                 $phone = $_POST['phone'];
                 $address = $_POST['address'];
-                $email = "thainde@gmail.com";
+                $email = $_POST['email'];
                 $password = rand(100000, 999999);
-                // đăng kí tài khoản => getLastID
-                if (!isset($_SESSION['user'])) {
-                    $iduser = insert_user_returnID($fullname, $password, $email, $phone);
-                } else {
-                    $iduser = $_SESSION['user']['id'];
-                }
+                $payment_method = $_POST['payment_method'];
+
                 // tạo đơn hàng với iduser vừa tạo
                 // iduser / form / tổng tiền hàng 
                 $total = get_total();
 
                 // lấy dữ liệu cần thiết cho đơn hàng : tổng đơn hàng
-                $idorder = insert_order_returnID($iduser, $fullname, $address, $total, $phone);
+                $idorder = insert_order_returnID($iduser, $fullname, $address, $total, $phone, $email, $payment_method);
             }
 
             $tendm = "Checkout";
@@ -156,6 +168,9 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_checkout.php";
+            break;
+        case 'bill';
+            include_once "view/page_bill.php";
             break;
         default:
             # 404 - trang web không tồn tại!

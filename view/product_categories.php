@@ -9,13 +9,13 @@ $html_categories = '<li class="tab-link has-content ' . $actAll . '">
                                                     </a>
                          </li>';
 foreach ($categories as $item) {
-    extract($item);
-    if ($id == $category_id) {
-        $act = 'active';
-    } else {
-        $act = '';
-    }
-    $html_categories .= '<li class="tab-link has-content ' . $act . '">
+  extract($item);
+  if ($id == $category_id) {
+    $act = 'active';
+  } else {
+    $act = '';
+  }
+  $html_categories .= '<li class="tab-link has-content ' . $act . '">
                                                     <a href="?mod=product&act=product&category_id=' . $id . '#ghim">
                                                         <span title="' . $name . '">' . $name . '</span>
                                                     </a>
@@ -23,29 +23,29 @@ foreach ($categories as $item) {
 }
 ?>
 <main>
-    <div class="bg-home">
-        <div class="layout-collection">
-            <div class="container">
-                <a href="" id="ghim"></a>
-                <ul class="list-category">
-                    <?php echo $html_categories ?>
-                </ul>
+  <div class="bg-home">
+    <div class="layout-collection">
+      <div class="container">
+        <a href="" id="ghim"></a>
+        <ul class="list-category">
+          <?php echo $html_categories ?>
+        </ul>
 
-                <div class="row-bd">
-                    <div class="row-bd1">
-                        <div class="block-product">
-                            <div class="swiper-container" style="cursor: grab;">
-                                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                                    <?php echo $html_product_category; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="row-bd">
+          <div class="row-bd1">
+            <div class="block-product">
+              <div class="swiper-container" style="cursor: grab;">
+                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                  <?php echo $html_product_category; ?>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </main>
 <section id="pagination">
-    <?= $dssotrang ?>
+  <?= $dssotrang ?>
 </section>

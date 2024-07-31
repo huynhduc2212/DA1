@@ -10,6 +10,8 @@
         <input type="email" name="email" placeholder="Email" required />
         <input type="password" name="password" placeholder="Mật khẩu" required />
         <input type="password" name="repassword" placeholder="Nhập lại mật khẩu" required />
+        <input type="text" name="phone" placeholder="Số điện thoại" required />
+        <input type="text" name="address" placeholder="Địa chỉ" required />
         <button type="submit" name="btn_signup">Đăng ký</button>
       </form>
     </div>

@@ -17,7 +17,6 @@ Tạo đơn hàng
 - idorder + cùng với việc for mảng session giỏ hàng
 => insert into đơn hàng chi tiết
 
-
 - voucher
 
 - client : quản lí / admin cũng quản lí được / gửi mail đơn hàng

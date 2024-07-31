@@ -1,7 +1,7 @@
 <?php
-function insert_user($username, $password, $email)
+function insert_user($username, $password, $email, $phone, $address)
 {
-    $sql = "INSERT INTO users (username, password, email) values('$username','$password','$email')";
+    $sql = "INSERT INTO users (username, password, email, phone, address) values('$username','$password','$email', '$phone','$address')";
     return pdo_execute($sql);
 }
 

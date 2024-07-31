@@ -10,18 +10,16 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
   $i = 0;
   foreach ($_SESSION['giohang'] as $item) {
     extract($item);
+    $id = $item['idpro'];
     $thanhtien = $giasp * $soluong;
     $tong += $thanhtien;
     // Đảm bảo rằng $giasp và $soluong là số
     // $giasp = is_numeric($giasp) ? (float) $giasp : 0;
     // $soluong = is_numeric($soluong) ? (int) $soluong : 0;
-
-    // $thanhtien = $giasp * $soluong;
-    // $tong += $thanhtien;
     $html_cart .= '<div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer cart_body items">
                       <div class="ajaxcart__row">
                         <div class="ajaxcart__product cart_product">
-                          <a href="" class="ajaxcart__product-image cart_image" title="' . $tensp . '">
+                          <a href="?mod=product&act=productDetails&idpro=' . $id . '" class="ajaxcart__product-image cart_image" title="' . $tensp . '">
                             <img src="assets_user/img/' . $hinhsp . '" alt="' . $tensp . '">
                           </a>
                           <div class="grid__item cart_info">
