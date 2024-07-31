@@ -1,9 +1,16 @@
 <?php
 $html_product_category = show_sp_home($products_category);
-$html_categories = '';
+
+if ($category_id > 0) $actAll = '';
+else $actAll = 'active';
+$html_categories = '<li class="tab-link has-content ' . $actAll . '">
+                                                    <a href="?mod=product&act=product">
+                                                        <span title="Tất cả sản phẩm yến">Tất cả</span>
+                                                    </a>
+                         </li>';
 foreach ($categories as $item) {
     extract($item);
-    if ($id > $category_id) {
+    if ($id == $category_id) {
         $act = 'active';
     } else {
         $act = '';

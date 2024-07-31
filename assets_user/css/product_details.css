@@ -412,8 +412,8 @@ input {
   position: relative;
 }
 .product-tab .product_getcontent .ba-text-fpt.has-height {
-  max-height: 550px;
-  overflow: hidden;
+  max-height: 100%;
+  /* overflow: hidden; */
   -moz-transition: height 0.2s;
   transition: height 0.2s;
 }

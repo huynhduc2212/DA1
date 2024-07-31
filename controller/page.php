@@ -3,13 +3,16 @@
 //gọi dc: view, model
 include_once 'model/connect.php';
 include_once 'model/cart.php';
+include_once 'model/news.php';
+include_once "model/products.php";
+include_once "model/categories.php";
+include_once "model/view.php";
+include_once "model/user.php";
+
 
 if ($_GET['act']) {
     switch ($_GET['act']) {
         case 'home':
-            include_once "model/products.php";
-            include_once "model/categories.php";
-            include_once "model/view.php";
             $product_sale = getDiscountedProducts();
             $products = getProductByCategory_Home();
             // show theo danh mục
@@ -48,13 +51,15 @@ if ($_GET['act']) {
                 $hinhsp = $_POST['hinhsp'];
                 $soluong = $_POST['soluong'];
                 $giasp = $_POST['giasp'];
+                $discount_percentage = $_POST['discount_percentage'];
+                $price = calculateDiscountPrice($giasp, $discount_percentage);
 
                 $sp = [
                     'idpro' => $idpro,
                     'tensp' => $tensp,
                     'hinhsp' => $hinhsp,
-                    'giasp' => $giasp,
-                    'soluong' => $soluong
+                    'giasp' => $price,
+                    'soluong' => $soluong,
                 ];
                 array_push($_SESSION['giohang'], $sp);
                 header("Location: ?mod=page&act=cart");
@@ -62,7 +67,6 @@ if ($_GET['act']) {
 
             $tendm = "Giỏ hàng";
             $pathpage = "Trang chủ | " . $tendm;
-            // $pathpage_a = "<a href='index.php'>Trang chủ</a> > Giỏ hàng";
             $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
 
             include_once 'view/template_head.php';
@@ -73,7 +77,6 @@ if ($_GET['act']) {
         case 'about':
             $tendm = "Giới thiệu";
             $pathpage = "Trang chủ | " . $tendm;
-            // $pathpage_a = "<a href='index.php'>Trang chủ</a> > Giới thiệu";
             $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
 
             include_once 'view/template_head.php';
@@ -81,10 +84,9 @@ if ($_GET['act']) {
             include_once "view/template_banner.php";
             include_once "view/page_about.php";
             break;
-        case 'contact';
+        case 'contact':
             $tendm = "Liên hệ";
             $pathpage = "Trang chủ | " . $tendm;
-            // $pathpage_a = "<a href='index.php'>Trang chủ</a> > Liên hệ";
             $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
 
             include_once 'view/template_head.php';
@@ -92,17 +94,68 @@ if ($_GET['act']) {
             include_once "view/template_banner.php";
             include_once "view/page_contact.php";
             break;
-        case 'blog';
+        case 'blog':
+            $blogs = getBlogs();
             $tendm = "Tin tức";
             $pathpage = "Trang chủ | " . $tendm;
             // $pathpage_a = "<a href='index.php'>Trang chủ</a> > Tin tức";
             $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
-
-
             include_once 'view/template_head.php';
             include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_blog.php";
+            break;
+        case 'blogDetails':
+            if (isset($_GET['idblog']) && ($_GET['idblog'] > 0)) {
+                $id = $_GET['idblog'];
+                $blogs_details = getBlogByID($id);
+                $tensp = $blogs_details['name'];
+                $tendm = $tensp;
+                $pathpage = "Trang chủ | " . $tendm;
+                $pathpage_a = "<div class='path'><a href='index.php'>Trang chủ </a> > <a href='?mod=page&act=cart'>Tin tức</a> > <span>$tensp</span> </div>";
+                include_once 'view/template_head.php';
+                include_once 'view/template_header.php';
+                include_once "view/template_banner.php";
+                include_once "view/page_blogDetails.php";
+            } else {
+                $id = 0;
+                $pathpage = "";
+                $pathpage_a = "";
+            }
+            break;
+        case 'checkout':
+            $iduser = 0;
+            if (isset($_POST['btn_order'])) {
+                // lấy dữ liệu trên form : thông tin người đặt người nhận
+                // KH k0 là thành viên: người đặt người nhận là 1 - là thông tin trên form
+                // KH là thành viên : người đặt là iduser - người nhận là thông tin trên form
+
+                $fullname = $_POST['fullname'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+                $email = "thainde@gmail.com";
+                $password = rand(100000, 999999);
+                // đăng kí tài khoản => getLastID
+                if (!isset($_SESSION['user'])) {
+                    $iduser = insert_user_returnID($fullname, $password, $email, $phone);
+                } else {
+                    $iduser = $_SESSION['user']['id'];
+                }
+                // tạo đơn hàng với iduser vừa tạo
+                // iduser / form / tổng tiền hàng 
+                $total = get_total();
+
+                // lấy dữ liệu cần thiết cho đơn hàng : tổng đơn hàng
+                $idorder = insert_order_returnID($iduser, $fullname, $address, $total, $phone);
+            }
+
+            $tendm = "Checkout";
+            $pathpage = "Trang chủ | " . $tendm;
+            $pathpage_a = "<div class='path'><a href='index.php'>" . $iduser . " Trang chủ </a> > <a href='?mod=page&act=cart'> Giỏ hàng </a> > <span>$tendm</span> </div>";
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once "view/template_banner.php";
+            include_once "view/page_checkout.php";
             break;
         default:
             # 404 - trang web không tồn tại!

@@ -59,7 +59,6 @@ if ($_GET['act']) {
                 $tensp = $product_details['name'];
                 $tendm = getCategory_Name($product_details['id_category']);
                 $pathpage = "Trang chủ | " . $tendm . " |" . $tensp;
-                // $pathpage_a = "<a href='index.php'> Trang chủ </a> > <a href='?mod=product&act=product&category_id=$iddm'>$tendm</a> > " . $tensp;
                 $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <a href='?mod=product&act=product&category_id=$iddm'>$tendm</a> > <span>$tensp</span></div>";
 
                 include_once 'view/template_head.php';

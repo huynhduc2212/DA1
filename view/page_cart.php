@@ -12,6 +12,12 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
     extract($item);
     $thanhtien = $giasp * $soluong;
     $tong += $thanhtien;
+    // Đảm bảo rằng $giasp và $soluong là số
+    // $giasp = is_numeric($giasp) ? (float) $giasp : 0;
+    // $soluong = is_numeric($soluong) ? (int) $soluong : 0;
+
+    // $thanhtien = $giasp * $soluong;
+    // $tong += $thanhtien;
     $html_cart .= '<div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer cart_body items">
                       <div class="ajaxcart__row">
                         <div class="ajaxcart__product cart_product">
@@ -62,7 +68,9 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
                             </div>
                           </div>
                           <div class="cart__btn-proceed-checkout-dt">
+                          <a href="?mod=page&act=checkout">
                             <button type="button" class="button btn btn-default cart__btn-proceed-checkout" id="btn-proceed-checkout" title="Thanh toán">Thanh toán</button>
+                          </a>
                           </div>
                         </div>
                       </div>

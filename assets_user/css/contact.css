@@ -1,0 +1,145 @@
+/* Main Section Styling */
+.lienhe-section {
+  margin: 40px auto 30px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  font-family: "Noto Sans", sans-serif;
+  max-width: 1500px;
+}
+
+/* Container Styling */
+.lienhe-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Company Info Section */
+.lienhe-info {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo-image {
+  max-width: 232px;
+  max-height: 142px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.company-name {
+  color: #231f20;
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #aaa;
+}
+
+.lienhe-description {
+  color: #231f20;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.lienhe-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* .lienhe-list-item {
+  position: relative;
+  padding-left: 26px;
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.lienhe-list-item i {
+  position: absolute;
+  left: 0;
+  margin-right: 10px;
+  color: #af875f;
+}
+
+.lienhe-list-item strong {
+  font-weight: bold;
+} */
+
+
+/* Form Section Styling */
+.lienhe-form-section {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Form Title Styling */
+.form-title {
+  color: #bf9f70;
+  text-align: center;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 40px;
+  margin-bottom: 15px;
+}
+
+.form-subtitle {
+  color: #231f20;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.lienhe-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-input,
+.form-textarea {
+  margin: 0;
+  padding: 10px 20px;
+  border: 1px solid #ebebeb;
+  width: calc(100% - 40px);
+  font-size: 16px;
+  border-radius: 5px;
+  font-family: inherit;
+  line-height: inherit;
+  outline: none !important;
+  margin-bottom: 15px;
+}
+
+.form-textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.form-submit-button {
+  padding: 10px 20px;
+  background-color: #af875f;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: calc((100% - 40px) / 3);
+  align-self: flex-start;
+}
+
+.form-submit-button:hover {
+  background-color: #8c6c4f;
+}

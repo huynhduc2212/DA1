@@ -1,0 +1,45 @@
+.bread-crumb {
+  margin-bottom: 15px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+}
+.bread-crumb .title-breadcrumb {
+  color: #bf9f70;
+  font-size: 36px;
+  max-width: 900px;
+}
+.breadcrumb {
+  margin: 0;
+  font-size: 16px;
+  padding: 10px 0px;
+  border-radius: 0;
+  font-weight: 400;
+  line-height: 24px;
+  width: 100%;
+  max-width: 900px;
+}
+.breadcrumb li {
+  display: inline;
+}
+.breadcrumb li > a {
+  color: #333;
+}
+.breadcrumb li .mr_lr {
+  padding: 0px 3px;
+  color: #333;
+}
+.breadcrumb li span {
+  display: inline;
+  color: #333;
+}
+
+.bread-crumb .cate {
+  color: #bf9f70;
+}
+
+.breadcrumb li .mr_lr svg {
+  width: 10px;
+  height: 10px;
+  margin-top: -2px;
+}

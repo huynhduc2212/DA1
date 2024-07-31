@@ -57,24 +57,24 @@ $html_product_related = showProductRelated($product_related);
             <div class="col-12 col-md-12 col-lg-6 col-right">
               <div class="details-pro">
                 <h1 class="title-product"><?= $name ?></h1>
-                <form action="" class="form-inline">
-                  <?= $html_price ?>
-                  <div class="form-product">
-                    <div class="product-promotion rounded-sm" id="lofi-salebox">
-                      <div class="product-promotion__heading">
-                        <h3 class="d-inline-flex align-items-center">
-                          <img src="assets_user/img/icon-product-promotion.webp" alt="Tổ yến tinh chế loại 2" width="22" height="22" class="mr-2">
-                          Khuyến mãi
-                        </h3>
-                      </div>
-                      <ul class="promotion-box">
-                        <li>Miễn phí giao hàng cho đơn hàng từ 2.000.000 VNĐ tới mọi tỉnh thành</li>
-                        <li>Miễn phí ship nội thành trong bán kính 5km với đơn hàng từ 1.000.000 VNĐ</li>
-                        <li>Quà tặng hấp dẫn lên tới 1.000.000 VNĐ</li>
-                        <li>Tiết kiệm lên tới 50% khi mua các sản phẩm combo</li>
-                      </ul>
+                <!-- <form action="" class="form-inline"> -->
+                <?= $html_price ?>
+                <div class="form-product">
+                  <div class="product-promotion rounded-sm" id="lofi-salebox">
+                    <div class="product-promotion__heading">
+                      <h3 class="d-inline-flex align-items-center">
+                        <img src="assets_user/img/icon-product-promotion.webp" alt="Tổ yến tinh chế loại 2" width="22" height="22" class="mr-2">
+                        Khuyến mãi
+                      </h3>
                     </div>
-                    <div class="clearfix form-group">
+                    <ul class="promotion-box">
+                      <li>Miễn phí giao hàng cho đơn hàng từ 2.000.000 VNĐ tới mọi tỉnh thành</li>
+                      <li>Miễn phí ship nội thành trong bán kính 5km với đơn hàng từ 1.000.000 VNĐ</li>
+                      <li>Quà tặng hấp dẫn lên tới 1.000.000 VNĐ</li>
+                      <li>Tiết kiệm lên tới 50% khi mua các sản phẩm combo</li>
+                    </ul>
+                  </div>
+                  <!-- <div class="clearfix form-group">
                       <div class="flex-quantity">
                         <div class="custom custom-btn-number show">
                           <label class="sl section">Số lượng:</label>
@@ -95,9 +95,41 @@ $html_product_related = showProductRelated($product_related);
                           </div>
                         </div>
                       </div>
+                    </div> -->
+                  <form action="?mod=page&act=cart" method="POST" class="form-inline">
+                    <input type="hidden" name="idpro" value="<?= $id ?>">
+                    <input type="hidden" name="tensp" value="<?= $name ?>">
+                    <input type="hidden" name="hinhsp" value="<?= $mainImage ?>">
+                    <input type="hidden" name="giasp" value="<?= $price ?>">
+                    <input type="hidden" name="discount_percentage" value="<?= $discount_percentage ?>">
+                    <input type="hidden" name="soluong" value="1">
+
+                    <div class="clearfix form-group">
+                      <div class="flex-quantity">
+                        <div class="custom custom-btn-number show">
+                          <label class="sl section">Số lượng:</label>
+                          <div class="input_number_product form-control">
+                            <button class="btn_num num_1 button button_qty" type="button" onclick="var result = document.getElementById('qty'); var qtypro = result.value; if( !isNaN( qtypro ) && qtypro > 1 ) result.value--;return false;">-</button>
+                            <input type="text" id="qty" name="quantity" value="1" maxlength="3" class="form-control prd_quantity" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" onchange="if(this.value == 0)this.value=1;">
+                            <button class="btn_num num_2 button button_qty" type="button" onclick="var result = document.getElementById('qty'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;">+</button>
+                          </div>
+                        </div>
+                        <div class="btn-mua button_actions clearfix">
+                          <div class="group-button">
+                            <button type="submit" class="btn btn_base normal_button btn_add_cart add_to_cart btn-cart btn-soldout" name="btn_addcart">
+                              <span>Thêm vào giỏ hàng</span>
+                            </button>
+                            <button type="button" class="btn btn-lg btn-gray btn_buy btn-buyNow">
+                              <span>Mua ngay</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
+
+                </div>
+                <!-- </form> -->
               </div>
             </div>
           </div>
@@ -114,7 +146,7 @@ $html_product_related = showProductRelated($product_related);
                     <div id="tab-1" class="tab-1 tab-content content_extab current">
                       <div class="rte product_getcontent">
                         <div class="ba-text-fpt has-height">
-                          <textarea name="des"><?= $des ?></textarea>
+                          <p name="des" id="des"><?= $des ?></p>
                         </div>
                       </div>
                     </div>

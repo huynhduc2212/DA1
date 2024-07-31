@@ -2,9 +2,6 @@
 include_once 'model/connect.php';
 include_once 'model/cart.php';
 include_once 'model/user.php';
-include_once 'view/template_head.php';
-include_once 'view/template_header.php';
-include_once 'view/template_banner.php';
 
 if ($_GET['act']) {
     switch ($_GET['act']) {
@@ -14,6 +11,10 @@ if ($_GET['act']) {
                 unset($_SESSION['user']);
             }
             header("Location: ?mod=page&act=home");
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once 'view/template_banner.php';
             break;
         case 'login':
             if (isset($_POST['btn_login'])) {
@@ -29,6 +30,14 @@ if ($_GET['act']) {
                 }
             }
 
+
+            $tendm = "Đăng nhập tài khoản";
+            $pathpage = "Trang chủ | " . $tendm;
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once 'view/template_banner.php';
             include_once 'view/page_login.php';
             break;
         case 'signup':
@@ -44,6 +53,14 @@ if ($_GET['act']) {
                 // auto login
                 header("Location: ?mod=user&act=login");
             }
+
+            $tendm = "Đăng ký tài khoản";
+            $pathpage = "Trang chủ | " . $tendm;
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once 'view/template_banner.php';
             include_once 'view/page_signup.php';
             break;
         case 'userupdate':
@@ -59,6 +76,14 @@ if ($_GET['act']) {
                 update_user($email, $fullname, $address, $phone, $password, $username);
                 header("Location: ?mod=user&act=userupdate");
             }
+
+            $tendm = "Cập nhật tài khoản";
+            $pathpage = "Trang chủ | " . $tendm;
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once 'view/template_banner.php';
             include_once 'view/page_userupdate.php';
             break;
         default:

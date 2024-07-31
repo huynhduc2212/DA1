@@ -9,8 +9,15 @@
 ----------------------
 Tạo đơn hàng
 - form thông tin người đặt
-- đăng nhập rồi => load trang
-- nếu chưa đăng nhập : nhập thông tin thẳng trên form
-- voucher
+- đăng nhập rồi => load thông tin lên trang => iduser lên hidden trên form luôn
+- nếu chưa đăng nhập : nhập thông tin thẳng trên form => dk tài khoản mới  => iduser
 - tạo đơn hàng (insert into)
+- lấy iduser + đọc dữ liệu form (thông tin giao hàng)
+=> tạo được đơn hàng =>> idorder
+- idorder + cùng với việc for mảng session giỏ hàng
+=> insert into đơn hàng chi tiết
+
+
+- voucher
+
 - client : quản lí / admin cũng quản lí được / gửi mail đơn hàng

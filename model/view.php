@@ -194,3 +194,22 @@ function showProductRelated($products)
   }
   return $html_product_related;
 }
+
+function showBlogs($blogs)
+{
+  $html_blog = '';
+  foreach ($blogs as $item) {
+    extract($item);
+    $html_blog .= '<div class="tin-tuc-item">
+                    <div class="tin-tuc-thumb">
+                        <a href="?mod=page&act=blogDetails&idblog=' . $id . '">
+                            <img src="assets_user/img/' . $img . '" alt="' . $img . '">
+                            <div class="tin-tuc-content">
+                                <h3>' . $name . '</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>';
+  }
+  return $html_blog;
+}

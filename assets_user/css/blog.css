@@ -1,0 +1,84 @@
+.tin-tuc-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.tin-tuc-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.tin-tuc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.tin-tuc-item {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.tin-tuc-thumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.tin-tuc-thumb a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+}
+
+.tin-tuc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.tin-tuc-thumb:hover img {
+  /* transform: scale(1.1); */
+}
+
+.tin-tuc-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(191, 159, 112, 0.9);
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.tin-tuc-content h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.tin-tuc-content h3 a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.tin-tuc-content h3 a:hover {
+  color: #ff0;
+}
