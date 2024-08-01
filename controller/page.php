@@ -125,6 +125,8 @@ if ($_GET['act']) {
             break;
         case 'checkout':
             $iduser = 0;
+            // KH k0 là thành viên: người đặt người nhận là 1 - là thông tin trên form
+            // KH là thành viên : người đặt là iduser - người nhận là thông tin trên form
             if (!isset($_SESSION['user'])) {
                 $iduser = "";
                 $fullname = "";
@@ -133,19 +135,17 @@ if ($_GET['act']) {
                 $email = "";
 
                 // đăng kí tài khoản => getLastID
-                $iduser = insert_user_returnID($fullname, $password, $email, $phone);
+                $iduser = insert_user_returnID($fullname, $address, $email, $phone);
             } else {
                 $iduser = $_SESSION['user']['id'];
-                $fullname = $_SESSION['user']['username'];
+
+                $fullname = $_SESSION['user']['fullname'];
                 $phone = $_SESSION['user']['phone'];
                 $address = $_SESSION['user']['address'];
                 $email = $_SESSION['user']['email'];
             }
             if (isset($_POST['btn_order'])) {
                 // lấy dữ liệu trên form : thông tin người đặt người nhận
-                // KH k0 là thành viên: người đặt người nhận là 1 - là thông tin trên form
-                // KH là thành viên : người đặt là iduser - người nhận là thông tin trên form
-
                 $fullname = $_POST['fullname'];
                 $phone = $_POST['phone'];
                 $address = $_POST['address'];
@@ -159,6 +159,7 @@ if ($_GET['act']) {
 
                 // lấy dữ liệu cần thiết cho đơn hàng : tổng đơn hàng
                 $idorder = insert_order_returnID($iduser, $fullname, $address, $total, $phone, $email, $payment_method);
+
             }
 
             $tendm = "Checkout";

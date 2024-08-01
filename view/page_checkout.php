@@ -31,7 +31,7 @@ $total = get_total();
 
 <main>
   <div class="content">
-    <form action="" method="post">
+    <form action="?mod=page&act=bill" method="post">
       <div class="wrap">
         <main class="main">
           <div class="main__content">
@@ -85,22 +85,22 @@ $total = get_total();
                     <div class="fieldset">
                       <div class="field">
                         <div class="field__input-wrapper">
-                          <input type="email" class="field__input" placeholder="Email">
+                          <input type="email"  class="field__input" placeholder="Email">
                         </div>
                       </div>
                       <div class="field">
                         <div class="field__input-wrapper">
-                          <input type="text" class="field__input" placeholder="Họ và tên">
+                          <input type="text"  class="field__input" placeholder="Họ và tên">
                         </div>
                       </div>
                       <div class="field">
                         <div class="field__input-wrapper">
-                          <input type="tel" class="field__input" placeholder="Số điện thoại">
+                          <input type="tel"  class="field__input" placeholder="Số điện thoại">
                         </div>
                       </div>
                       <div class="field">
                         <div class="field__input-wrapper">
-                          <input type="text" class="field__input" placeholder="Địa chỉ">
+                          <input type="text"  class="field__input" placeholder="Địa chỉ">
                         </div>
                       </div>
                     </div>
@@ -164,9 +164,7 @@ $total = get_total();
                 </div>
                 <div class="order-summary__nav field__input-btn-wrapper hide-on-mobile layout-flex--row-reverse">
                   <button type="submit" name="btn_order" class="btt btn-checkout spinner">
-                    <a href="?mod=page&act=bill">
                       <span class="spinner-label">ĐẶT HÀNG</span>
-                    </a>
                   </button>
                   <a href="?mod=page&act=cart" class="previous-link">
                     <i class="previous-link__arrow">❮</i>

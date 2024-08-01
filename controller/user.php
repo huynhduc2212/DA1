@@ -44,14 +44,13 @@ if ($_GET['act']) {
             // đăng kí
             if (isset($_POST['btn_signup'])) {
                 $username = $_POST['username'];
+                $fullname = $_POST['fullname'];
                 $password = $_POST['password'];
                 $email = $_POST['email'];
-                $phone = $_POST['phone'];
-                $address = $_POST['address'];
 
                 // ghi nhận username
                 $_SESSION['username'] = $username;
-                insert_user($username, $password, $email, $phone, $address);
+                insert_user($username, $fullname, $email, $password);
                 // auto login
                 header("Location: ?mod=user&act=login");
             }
