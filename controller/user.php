@@ -75,7 +75,14 @@ if ($_GET['act']) {
                 $phone = $_POST['phone'];
 
                 update_user($email, $fullname, $address, $phone, $password, $username);
-                header("Location: ?mod=user&act=userupdate");
+                $_SESSION['user']['username'] = $username;
+                $_SESSION['user']['fullname'] = $fullname;
+                $_SESSION['user']['email'] = $email;
+                $_SESSION['user']['phone'] = $phone;
+                $_SESSION['user']['address'] = $address;
+
+                // header("Location: ?mod=user&act=userupdate");
+                header("Location: ?mod=page&act=home");
             }
 
             $tendm = "Cập nhật tài khoản";

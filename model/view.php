@@ -213,3 +213,61 @@ function showBlogs($blogs)
   }
   return $html_blog;
 }
+
+function show_cart_checkout()
+{
+  $html_table_product = '';
+
+  if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
+    $tong = 0;
+    foreach ($_SESSION['giohang'] as $item) {
+      extract($item);
+      $thanhtien = $giasp * $soluong;
+      $tong += $thanhtien;
+      $html_table_product .= '<table class="product-table">
+                      <tbody>
+                        <tr class="product">
+                          <td class="product__image">
+                            <div class="product-thumbnailtt">
+                              <div class="product-thumbnailtt__wrapper">
+                                <img src="assets_user/img/' . $hinhsp . '" alt="' . $tensp . '">
+                              </div>
+                              <span class="product-thumbnailtt__quantity">' . $soluong . '</span>
+                            </div>
+                          </td>
+                          <th class="product__description">
+                            <span class="product__description__name">' . $tensp . '</span>
+                          </th>
+                          <td class="product__price">' . number_format($giasp, 0, ',', '.') . 'đ</td>
+                        </tr>
+                      </tbody>
+                    </table>';
+    }
+  }
+  return $html_table_product;
+}
+
+function show_bill($billct)
+{
+  $html_orderdetails = '';
+  foreach ($billct as $item) {
+    extract($item);
+    $html_orderdetails .= '
+                          <tr class="product">
+                            <td class="product__image">
+                              <div class="product-thumbnail">
+                                <div class="product-thumbnail__wrapper">
+                                  <img src="assets_user/img/' . $img . '" alt="product-thumbnail__image" class="product-thumbnail__image">
+                                </div>
+                                <span class="product-thumbnail__quantity unprintable">' . $quantity . '</span>
+                              </div>
+                            </td>
+                            <th class="product__description">
+                              <span class="product__description__name">' . $name . '</span>
+                            </th>
+                            <td class="product__price">' . number_format($price, 0, ',', '.') . '₫</td>
+                          </tr>
+                        ';
+  }
+  return $html_orderdetails;
+}

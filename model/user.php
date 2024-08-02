@@ -30,3 +30,9 @@ function update_user($email, $fullname, $address, $phone, $password, $username)
     phone = '$phone', password = '$password', username = '$username'";
     return pdo_execute($sql);
 }
+
+function get_user_info($iduser)
+{
+    $sql = "SELECT * FROM users WHERE id = " . $iduser;
+    return pdo_query_one($sql);
+}

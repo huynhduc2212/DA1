@@ -1,3 +1,12 @@
+<?php
+$html_orderdetails = show_bill($billct);
+if (isset($bill) && is_array($bill)) {
+  extract($bill);
+}
+if (isset($user_info) && is_array($user_info)) {
+  extract($user_info);
+}
+?>
 <main>
   <div class="content">
     <form>
@@ -6,7 +15,7 @@
           <header class="main__header">
             <div class="logo logo--left">
               <h1 class="shop__name">
-                <a href="">Lofi Nest</a>
+                <a href="?mod=page&act=home">Lofi Nest</a>
               </h1>
             </div>
           </header>
@@ -25,7 +34,7 @@
                   <div class="thankyou-message-container">
                     <h2 class="section__title">Cảm ơn bạn đã đặt hàng</h2>
                     <p class="section__text">
-                      Một email xác nhận đã được gửi tới lehuynhduc2279@gmail.com.
+                      Một email xác nhận đã được gửi tới <?= $bill['email'] ?>.
                       <br>
                       Xin vui lòng kiểm tra email của bạn
                     </p>
@@ -36,15 +45,15 @@
                 <aside class="order-summary order-summary--bordered order-summary--is-collapsed">
                   <div class="order-summary__header">
                     <div class="order-summary__title">
-                      Đơn hàng #1010
-                      <span class="unprintable">(1)</span>
+                      <?= $bill['code'] ?>
+                      <span class="unprintable">(<?=count($billct) ?>)</span>
                     </div>
                   </div>
                   <div class="order-summary__sections">
                     <div class="order-summary__section order-summary__section--product-list order-summary__section--is-scrollable order-summary--collapse-element">
                       <table class="product-table">
                         <tbody>
-                          <tr class="product">
+                          <!-- <tr class="product">
                             <td class="product__image">
                               <div class="product-thumbnail">
                                 <div class="product-thumbnail__wrapper">
@@ -57,7 +66,8 @@
                               <span class="product__description__name">Tổ yến rút lông xuất khẩu</span>
                             </th>
                             <td class="product__price">5.300.000₫</td>
-                          </tr>
+                          </tr> -->
+                          <?= $html_orderdetails; ?>
                         </tbody>
                       </table>
                     </div>
@@ -66,7 +76,7 @@
                         <tbody class="total-line-table__tbody">
                           <tr class="total-line total-line--subtotal">
                             <th class="total-line__name">Tạm tính</th>
-                            <td class="total-line__price">5.300.000₫</td>
+                            <td class="total-line__price"><?= number_format($bill['total'], 0, ',', '.') ?>₫</td>
                           </tr>
                           <tr class="total-line total-line--shipping-fee">
                             <th class="total-line__name">Phí vận chuyển</th>
@@ -83,7 +93,7 @@
                               <span class="payment-due__label-total">Tổng cộng</span>
                             </th>
                             <td class="total-line__price">
-                              <span class="payment-due__price">5.300.000₫</span>
+                              <span class="payment-due__price"><?= number_format($bill['total'], 0, ',', '.') ?>₫</span>
                             </td>
                           </tr>
                         </tbody>
@@ -98,22 +108,21 @@
                     <div class="row">
                       <div class="col col--md-two">
                         <h2>Thông tin mua hàng</h2>
-                        <p>Lê Huỳnh Đức</p>
-                        <p>lehuynhduc2279@gmail.com</p>
-                        <p>+84367856202</p>
+                        <p><?= $user_info['fullname'] ?></p>
+                        <p><?= $user_info['email'] ?></p>
+                        <p><?= $user_info['phone'] ?></p>
                       </div>
                       <div class="col col--md-two">
                         <h2>Địa chỉ nhận hàng</h2>
-                        <p>Lê Huỳnh Đức</p>
-                        <p>91/10/200</p>
-                        <p>Phường Đa Kao, Quận 1, TP Hồ Chí Minh</p>
-                        <p>+84367856202</p>
+                        <p><?= $bill['fullname'] ?></p>
+                        <p><?= $bill['address'] ?></p>
+                        <p><?= $bill['phone'] ?></p>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col col--md-two">
                         <h2>Phương thức thanh toán</h2>
-                        <p>Thanh toán khi giao hàng (COD)</p>
+                        <p><?= $bill['payment_method'] ?></p>
                       </div>
                       <div class="col col--md-two">
                         <h2>Phương thức vận chuyển</h2>
@@ -124,7 +133,7 @@
                 </section>
                 <section class="section unprintable">
                   <div class="field__input-btn-wrapper field__input-btn-wrapper--floating">
-                    <a href="" class="btn btn--large">Tiếp tục mua hàng</a>
+                    <a href="?mod=page&act=home" class="btn btn--large">Tiếp tục mua hàng</a>
                   </div>
                 </section>
               </div>

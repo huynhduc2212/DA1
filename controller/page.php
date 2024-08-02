@@ -152,14 +152,32 @@ if ($_GET['act']) {
                 $email = $_POST['email'];
                 $password = rand(100000, 999999);
                 $payment_method = $_POST['payment_method'];
+                $orderdate = date('H:i:s d/m/Y');
 
                 // tạo đơn hàng với iduser vừa tạo
                 // iduser / form / tổng tiền hàng 
+                // tạo mã đơn hàng
                 $total = get_total();
-
+                $today = date("mdY");
+                $today_code = $today;
+                $stt_code = get_id_order_latest() + 1;
+                $code = "LFN" . $today_code . $stt_code;
                 // lấy dữ liệu cần thiết cho đơn hàng : tổng đơn hàng
-                $idorder = insert_order_returnID($iduser, $fullname, $address, $total, $phone, $email, $payment_method);
 
+                $idorder = insert_order_returnID($code, $iduser, $orderdate, $fullname, $address, $total, $phone, $email, $payment_method);
+                $_SESSION['idorder'] = $idorder;
+                // tạo đơn hÀNG chi tiết
+                foreach ($_SESSION['giohang'] as $item) {
+                    $idpro = $item['idpro'];
+                    $quantity = $item['soluong'];
+                    $name = $item['tensp'];
+                    $price = $item['giasp'];
+                    $img = $item['hinhsp'];
+                    insert_orderdetails($idpro, $quantity, $name, $price, $idorder, $img);
+                }
+                unset($_SESSION['giohang']);
+
+                header("Location: ?mod=page&act=bill");
             }
 
             $tendm = "Checkout";
@@ -171,6 +189,11 @@ if ($_GET['act']) {
             include_once "view/page_checkout.php";
             break;
         case 'bill';
+            $idorder = $_SESSION['idorder'];
+            $iduser = $_SESSION['user']['id'];
+            $user_info = get_user_info($iduser);
+            $bill = loadone_orders($idorder);
+            $billct = loadall_orderdetails($idorder);
             include_once "view/page_bill.php";
             break;
         default:

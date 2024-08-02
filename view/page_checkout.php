@@ -1,37 +1,10 @@
 <?php
-if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
-  $html_table_product = '';
-  $tong = 0;
-  foreach ($_SESSION['giohang'] as $item) {
-    extract($item);
-    $thanhtien = $giasp * $soluong;
-    $tong += $thanhtien;
-    $html_table_product .= '<table class="product-table">
-                    <tbody>
-                      <tr class="product">
-                        <td class="product__image">
-                          <div class="product-thumbnailtt">
-                            <div class="product-thumbnailtt__wrapper">
-                              <img src="assets_user/img/' . $hinhsp . '" alt="' . $tensp . '">
-                            </div>
-                            <span class="product-thumbnailtt__quantity">' . $soluong . '</span>
-                          </div>
-                        </td>
-                        <th class="product__description">
-                          <span class="product__description__name">' . $tensp . '</span>
-                        </th>
-                        <td class="product__price">' . number_format($giasp, 0, ',', '.') . 'đ</td>
-                      </tr>
-                    </tbody>
-                  </table>';
-  }
-}
+$html_table_product = show_cart_checkout();
 $total = get_total();
 ?>
-
 <main>
   <div class="content">
-    <form action="?mod=page&act=bill" method="post">
+    <form action="?mod=page&act=checkout" method="post">
       <div class="wrap">
         <main class="main">
           <div class="main__content">
@@ -85,22 +58,22 @@ $total = get_total();
                     <div class="fieldset">
                       <div class="field">
                         <div class="field__input-wrapper">
-                          <input type="email"  class="field__input" placeholder="Email">
+                          <input type="email" class="field__input" placeholder="Email">
                         </div>
                       </div>
                       <div class="field">
                         <div class="field__input-wrapper">
-                          <input type="text"  class="field__input" placeholder="Họ và tên">
+                          <input type="text" class="field__input" placeholder="Họ và tên">
                         </div>
                       </div>
                       <div class="field">
                         <div class="field__input-wrapper">
-                          <input type="tel"  class="field__input" placeholder="Số điện thoại">
+                          <input type="tel" class="field__input" placeholder="Số điện thoại">
                         </div>
                       </div>
                       <div class="field">
                         <div class="field__input-wrapper">
-                          <input type="text"  class="field__input" placeholder="Địa chỉ">
+                          <input type="text" class="field__input" placeholder="Địa chỉ">
                         </div>
                       </div>
                     </div>
@@ -164,7 +137,7 @@ $total = get_total();
                 </div>
                 <div class="order-summary__nav field__input-btn-wrapper hide-on-mobile layout-flex--row-reverse">
                   <button type="submit" name="btn_order" class="btt btn-checkout spinner">
-                      <span class="spinner-label">ĐẶT HÀNG</span>
+                    <span class="spinner-label">ĐẶT HÀNG</span>
                   </button>
                   <a href="?mod=page&act=cart" class="previous-link">
                     <i class="previous-link__arrow">❮</i>
@@ -177,7 +150,7 @@ $total = get_total();
                       <div class="content-box__row">
                         <div class="radio-wrapper">
                           <div class="radio__input">
-                            <input type="radio" class="input-radio" name="payment_method" value="Thanh toán khi giao hàng">
+                            <input type="radio" class="input-radio" name="payment_method" checked value="Thanh toán khi giao hàng">
                           </div>
                           <label class="radio__label">
                             <span class="radio__label__primary">Thanh toán khi giao hàng</span>

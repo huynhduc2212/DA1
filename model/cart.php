@@ -25,29 +25,34 @@ function get_total()
     return $total;
 }
 
-function insert_order_returnID($iduser, $fullname, $address, $total, $phone, $email, $payment_method)
+function insert_order_returnID($code, $iduser, $orderdate, $fullname, $address, $total, $phone, $email, $payment_method)
 {
-    $sql = "INSERT INTO orders (iduser, fullname, address , total, phone, email, payment_method) values('$iduser','$fullname','$address','$total','$phone','$email', '$payment_method')";
+    $sql = "INSERT INTO orders (code, iduser, order_date,fullname, address , total, phone, email, payment_method) values('$code','$iduser','$orderdate','$fullname','$address','$total','$phone','$email', '$payment_method')";
     return pdo_execute_returnID($sql);
 }
 
-function insert_orderdetails($id, $idpro, $quantity, $name, $price, $address, $phone, $idorder, $img)
+function insert_orderdetails($idpro, $quantity, $name, $price, $idorder, $img)
 {
-    $sql = "INSERT INTO orderdetails (id,id_product,quantity,name,price, address, phone, id_order,img) 
-    values('$id','$idpro','$quantity','$name','$price','$address', '$phone', '$idorder', '$img')";
+    $sql = "INSERT INTO orderdetails (id_product,quantity,name,price, id_order,img) 
+    values('$idpro','$quantity','$name','$price', '$idorder', '$img')";
     return pdo_execute($sql);
 }
 
-function loadone_bill($id)
+function loadone_orders($id)
 {
-    $sql = "SELECT * FROM orderdetails WHERE id =" . $id;
-    $bill = pdo_query($sql);
-    return $bill;
+    $sql = "SELECT * FROM orders WHERE id =" . $id;
+    return pdo_query_one($sql);
 }
 
-function loadone_order($iduser)
+function loadall_orderdetails($idorder)
 {
-    $sql = "SELECT * FROM orders WHERE iduser =" . $iduser;
+    $sql = "SELECT * FROM orderdetails WHERE id_order =" . $idorder;
+    return pdo_query($sql);
+}
+
+function get_id_order_latest()
+{
+    $sql = "SELECT id from orders order by id desc limit 1";
     $bill = pdo_query_one($sql);
-    return $bill;
+    return $bill['id'];
 }
