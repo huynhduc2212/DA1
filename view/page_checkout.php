@@ -150,7 +150,7 @@ $total = get_total();
                       <div class="content-box__row">
                         <div class="radio-wrapper">
                           <div class="radio__input">
-                            <input type="radio" class="input-radio" name="payment_method" checked value="Thanh toán khi giao hàng">
+                            <input type="radio" class="input-radio" name="payment_method" checked value="0">
                           </div>
                           <label class="radio__label">
                             <span class="radio__label__primary">Thanh toán khi giao hàng</span>
@@ -161,7 +161,7 @@ $total = get_total();
                         </div>
                         <div class="radio-wrapper">
                           <div class="radio__input">
-                            <input type="radio" class="input-radio" name="payment_method" value="Thanh toán online">
+                            <input type="radio" class="input-radio" name="payment_method" value="1">
                           </div>
                           <label class="radio__label">
                             <span class="radio__label__primary">Thanh toán online</span>
@@ -169,7 +169,6 @@ $total = get_total();
                               <span class="radio__label__icon"></span>
                             </span>
                           </label>
-
                         </div>
                       </div>
                     </div>

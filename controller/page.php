@@ -151,7 +151,8 @@ if ($_GET['act']) {
                 $address = $_POST['address'];
                 $email = $_POST['email'];
                 $password = rand(100000, 999999);
-                $payment_method = $_POST['payment_method'];
+                // $payment_method = $_POST['payment_method'];
+                $payment_method =  get_pttt($_POST['payment_method']);
                 $orderdate = date('H:i:s d/m/Y');
 
                 // tạo đơn hàng với iduser vừa tạo

@@ -25,6 +25,22 @@ function get_total()
     return $total;
 }
 
+function get_pttt($n)
+{
+    switch ($n) {
+        case '0':
+            $pttt = "Thanh toán khi giao hàng";
+            break;
+        case '1':
+            $pttt = "Thanh toán online";
+            break;
+        default:
+            $pttt = "Thanh toán khi giao hàng";
+            break;
+    }
+    return $pttt;
+}
+
 function insert_order_returnID($code, $iduser, $orderdate, $fullname, $address, $total, $phone, $email, $payment_method)
 {
     $sql = "INSERT INTO orders (code, iduser, order_date,fullname, address , total, phone, email, payment_method) values('$code','$iduser','$orderdate','$fullname','$address','$total','$phone','$email', '$payment_method')";

@@ -122,7 +122,7 @@ if (isset($user_info) && is_array($user_info)) {
                     <div class="row">
                       <div class="col col--md-two">
                         <h2>Phương thức thanh toán</h2>
-                        <p><?= $bill['payment_method'] ?></p>
+                        <p><?= $bill['payment_method']?></p>
                       </div>
                       <div class="col col--md-two">
                         <h2>Phương thức vận chuyển</h2>
