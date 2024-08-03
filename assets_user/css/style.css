@@ -127,6 +127,7 @@ body {
   position: relative;
   background-color: #fff;
   /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); */
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
 }
 
 .row-header {
@@ -342,6 +343,11 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  position: relative;
+}
+
+.ul-control .header-search:hover .search-header {
+  display: block;
 }
 
 .ul-control .header-search .icon {
@@ -360,6 +366,53 @@ body {
   background: #bf9f70;
   border-radius: 5px;
   position: relative;
+}
+
+.search-header {
+  z-index: 10;
+  top: 58px;
+  display: none;
+  position: absolute;
+  min-width: 310px;
+}
+
+.search-header::before {
+  content: "";
+  display: block;
+  width: 100%;
+  top: -20px;
+  position: absolute;
+  height: 21px;
+  background-color: transparent;
+}
+
+.search-header .search-form {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #bf9f70;
+  height: 40px;
+  display: flex;
+}
+.search-header input[type="text"] {
+  border: none;
+  height: 40px;
+  border-radius: 4px;
+  padding: 1px 80px 1px 10px;
+}
+
+.search-header button {
+  border: none;
+  position: absolute;
+  width: 50px;
+  height: 40px;
+  background-color: #bf9f70;
+  right: 0;
+}
+
+.search-header button i {
+  font-size: 20px;
+  color: #fff;
 }
 
 .header-cart .icon img {

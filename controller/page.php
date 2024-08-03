@@ -15,6 +15,7 @@ if ($_GET['act']) {
         case 'home':
             $product_sale = getDiscountedProducts();
             $products = getProductByCategory_Home();
+            $products_new = getAllProductsNewest();
             // show theo danh mục
             if (isset($_GET['idcategory']) && (is_numeric($_GET['idcategory'])) && ($_GET['idcategory']) > 0) {
                 $idcategory = $_GET['idcategory'];
@@ -29,6 +30,8 @@ if ($_GET['act']) {
             include_once 'view/template_head.php';
             include_once 'view/template_header.php';
             include_once 'view/page_home.php';
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'cart':
             // xóa 1 sản phẩm trong giỏ hàng
@@ -73,6 +76,8 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_cart.php";
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'about':
             $tendm = "Giới thiệu";
@@ -83,6 +88,8 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_about.php";
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'contact':
             $tendm = "Liên hệ";
@@ -93,6 +100,8 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_contact.php";
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'blog':
             $blogs = getBlogs();
@@ -104,19 +113,23 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_blog.php";
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'blogDetails':
             if (isset($_GET['idblog']) && ($_GET['idblog'] > 0)) {
                 $id = $_GET['idblog'];
                 $blogs_details = getBlogByID($id);
                 $tensp = $blogs_details['name'];
-                $tendm = $tensp;
-                $pathpage = "Trang chủ | " . $tendm;
-                $pathpage_a = "<div class='path'><a href='index.php'>Trang chủ </a> > <a href='?mod=page&act=cart'>Tin tức</a> > <span>$tensp</span> </div>";
+                $tendm = "Tin tức";
+                $pathpage = "Trang chủ | " . $tendm . " |" . $tensp;
+                $pathpage_a = "<div class='path'><a href='index.php'>Trang chủ </a> > <a href='?mod=page&act=cart'>$tendm</a> > <span>$tensp</span> </div>";
                 include_once 'view/template_head.php';
                 include_once 'view/template_header.php';
                 include_once "view/template_banner.php";
                 include_once "view/page_blogDetails.php";
+                include_once 'view/template_near_footer.php';
+                include_once 'view/template_footer.php';
             } else {
                 $id = 0;
                 $pathpage = "";
@@ -138,7 +151,6 @@ if ($_GET['act']) {
                 $iduser = insert_user_returnID($fullname, $address, $email, $phone);
             } else {
                 $iduser = $_SESSION['user']['id'];
-
                 $fullname = $_SESSION['user']['fullname'];
                 $phone = $_SESSION['user']['phone'];
                 $address = $_SESSION['user']['address'];
@@ -153,7 +165,7 @@ if ($_GET['act']) {
                 $password = rand(100000, 999999);
                 // $payment_method = $_POST['payment_method'];
                 $payment_method =  get_pttt($_POST['payment_method']);
-                $orderdate = date('H:i:s d/m/Y');
+                $orderdate = date('d/m/Y');
 
                 // tạo đơn hàng với iduser vừa tạo
                 // iduser / form / tổng tiền hàng 
@@ -177,30 +189,65 @@ if ($_GET['act']) {
                     insert_orderdetails($idpro, $quantity, $name, $price, $idorder, $img);
                 }
                 unset($_SESSION['giohang']);
-
                 header("Location: ?mod=page&act=bill");
             }
 
-            $tendm = "Checkout";
+            $tendm = "Thanh toán";
             $pathpage = "Trang chủ | " . $tendm;
-            $pathpage_a = "<div class='path'><a href='index.php'>" . $iduser . " Trang chủ </a> > <a href='?mod=page&act=cart'> Giỏ hàng </a> > <span>$tendm</span> </div>";
+            $pathpage_a = "<div class='path'><a href='index.php'>Trang chủ </a> > <a href='?mod=page&act=cart'> Giỏ hàng </a> > <span>$tendm</span> </div>";
             include_once 'view/template_head.php';
             include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_checkout.php";
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'bill';
+            // $idorder = $_SESSION['idorder'];
+            // $iduser = $_SESSION['user']['id'];
+            // $user_info = get_user_info($iduser);
+            // $bill = loadone_orders($idorder);
+            // $billct = loadall_orderdetails($idorder);
+            // include_once "view/page_bill.php";
             $idorder = $_SESSION['idorder'];
-            $iduser = $_SESSION['user']['id'];
-            $user_info = get_user_info($iduser);
+            if (isset($_SESSION['user'])) {
+                $iduser = $_SESSION['user']['id'];
+                $user_info = get_user_info($iduser);
+            } else {
+                $user_info = [
+                    'fullname' => '',
+                    'email' => '',
+                    'phone' => ''
+                ];
+            }
+
             $bill = loadone_orders($idorder);
             $billct = loadall_orderdetails($idorder);
+
+            if (!isset($_SESSION['user'])) {
+                $user_info['fullname'] = $bill['fullname'];
+                $user_info['email'] = $bill['email'];
+                $user_info['phone'] = $bill['phone'];
+            }
+
             include_once "view/page_bill.php";
+            break;
+
+        case 'mybill';
+            $listbill = loadall_orders($_SESSION['user']['id']);
+            $tendm = "Đơn hàng";
+            $pathpage = "Trang chủ | " . $tendm;
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once "view/template_banner.php";
+            include_once "view/page_mybill.php";
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         default:
             # 404 - trang web không tồn tại!
             break;
     }
 }
-include_once 'view/template_near_footer.php';
-include_once 'view/template_footer.php';

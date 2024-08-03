@@ -1,6 +1,7 @@
 <?php
 $html_product_sale = showProductFlashSales($product_sale);
 $html_product_new = show_sp_home($products);
+$html_product_newest = show_sp_home($products_new);
 $html_product_category = show_sp_home_category($products_category);
 if ($idcategory > 0) $actAll = '';
 else $actAll = 'current';
@@ -80,6 +81,26 @@ foreach ($categories as $item) {
                         <div class="swiper-container" style="cursor: grab;">
                             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
                                 <?= $html_product_new; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section_product_new section_product">
+        <div class="container">
+            <div class="block-title">
+                <h2>
+                    <a href="#" title="Tổ yến chưng sẵn">SẢN PHẨM MỚI NHẤT</a>
+                </h2>
+            </div>
+            <div class="row-bd">
+                <div class="row-bd1">
+                    <div class="block-product">
+                        <div class="swiper-container" style="cursor: grab;">
+                            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                                <?= $html_product_newest; ?>
                             </div>
                         </div>
                     </div>

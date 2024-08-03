@@ -41,6 +41,28 @@ function get_pttt($n)
     return $pttt;
 }
 
+function get_ttdh($n)
+{
+    switch ($n) {
+        case '0':
+            $ttdh = "Đơn hàng mới";
+            break;
+        case '1':
+            $ttdh = "Đang xử lí";
+            break;
+        case '2':
+            $ttdh = "Đang giao hàng";
+            break;
+        case '3':
+            $ttdh = "Đã giao hàng";
+            break;
+        default:
+            $ttdh = "Đang xử lí";
+            break;
+    }
+    return $ttdh;
+}
+
 function insert_order_returnID($code, $iduser, $orderdate, $fullname, $address, $total, $phone, $email, $payment_method)
 {
     $sql = "INSERT INTO orders (code, iduser, order_date,fullname, address , total, phone, email, payment_method) values('$code','$iduser','$orderdate','$fullname','$address','$total','$phone','$email', '$payment_method')";
@@ -63,6 +85,19 @@ function loadone_orders($id)
 function loadall_orderdetails($idorder)
 {
     $sql = "SELECT * FROM orderdetails WHERE id_order =" . $idorder;
+    return pdo_query($sql);
+}
+
+
+function loadall_orderdetails_count($idorder)
+{
+    $sql = "SELECT * FROM orderdetails WHERE id_order =" . $idorder;
+    return count(pdo_query($sql));
+}
+
+function loadall_orders($iduser)
+{
+    $sql = "SELECT * FROM orders WHERE iduser =" . $iduser;
     return pdo_query($sql);
 }
 

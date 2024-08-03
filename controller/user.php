@@ -15,16 +15,31 @@ if ($_GET['act']) {
             include_once 'view/template_head.php';
             include_once 'view/template_header.php';
             include_once 'view/template_banner.php';
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'login':
+            // if (isset($_POST['btn_login'])) {
+            //     $password = $_POST['password'];
+            //     $email = $_POST['email'];
+            //     // kiểm tra username và password
+            //     if (check_login($email, $password)) {
+            //         $userinfo = check_login($email, $password);
+            //         $_SESSION['user'] =  $userinfo;
+            //         header("Location: ?mod=page&act=home");
+            //     } else {
+            //         echo "<script>alert('Sai tên đăng nhập hoặc mật khẩu');</script>";
+            //     }
+            // }
             if (isset($_POST['btn_login'])) {
-                $password = $_POST['password'];
-                $email = $_POST['email'];
-                // kiểm tra username và password
-                if (check_login($email, $password)) {
-                    $userinfo = check_login($email, $password);
-                    $_SESSION['user'] =  $userinfo;
-                    header("Location: ?mod=page&act=home");
+                $kq = check_login($_POST['email'], $_POST['password']);
+                if ($kq) {
+                    $_SESSION['user'] = $kq;
+                    if ($kq['role'] == '1') {
+                        header("Location: ?mod=product&act=admin_product");
+                    } else {
+                        header("Location: ?mod=page&act=home");
+                    }
                 } else {
                     echo "<script>alert('Sai tên đăng nhập hoặc mật khẩu');</script>";
                 }
@@ -39,6 +54,8 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once 'view/template_banner.php';
             include_once 'view/page_login.php';
+            // include_once 'view/template_near_footer.php';
+            // include_once 'view/template_footer.php';
             break;
         case 'signup':
             // đăng kí
@@ -63,6 +80,8 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once 'view/template_banner.php';
             include_once 'view/page_signup.php';
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'userupdate':
             // đăng kí
@@ -93,11 +112,23 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once 'view/template_banner.php';
             include_once 'view/page_userupdate.php';
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
+            break;
+        case 'client':
+            $tendm = "Trang khách hàng";
+            $pathpage = "Trang chủ | " . $tendm;
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once 'view/template_banner.php';
+            include_once 'view/page_client.php';
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         default:
             # 404 - trang web không tồn tại!
             break;
     }
 }
-include_once 'view/template_near_footer.php';
-include_once 'view/template_footer.php';

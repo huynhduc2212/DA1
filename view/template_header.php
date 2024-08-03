@@ -162,7 +162,7 @@
           <div class="ul-control">
             <?php
             if (isset($_SESSION['user']) && (count($_SESSION['user']) > 0)) {
-              echo '<ul><li><a href="?mod=user&act=userupdate">Hi,' . $_SESSION['user']['username'] . '</a></li></ul>';
+              echo '<ul><li><a href="?mod=user&act=client">Hi,' . $_SESSION['user']['username'] . '</a></li></ul>';
             } else {
               echo ' <div class="header-user">
               <a href="" class="icon">
@@ -188,6 +188,14 @@
               <a href="" class="icon">
                 <i class="fa-solid fa-magnifying-glass button-search"></i>
               </a>
+              <div class="search-header">
+                <form action="?mod=product&act=product" class="search-form" method="post">
+                  <input type="text" placeholder="Tìm kiếm sản phẩm" name="keyword">
+                  <button type="submit" name="timkiem">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
             </div>
             <div class="header-cart">
               <a href="?mod=page&act=cart" class="icon">

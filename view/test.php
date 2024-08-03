@@ -41,50 +41,32 @@ if (isset($user_info) && is_array($user_info)) {
                   </div>
                 </section>
               </div>
-
-              <div class="col col--primary">
-                <section class="section" width="742px">
-                  <div class="section__content section__content--bordered">
-                    <div class="row">
-                      <div class="col col--md-two">
-                        <h2>Thông tin mua hàng</h2>
-                        <p><?= $user_info['fullname'] ?></p>
-                        <p><?= $user_info['email'] ?></p>
-                        <p><?= $user_info['phone'] ?></p>
-                      </div>
-                      <div class="col col--md-two">
-                        <h2>Địa chỉ nhận hàng</h2>
-                        <p><?= $bill['fullname'] ?></p>
-                        <p><?= $bill['address'] ?></p>
-                        <p><?= $bill['phone'] ?></p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col col--md-two">
-                        <h2>Phương thức thanh toán</h2>
-                        <p><?= $bill['payment_method'] ?></p>
-                      </div>
-                      <div class="col col--md-two">
-                        <h2>Phương thức vận chuyển</h2>
-                        <p>Giao hàng tận nơi</p>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-              </div>
-              <div class="col col--primary">
+              <div class="col col--secondary">
                 <aside class="order-summary order-summary--bordered order-summary--is-collapsed">
                   <div class="order-summary__header">
                     <div class="order-summary__title">
                       <?= $bill['code'] ?>
-                      <span class="unprintable">(<?= count($billct) ?>)</span>
+                      <span class="unprintable">(<?=count($billct) ?>)</span>
                     </div>
                   </div>
                   <div class="order-summary__sections">
                     <div class="order-summary__section order-summary__section--product-list order-summary__section--is-scrollable order-summary--collapse-element">
                       <table class="product-table">
                         <tbody>
+                          <!-- <tr class="product">
+                            <td class="product__image">
+                              <div class="product-thumbnail">
+                                <div class="product-thumbnail__wrapper">
+                                  <img src="assets_user/img/toyentinhche3.webp" alt="product-thumbnail__image" class="product-thumbnail__image">
+                                </div>
+                                <span class="product-thumbnail__quantity unprintable">1</span>
+                              </div>
+                            </td>
+                            <th class="product__description">
+                              <span class="product__description__name">Tổ yến rút lông xuất khẩu</span>
+                            </th>
+                            <td class="product__price">5.300.000₫</td>
+                          </tr> -->
                           <?= $html_orderdetails; ?>
                         </tbody>
                       </table>
@@ -119,17 +101,42 @@ if (isset($user_info) && is_array($user_info)) {
                     </div>
                   </div>
                 </aside>
-                <section class="section unprintable1">
+              </div>
+              <div class="col col--primary">
+                <section class="section">
+                  <div class="section__content section__content--bordered">
+                    <div class="row">
+                      <div class="col col--md-two">
+                        <h2>Thông tin mua hàng</h2>
+                        <p><?= $user_info['fullname'] ?></p>
+                        <p><?= $user_info['phone'] ?></p>
+                        <p><?= $user_info['address'] ?></p>
+                      </div>
+                      <div class="col col--md-two">
+                        <h2>Địa chỉ nhận hàng</h2>
+                        <p><?= $bill['fullname'] ?></p>
+                        <p><?= $bill['phone'] ?></p>
+                        <p><?= $bill['address'] ?></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col col--md-two">
+                        <h2>Phương thức thanh toán</h2>
+                        <p><?= $bill['payment_method']?></p>
+                      </div>
+                      <div class="col col--md-two">
+                        <h2>Phương thức vận chuyển</h2>
+                        <p>Giao hàng tận nơi</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="section unprintable">
                   <div class="field__input-btn-wrapper field__input-btn-wrapper--floating">
                     <a href="?mod=page&act=home" class="btn btn--large">Tiếp tục mua hàng</a>
-                    <span class="text-icon-group text-icon-group--large icon-print">
-                      <i class="fa-solid fa-print" style="color: #bf9f70;"></i>
-                      <span>In</span>
-                    </span>
                   </div>
                 </section>
               </div>
-
             </article>
           </div>
         </main>
@@ -137,7 +144,7 @@ if (isset($user_info) && is_array($user_info)) {
     </form>
   </div>
 </main>
-<script src="https://kit.fontawesome.com/457938a8f2.js" crossorigin="anonymous"></script>
+
 <style>
   .content {
     overflow: hidden;
@@ -161,8 +168,6 @@ if (isset($user_info) && is_array($user_info)) {
 
   .content .wrap {
     flex-direction: row;
-    width: 780px;
-    margin: 0 auto;
   }
 
   .wrap:after,
@@ -172,18 +177,12 @@ if (isset($user_info) && is_array($user_info)) {
   }
 
   .main {
-    width: 1274px;
+    width: 52%;
     padding: 2em 2em 0 2em;
-
-  }
-
-  article {
-    width: 1238px;
   }
 
   .main--nosidebar .main__header {
     padding-bottom: 1.5em;
-    width: 1218px;
   }
 
   header {
@@ -242,7 +241,6 @@ if (isset($user_info) && is_array($user_info)) {
 
   .main__content {
     padding-bottom: 1.5em;
-    width: 1218px;
   }
 
   .row {
@@ -278,7 +276,7 @@ if (isset($user_info) && is_array($user_info)) {
   }
 
   .col--primary {
-    width: 742px;
+    width: 60%;
   }
 
   .row:first-child>.col:first-child {
@@ -353,7 +351,7 @@ if (isset($user_info) && is_array($user_info)) {
   }
 
   .col--secondary {
-    width: 495px;
+    width: 40%;
     margin-top: 122px;
   }
 
@@ -630,7 +628,7 @@ if (isset($user_info) && is_array($user_info)) {
   .section__content--bordered {
     border: 1px solid #dadada;
     padding: 1em;
-    margin-bottom: 13px;
+    margin: 1em;
   }
 
   .section__content::after,
@@ -705,36 +703,5 @@ if (isset($user_info) && is_array($user_info)) {
     max-width: 100%;
     max-height: 100%;
     margin: auto;
-  }
-
-  .text-icon-group--large {
-    font-size: 1.5rem;
-  }
-
-  .text-icon-group {
-    cursor: pointer;
-    display: inline-block;
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
-
-  .icon-print {
-    color: #bf9f70;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .text-icon-group--large .fa {
-    font-size: 1.8rem;
-  }
-
-  .fa-print img {
-    width: 20px;
-    height: 20px;
-    color: #bf9f70;
-  }
-
-  .unprintable1 {
-    padding-top: 15px;
   }
 </style>

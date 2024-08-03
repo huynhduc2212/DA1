@@ -20,10 +20,16 @@ $total = get_total();
                     </div>
                   </div>
                   <div class="section__content">
-                    <a class="dnnud" href="">
+                    <?php if (isset($_SESSION['user']) && (count($_SESSION['user']) > 0)) {
+                      echo '';
+                    } else {
+                      echo ' <a class="dnnud" href="?mod=user&act=login">
                       <i class="fa fa-user-circle-o fa-lg"></i>
                       <span>Đăng nhập để nhận thêm ưu đãi</span>
-                    </a>
+                    </a>';
+                    }
+                    ?>
+
                     <div class="fieldset">
                       <div class="field">
                         <div class="field__input-wrapper">
@@ -47,33 +53,36 @@ $total = get_total();
                       </div>
                     </div>
                   </div>
-                  <div class="section__header">
-                    <div class="layout-flex">
-                      <h2 class="section__title layout-flex__item layout-flex__item--stretch">
-                        Thông tin người nhận khác (nếu cần)
-                      </h2>
+                  <div class="accordion">
+                    <div class="section__header_p">
+                      <div class="layout-flex">
+                        <p class="section__title_p layout-flex__item layout-flex__item--stretch">
+                          Thông tin người nhận khác (nếu cần)
+                          <i class="fa-solid fa-angles-right"></i>
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="section__content">
-                    <div class="fieldset">
-                      <div class="field">
-                        <div class="field__input-wrapper">
-                          <input type="email" class="field__input" placeholder="Email">
+                    <div class="section__content_p">
+                      <div class="fieldset">
+                        <div class="field">
+                          <div class="field__input-wrapper">
+                            <input type="email" class="field__input" placeholder="Email">
+                          </div>
                         </div>
-                      </div>
-                      <div class="field">
-                        <div class="field__input-wrapper">
-                          <input type="text" class="field__input" placeholder="Họ và tên">
+                        <div class="field">
+                          <div class="field__input-wrapper">
+                            <input type="text" class="field__input" placeholder="Họ và tên">
+                          </div>
                         </div>
-                      </div>
-                      <div class="field">
-                        <div class="field__input-wrapper">
-                          <input type="tel" class="field__input" placeholder="Số điện thoại">
+                        <div class="field">
+                          <div class="field__input-wrapper">
+                            <input type="tel" class="field__input" placeholder="Số điện thoại">
+                          </div>
                         </div>
-                      </div>
-                      <div class="field">
-                        <div class="field__input-wrapper">
-                          <input type="text" class="field__input" placeholder="Địa chỉ">
+                        <div class="field">
+                          <div class="field__input-wrapper">
+                            <input type="text" class="field__input" placeholder="Địa chỉ">
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -292,7 +301,59 @@ $total = get_total();
     font-size: 1.15rem;
   }
 
+  /* .section__title_p {
+    cursor: pointer;
+    color: #bf9f70;
+    font-size: 15px;
+  }
+
+  .section__title_p i {
+    font-size: 12px;
+    color: #bf9f70;
+  }
+
+  .section__content_p {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.25s linear;
+  }
+
+  .section__content_p {
+    pointer-events: none;
+  }
+
+  .section__content_p.active {
+    height: auto;
+  } */
+  .section__content_p {
+    margin-top: 20px;
+    height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .section__content_p.active {
+    height: auto;
+  }
+
+  .section__title_p {
+    cursor: pointer;
+    color: #bf9f70;
+    font-size: 15px;
+  }
+
+  .section__title_p i {
+    font-size: 13px;
+  }
+
+  .section__title_p i {
+    transition: transform 0.3s ease;
+  }
+
+
   .layout-flex__item--stretch {
+    margin-top: 15px;
+    margin-bottom: 0;
     flex: 1 1 auto;
   }
 
@@ -333,6 +394,7 @@ $total = get_total();
     content: "";
     display: table;
   }
+
 
   .fieldset {
     margin: -0.4em;
@@ -869,3 +931,36 @@ $total = get_total();
     vertical-align: middle;
   }
 </style>
+
+<script>
+  // const title = document.querySelector('.section__header_p');
+  // title.addEventListener('click', handleClickAccordion);
+  // const activeStr = "active";
+
+  // function handleClickAccordion(e) {
+  //   const content = e.target.nextElementSibling;
+  //   console.log(content);
+  //   content.style.height = `${content.scrollHeight}px`;
+  //   content.classList.toggle(activeStr);
+  //   if (!content.classList.contains(activeStr)) {
+  //     content.style.height = "0px";
+  //   }
+  // }
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionHeader = document.querySelector('.section__title_p');
+    const accordionContent = document.querySelector('.section__content_p');
+
+    accordionHeader.addEventListener('click', function() {
+      this.classList.toggle('active');
+      accordionContent.classList.toggle('active');
+
+      // Optional: Scroll to the expanded content
+      if (accordionContent.classList.contains('active')) {
+        accordionContent.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest'
+        });
+      }
+    });
+  });
+</script>
