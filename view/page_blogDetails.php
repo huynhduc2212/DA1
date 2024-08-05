@@ -11,8 +11,9 @@ extract($blogs_details);
 
 <style>
     .img-blog {
-        width: 600px;
-        height: 402px;
         margin-bottom: 10px;
+        max-width: 100%;
+        object-fit: cover;
+        height: auto;
     }
 </style>

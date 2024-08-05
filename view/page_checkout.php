@@ -94,7 +94,7 @@ $total = get_total();
         </main>
         <aside class="sidebar">
           <div class="sidebar__header">
-            <h2 class="sidebar__title">Đơn hàng (2 sản phẩm)</h2>
+            <h2 class="sidebar__title">Đơn hàng (<?= count($_SESSION['giohang']) ?> sản phẩm)</h2>
           </div>
           <div class="sidebar__content">
             <div class="order-summary order-summary--is-collapsed">

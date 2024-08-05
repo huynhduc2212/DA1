@@ -3,6 +3,7 @@ $html_product_sale = showProductFlashSales($product_sale);
 $html_product_new = show_sp_home($products);
 $html_product_newest = show_sp_home($products_new);
 $html_product_category = show_sp_home_category($products_category);
+$html_blog_home = showBlogs_Home($blogs);
 if ($idcategory > 0) $actAll = '';
 else $actAll = 'current';
 $html_categories = '<li class="tab-link has-content ' . $actAll . '">
@@ -202,7 +203,7 @@ foreach ($categories as $item) {
             <div class="block-blog">
                 <div class="swiper-container">
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                        <div class="swiper-slide" style="width: 400px; margin-right: 30px;">
+                        <!-- <div class="swiper-slide" style="width: 400px; margin-right: 30px;">
                             <div class="item-blog">
                                 <div class="block-thumb">
                                     <a href="#" class="thumb" title="Ngọc yến kim miêu - set quà tết siêu tiết kiệm 2023">
@@ -243,7 +244,8 @@ foreach ($categories as $item) {
                                     </h3>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        <?= $html_blog_home; ?>
                     </div>
                 </div>
             </div>

@@ -661,7 +661,7 @@ form {
 .product-action .product-thumbnail .image_thumb {
   padding-bottom: 100%;
   display: block;
-  height: 0;
+  /* height: 0; */
   position: relative;
 }
 a {
@@ -694,10 +694,71 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+.product-thumbnail .action {
+  position: absolute;
+  bottom: -50px; /* Ẩn các icon bên dưới hình ảnh */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all .4s ease;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.product-thumbnail:hover .action {
+  opacity: 1;
+  bottom: 50%;
+  transform: translate3d(-50%, 0, 0);
+}
+
+
+.product-thumbnail .action .actions-secondary2 {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  justify-content: center;
+}
+
+.product-thumbnail .action .btn-views {
+  width: auto;
+  border: none;
+  height: 38px;
+  padding: 0px 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F2F2F2;
+  font-size: 12px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.product-thumbnail .action .btn-views:hover {
+  background-color: #bf9f70;
+}
+
+.product-thumbnail .action .btn-views:hover i {
+  color: #fff;
+}
+
+.product-thumbnail .action .btn-views i {
+  font-size: 16px;
+  color: #333;
+}
+
+.product-thumbnail .action .btn-views:last-child {
+  margin-right: 0px;
+}
+
 .product-action .product-info {
   z-index: 1;
   position: relative;
 }
+
 .product-action .product-info .product-name {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -743,6 +804,11 @@ a {
   background-color: #bf9f70;
   border-radius: 20px;
 }
+
+.product-action .product-btn .btn-cart:hover {
+  background-color: #997d55;
+}
+
 .section_mission {
   padding: 40px 0px 0px;
 }
@@ -1125,7 +1191,7 @@ img {
 
 /* Điều hướng đường dẫn */
 .path a {
-  font-size: 14px;
+  font-size: 16px;
   color: #000;
   text-decoration: none;
 }
@@ -1136,4 +1202,10 @@ img {
 
 .path span {
   color: #bf9f70;
+}
+/* css trang sản phẩm yêu thích */
+.box-favor {
+  margin-left: 10px;
+  margin-top: 20px;
+  text-align: center;
 }

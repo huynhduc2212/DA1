@@ -30,7 +30,7 @@
                   }
                   ?> -->
             <li><a href="">Hệ thống cửa hàng</a></li>
-            <li><a href="">Sản phẩm yêu thích</a></li>
+            <li><a href="?mod=page&act=favorite">Sản phẩm yêu thích</a></li>
           </ul>
         </div>
       </div>

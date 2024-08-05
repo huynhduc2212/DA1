@@ -18,6 +18,16 @@ function show_sp_home($products)
                                                             <img width="480" height="480" src="assets_user/img/' . $thumbnail . '" alt="' . $name . '">
                                                     </a>
                                                     ' . $giamgia . '
+                                        <div class="action d-xl-block d-none">
+                                            <div class="actions-secondary2">
+                                                <a title="Xem nhanh" href="?mod=product&act=productDetails&idpro=' . $id . '" class="btn-views quick-view">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                                <a title="Thêm vào yêu thích" href="?mod=page&act=favorite&add_favorite=' . $id . '" class="btn-views compare">
+                                                    <i class="fa-solid fa-heart"></i>
+                                                </a>
+                                            </div>
+                                        </div>
                                             </div>
                                             <div class="product-info">
                                                     <h3 class="product-name">
@@ -50,6 +60,7 @@ function show_sp_home($products)
   return $html_product_new;
 }
 
+
 function show_sp_home_category($products)
 {
   $html_product_new = "";
@@ -69,6 +80,16 @@ function show_sp_home_category($products)
                                                             <img width="480" height="480" src="assets_user/img/' . $thumbnail . '" alt="' . $name . '">
                                                     </a>
                                                     ' . $giamgia . '
+                                         <div class="action d-xl-block d-none">
+                                            <div class="actions-secondary2">
+                                                <a title="Xem nhanh" href="?mod=product&act=productDetails&idpro=' . $id . '" class="btn-views quick-view">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                                <a title="Thêm vào yêu thích" href="?mod=page&act=favorite&add_favorite=' . $id . '" class="btn-views compare">
+                                                    <i class="fa-solid fa-heart"></i>
+                                                </a>
+                                            </div>
+                                         </div>
                                             </div>
                                             <div class="product-info">
                                                     <h3 class="product-name">
@@ -114,6 +135,16 @@ function showProductFlashSales($products)
                         <img width="480" height="480" src="assets_user/img/' . $thumbnail . '" alt="' . $name . '">
                     </a>
                     <span class="smart">' . $discount_percentage . '%</span>
+                  <div class="action d-xl-block d-none">
+                      <div class="actions-secondary2">
+                          <a title="Xem nhanh" href="?mod=product&act=productDetails&idpro=' . $id . '" class="btn-views quick-view">
+                              <i class="fa-solid fa-eye"></i>
+                          </a>
+                          <a title="Thêm vào yêu thích" href="?mod=page&act=favorite&add_favorite=' . $id . '" class="btn-views compare">
+                              <i class="fa-solid fa-heart"></i>
+                          </a>
+                      </div>
+                  </div>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">
@@ -164,6 +195,17 @@ function showProductRelated($products)
                                                             <img width="480" height="480" src="assets_user/img/' . $thumbnail . '" alt="' . $name . '">
                                                     </a>
                                                     ' . $giamgia . '
+                                        <div class="action d-xl-block d-none">
+                                                <div class="actions-secondary2">
+                                                    <a title="Xem nhanh" href="?mod=product&act=productDetails&idpro=' . $id . '" class="btn-views quick-view">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </a>
+                                                    <a title="Thêm vào yêu thích" href="" class="btn-views compare">
+                                                        <i class="fa-solid fa-heart"></i>
+                                                    </a>
+                                                </div>
+                                        </div>
+                                                    
                                             </div>
                                             <div class="product-info">
                                                     <h3 class="product-name">
@@ -212,6 +254,29 @@ function showBlogs($blogs)
                 </div>';
   }
   return $html_blog;
+}
+
+function showBlogs_Home($blogs)
+{
+  $html_blog_home = '';
+  foreach ($blogs as $item) {
+    extract($item);
+    $html_blog_home .= '<div class="swiper-slide" style="width: 400px; margin-right: 30px;">
+                            <div class="item-blog">
+                                <div class="block-thumb">
+                                    <a href="?mod=page&act=blogDetails&idblog=' . $id . '" class="thumb" title="' . $name . '">
+                                        <img src="assets_user/img/' . $img . '" alt="Ngọc yến kim miêu - set quà tết siêu tiết kiệm 2023">
+                                    </a>
+                                </div>
+                                <div class="block-content">
+                                    <h3>
+                                        <a href="?mod=page&act=blogDetails&idblog=' . $id . '" title="Ngọc yến kim miêu - set quà tết siêu tiết kiệm 2023">' . $name . '</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>';
+  }
+  return $html_blog_home;
 }
 
 function show_cart_checkout()
@@ -289,9 +354,54 @@ function show_sp_admin($products)
                                     <td>
 <a href="?mod=product&act=add_product"><span class="status delivered">Add</span></a>
 <a href="?mod=product&act=edit_product&id=' . $id . '"><span class="status delivered">Edit</span>
-<a href="?mod=product&act=Delete_product&id=' . $id . '"><span class="status return">Delete</span>
+<a href="?mod=product&act=delete_product&id=' . $id . '"><span class="status return">Delete</span>
                                     </td>
                                 </tr>';
   }
   return $html_product_admin;
+}
+
+function show_us_admin($users)
+{
+  $html_us_admin = "";
+  foreach ($users as $item) {
+    extract($item);
+    $short_pass = mb_strimwidth($password, 0, 20, '...');
+    $html_us_admin .= '<tr>
+                                    <td>' . $id . '</td>
+                                    <td>' . $username . '</td>
+                                    <td>' . $email . '</td>
+                                    <td>' . $phone . '</td>
+                                    <td>' . $short_pass . '</td>
+                                    <td>' . $role . '</td>
+                                    <td>
+<a href="?mod=user&act=add_user"><span class="status delivered">Add</span></a>
+<a href="?mod=user&act=edit_user&id=' . $id . '"><span class="status delivered">Edit</span>
+<a href="?mod=user&act=delete_user&id=' . $id . '"><span class="status return">Delete</span>
+                                    </td>
+                                </tr>';
+  }
+  return $html_us_admin;
+}
+
+function show_od_admin($order)
+{
+  $html_od_admin = "";
+  foreach ($order as $item) {
+    extract($item);
+    $html_od_admin .= '<tr>
+                                    <td>' . $id . '</td>
+                                    <td>' . $code . '</td>
+                                    <td>' . $order_date . '</td>
+                                    <td>' . $phone . '</td>
+                                    <td>' . $total . '</td>
+                                    <td>' . $status . '</td>
+                                    <td>' . $address . '</td>
+                                    <td>
+<a href="?mod=product&act=edit_order&id=' . $id . '"><span class="status delivered">Edit</span>
+<a href="?mod=product&act=delete_order&id=' . $id . '"><span class="status return">Delete</span>
+                                    </td>
+                                </tr>';
+  }
+  return $html_od_admin;
 }

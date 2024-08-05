@@ -12,13 +12,20 @@ if ($_GET['act']) {
     switch ($_GET['act']) {
         case 'product':
             if (isset($_POST['keyword']) && ($_POST['keyword'] != "")) {
-                $key = $_POST['keyword'];
+                $keyw = $_POST['keyword'];
+                $_SESSION['keyw'] = $_POST['keyword'];
             } else {
-                $key = "";
+                $keyw = "";
+            }
+
+            if (isset($_SESSION['keyw']) && ($_SESSION['keyw'] != "")) {
+                $keyw = $_SESSION['keyw'];
             }
 
             if (isset($_GET['category_id']) && (is_numeric($_GET['category_id'])) && ($_GET['category_id']) > 0) {
                 $category_id = $_GET['category_id'];
+                $_SESSION['keyw'] = "";
+                $keyw = "";
 
                 // hiển thị đường dẫn trong banner và tiêu đề trang
                 $tendm = getCategory_Name($category_id);
@@ -32,14 +39,17 @@ if ($_GET['act']) {
             }
 
             $categories = getCategory_Home_List();
-            $products_category = getProductsByCategory($key, $category_id);
+            // $products_category = getProductsByCategory($keyw, $category_id, SO_SP_TRANG, 0);
 
             if (isset($_GET['trang']) && $_GET['trang'] > 0) {
                 $trang = $_GET['trang'];
             } else $trang = 1;
 
-            $dssp_phantrang = getProductsByCategory($category_id, SO_SP_TRANG, $trang);
-            $dssotrang = get_so_trang($dssp_phantrang, $trang);
+            $products_category = getProductsByCategory($keyw, $category_id, SO_SP_TRANG, $trang);
+
+            // show ds số trang ở cuối trang
+            $dssp = getProductsByCategory($keyw, $category_id, 0, 0);
+            $dssotrang = get_so_trang($dssp, $trang);
 
             include_once 'view/template_head.php';
             include_once 'view/template_header.php';
@@ -52,7 +62,8 @@ if ($_GET['act']) {
             // chi tiết sản phẩm
             if (isset($_GET['idpro']) && (is_numeric($_GET['idpro'])) && ($_GET['idpro']) > 0) {
                 $id = $_GET['idpro'];
-                $products_category = getProductsByCategory($id);
+                $products_category = getProductsByCategory(0, $id, 0, 0);
+
                 $products = getProductByCategory_Home();
                 $product_details = getProductDetails($id);
 
@@ -97,7 +108,6 @@ if ($_GET['act']) {
             include_once 'model/categories.php';
 
             if (isset($_POST['submit'])) {
-                // Thêm sản phẩm vào cơ sở dữ liệu
                 $kq = add_product(
                     $_POST['up_name'],
                     $_POST['up_price'],
@@ -106,17 +116,14 @@ if ($_GET['act']) {
                     $_FILES['up_img']['name'],
                     $_POST['up_Des']
                 );
-                // Kiểm tra nếu thêm sản phẩm thành công
                 if ($kq) {
-                    // Kiểm tra nếu tệp đã được tải lên và không có lỗi
                     if (isset($_FILES['up_img']) && $_FILES['up_img']['error'] == 0) {
                         $upload_result = move_uploaded_file(
                             $_FILES['up_img']['tmp_name'],
                             "assets_user/img/" . $_FILES['up_img']['name']
                         );
-                        // Kiểm tra nếu di chuyển tệp thành công
                         if ($upload_result) {
-                            header("Location: admin.php?mod=product&act=admin_product");
+                            header("Location: ?mod=product&act=admin_product");
                             exit();
                         } else {
                             echo "<script>alert('Lỗi khi di chuyển tệp');</script>";
@@ -130,13 +137,11 @@ if ($_GET['act']) {
             }
             include_once "view/product_add.php";
             break;
-        case 'Delete_product';
+        case 'delete_product';
             if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 $kq = delete_product($_GET['id']);
                 if ($kq) {
-                    echo "<script>
-                        window.location.href = 'admin.php?mod=product&act=admin_product';
-                      </script>";
+                    header("Location: ?mod=product&act=admin_product");
                     exit();
                 } else {
                     echo "<script>
@@ -148,7 +153,6 @@ if ($_GET['act']) {
             }
             break;
         case 'edit_product':
-            // Kiểm tra quyền người dùng
             if (!(isset($_SESSION['user']) && $_SESSION['user']['role'] == '1')) {
                 header('Location: ?mod=page&act=home');
                 exit();
@@ -160,7 +164,7 @@ if ($_GET['act']) {
 
             if (isset($_POST['submit'])) {
                 $product_id = $_POST['product_id'];
-                // Kiểm tra nếu có tệp hình ảnh mới
+                // Kiểm tra nếu có ảnh mới
                 $image_name = $_FILES['up_img']['name'];
                 if ($image_name) {
                     $upload_result = move_uploaded_file(
@@ -172,11 +176,10 @@ if ($_GET['act']) {
                         $image_name = null;
                     }
                 } else {
-                    // Nếu không có tệp mới, giữ nguyên hình ảnh cũ
+                    // Nếu không có tệp mới, giữ ảnh cũ
                     $image_name = $_POST['current_image'];
                 }
 
-                // Cập nhật thông tin sản phẩm vào cơ sở dữ liệu
                 $kq = update_product(
                     $product_id,
                     $_POST['up_name'],
@@ -187,19 +190,63 @@ if ($_GET['act']) {
                     $_POST['up_Des']
                 );
 
-                // Kiểm tra nếu cập nhật thành công
                 if ($kq) {
-                    header("Location: admin.php?mod=product&act=admin_product");
+                    header("Location: ?mod=product&act=admin_product");
                     exit();
                 } else {
                     echo "<script>alert('Lỗi khi cập nhật sản phẩm');</script>";
                 }
             }
 
-            // Lấy thông tin sản phẩm để hiển thị trong form
             $product_id = $_GET['id'];
             $product = get_product_by_id($product_id);
             include_once "view/product_edit.php";
+            break;
+        case 'admin_order';
+            $order = getAllOrderNoLimit();
+            include_once "view/admin_order.php";
+            break;
+        case 'edit_order':
+            if (!(isset($_SESSION['user']) && $_SESSION['user']['role'] == '1')) {
+                header('Location: ?mod=page&act=home');
+                exit();
+            }
+            if (isset($_POST['submit'])) {
+                $order_id = $_POST['order_id'];
+                $kq = update_order(
+                    $order_id,
+                    $_POST['up_phone'],
+                    $_POST['up_address'],
+                    $_POST['up_status']
+                );
+                if ($kq) {
+                    header("Location: admin.php?mod=product&act=admin_order");
+                    exit();
+                } else {
+                    echo "<script>alert('Lỗi khi cập nhật thông tin đơn hàng');</script>";
+                }
+            }
+            $order_id = $_GET['id'];
+            $order = get_order_by_id($order_id);
+            include_once "view/order_edit.php";
+            break;
+        case 'delete_order';
+            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $kq = delete_order($_GET['id']);
+                if ($kq) {
+                    header("Location: admin.php?mod=product&act=admin_order");
+                    exit();
+                } else {
+                    echo "<script>
+                        alert('Có lỗi xảy ra khi xóa sản phẩm');
+                      </script>";
+                }
+            } else {
+                echo "<script>alert('ID sản phẩm không hợp lệ');</script>";
+            }
+            break;
+        case 'admin_char';
+            include_once "view/admin_char.php";
             break;
         default:
             # 404 - trang web không tồn tại!

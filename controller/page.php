@@ -16,13 +16,14 @@ if ($_GET['act']) {
             $product_sale = getDiscountedProducts();
             $products = getProductByCategory_Home();
             $products_new = getAllProductsNewest();
+            $blogs = getBlogs();
             // show theo danh mục
             if (isset($_GET['idcategory']) && (is_numeric($_GET['idcategory'])) && ($_GET['idcategory']) > 0) {
                 $idcategory = $_GET['idcategory'];
             } else {
                 $idcategory = 0;
             }
-            $products_category = getProductsByCategory($idcategory);
+            $products_category = getProductsByCategory("", $idcategory, SO_SP_TRANG_HOME_2, 1);
             $categories = getCategory_Home_List();
 
             $pathpage = "Trang chủ";
@@ -76,6 +77,39 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once "view/template_banner.php";
             include_once "view/page_cart.php";
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
+            break;
+        case 'favorite':
+            $tendm = "Sản phẩm yêu thích";
+            $pathpage = "Trang chủ | " . $tendm;
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            // xóa sp yêu thích
+            if (isset($_GET['ind']) && ($_GET['ind'] >= 0)) {
+                array_splice($_SESSION['favorite'], $_GET['ind'], 1);
+                header("Location: ?mod=page&act=favorite");
+            }
+
+            // thêm sản phẩm yêu thích
+            if (isset($_GET['add_favorite'])) {
+                $idpro = $_GET['add_favorite'];
+                $product = getProductDetails($idpro);
+
+                if ($product) {
+                    if (!isset($_SESSION['favorite'])) {
+                        $_SESSION['favorite'] = [];
+                    }
+                    array_push($_SESSION['favorite'], $product);
+                }
+                header("Location: ?mod=page&act=favorite");
+            }
+
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once "view/template_banner.php";
+            include_once "view/page_product_favorite.php";
             include_once 'view/template_near_footer.php';
             include_once 'view/template_footer.php';
             break;

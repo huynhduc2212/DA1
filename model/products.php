@@ -1,15 +1,16 @@
 <?php
 // Hàm lấy sản phẩm theo danh mục
-function getProductsByCategory($idcategory, $limit = null, $trang = null)
+function getProductsByCategory($kyw, $idcategory, $limit = 0, $trang = 0)
 {
   $sql = "SELECT * FROM products WHERE 1";
-  if ($idcategory > 0) {
-    $sql .= " AND id_category = ? order by id desc";
-    return pdo_query($sql, $idcategory);
-  } else {
-    $sql .= " order by id desc";
-    return pdo_query($sql);
+  if ($kyw != "") {
+    $sql .= " AND name like '%" . $kyw . "%'";
   }
+  if ($idcategory > 0) {
+    $sql .= " AND id_category = " . $idcategory;
+  }
+  $sql .= " order by id desc";
+
 
   // phân trang
   if ($trang == 1) {
@@ -17,6 +18,7 @@ function getProductsByCategory($idcategory, $limit = null, $trang = null)
   } else {
     $limitfrom = (($trang - 1) * $limit) - 1;
   }
+  
   if ($limit > 0) {
     $sql .= " limit " . $limitfrom . "," . $limit;
   }
@@ -28,12 +30,13 @@ function get_so_trang($dssp, $trang)
 {
   $sotrang = ceil(count($dssp) / SO_SP_TRANG);
   $dssotrang = "";
+  $params = "";
 
   if (isset($_GET['category_id']) && ($_GET['category_id'] > 0)) {
-    $iddm = "&category_id=" . $_GET['category_id'];
-  } else $iddm = "";
+    $params = "&category_id=" . $_GET['category_id'];
+  }
 
-  $currentUrl = "index.php?mod=product&act=product" . $iddm;
+  $currentUrl = "index.php?mod=product&act=product" . $params;
   for ($i = 1; $i <= $sotrang; $i++) {
     if ($trang == $i) {
       $dssotrang .= "<a href='" . $currentUrl . "&trang=" . $i . "' style='background-color: #bf9f70; color: white; border: none;'>" . $i . "</a>";
@@ -123,7 +126,6 @@ function delete_product($id)
     $stmt = dbConnection()->prepare($sql);
     $stmt->execute([$id]);
 
-    // Check if any row was deleted
     if ($stmt->rowCount() > 0) {
       return true;
     } else {
@@ -165,4 +167,64 @@ function get_product_by_id($id)
 {
   $sql = "SELECT * FROM products WHERE id = ?";
   return pdo_query_one($sql, $id);
+}
+
+//hàm lấy tất cả order no limit
+function getAllOrderNoLimit()
+{
+  $sql = "SELECT * FROM orders ORDER BY id DESC";
+  return pdo_query($sql);
+}
+
+// hàm edit order
+function update_order($id, $phone, $address, $status)
+{
+    try {
+        $sql = "UPDATE orders SET 
+                  phone = ?, 
+                  address = ?, 
+                  status = ?
+                  WHERE id = ?";
+
+        $params = [$phone, $address, $status, $id];
+
+        $result = pdo_execute($sql, ...$params);
+
+        if ($result === false) {
+            throw new Exception("Không thể cập nhật thông tin đơn hàng vào cơ sở dữ liệu.");
+        }
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+// Hàm lấy thông tin order theo ID
+function get_order_by_id($id)
+{
+  $sql = "SELECT * FROM orders WHERE id = ?";
+  return pdo_query_one($sql, $id);
+}
+
+// hàm xóa order
+function delete_order($id)
+{
+    try {
+        $sql1 = "DELETE FROM orderdetails WHERE id_order = ?";
+        $stmt1 = dbConnection()->prepare($sql1);
+        $stmt1->execute([$id]);
+
+        $sql2 = "DELETE FROM orders WHERE id = ?";
+        $stmt2 = dbConnection()->prepare($sql2);
+        $stmt2->execute([$id]);
+
+        if ($stmt2->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Lỗi khi xóa order: " . $e->getMessage();
+        return false;
+    }
 }

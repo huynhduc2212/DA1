@@ -3,9 +3,9 @@ INSERT INTO categories (id,name, home) VALUES
 (2, "Tổ yến thô",0),
 (3, "Tổ yến chưng sẵn",1),
 (4, "Món soup",0),
-(5, "Nước yến",0);
+(5, "Nước yến",0),
 
-INSERT INTO products (id, name, price, thumbnail, id_category, discount_percentage, des) VALUES
+INSERT INTO products (id, name, price, thumbnail, id_category, discount_percentage, des,quantity) VALUES
 (1,'Tổ yến tinh chế loại 2', 2350000, 'toyentinhche1.webp', 1, 9, "aaaa"),
 (2,'Tổ yến tinh chế loại 1', 2350000, 'toyentinhche2.webp', 1, 9, "aaaa"),
 (3,'Tổ yến rút lông xuất khẩu', 5600000, 'toyentinhche3.webp', 1, 5, "aaaa"),
@@ -37,7 +37,17 @@ INSERT INTO products (id, name, price, thumbnail, id_category, discount_percenta
 (25,'Nước Yến sào Sanest lọ Nhân sâm Fucoidan 70ml, Hộp 6 Lọ', 286000, 'nuocyen2.webp', 5, 0, "aaaa"),
 (26,'Nước Yến sào Sanest lọ 70ml, Hộp 8 lọ', 330000, 'nuocyen3.webp', 5, 11, "aaaa"),
 (27,'Nước Yến sào Sanest lọ 70ml, Hộp 6 lọ', 265000, 'nuocyen4.webp', 5, 16, "aaaa"),
-(28,'Nước Yến sào Sanest lọ 70ml, 1 lọ', 35000, 'nuocyen5.webp', 5, 0, "aaaa");
+(28,'Nước Yến sào Sanest lọ 70ml, 1 lọ', 35000, 'nuocyen5.webp', 5, 0, "aaaa"),
+(29,'Set 6 Thượng Vy Yến Đảo',799000,'nuocyen6.webp',5,0,'aaaa',0),
+
+INSERT INTO products (id, name, price, thumbnail, id_category, discount_percentage, des,quantity) VALUES
+(30,'Set 12 Thượng Vy Yến Đảo',2200000,'nuocyen7.webp',5,9,'aaaa',0),
+(31,'Set 24 Thượng Vy Yến Đảo',3120000,'nuocyen8.webp',5,0,'aaaa',0),
+(32,'Thượng Vy Yến biển - Kid's Cam',57000,'nuocyen9.webp',5,0,'aaaa',0),
+(33,'Thượng Vy Yến đảo Saffron',95000,'nuocyen10.webp',5,0,'aaaa',0),
+(34,'Thượng Vy Yến biển - Gừng',57000,'nuocyen11.webp',5,0,'aaaa',0),
+(35,'Thượng Vy Yến Đảo Nhân Sâm',135000,'nuocyen12.webp',5,0,'aaaa',0),
+(35,'Yến đảo Đông trùng hạ thảo,150000,'nuocyen13.webp',5,0,'aaaa',0),
 
 INSERT INTO Images (id_product, img, display_order) VALUES
 (1, 'toyentinhche1.webp', 0),
@@ -130,7 +140,24 @@ INSERT INTO Images (id_product, img, display_order) VALUES
 (25, 'nuocyen2.webp', 0),
 (26, 'nuocyen3.webp', 0),
 (27, 'nuocyen4.webp', 0),
-(28, 'nuocyen5.webp', 0);
+(28, 'nuocyen5.webp', 0),
 
+INSERT INTO Images (id_product, img, display_order) VALUES
+(29, 'nuocyen6.webp', 0),
+(30, 'nuocyen7.webp', 0),
+(31, 'nuocyen8.webp', 0),
 
+(32, 'nuocyen9.webp', 0),
+(32, 'nuocyen9_1.webp', 1),
 
+(33, 'nuocyen10.webp', 0),
+(33, 'nuocyen10_1.webp', 1),
+
+(34, 'nuocyen11.webp', 0),
+(34, 'nuocyen11_1.webp', 1),
+
+(35, 'nuocyen12.webp', 0),
+(35, 'nuocyen12_1.webp', 1),
+
+(36, 'nuocyen13.webp', 0),
+(36, 'nuocyen13_1.webp', 1);

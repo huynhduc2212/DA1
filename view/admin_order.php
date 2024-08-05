@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="assets_admin/css/admin.css">
-    
 </head>
 
 <body>
@@ -149,17 +148,18 @@
                         <thead>
                             <tr>
                                 <td>ID</td>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Discount</td>
-                                <td>Category</td>
-                                <td>Img</td>
+                                <td>Code</td>
+                                <td>Order_date</td>
+                                <td>Phone</td>
+                                <td>Total</td>
+                                <td>Status</td>
+                                <td>Address</td>
                                 <td>Actions</td>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <?php echo show_sp_admin($products); ?>
+                            <?php echo show_od_admin($order); ?>
 
                             <!-- <tr>
                                 <td>Dell Laptop</td>

@@ -38,7 +38,15 @@
 
                 <tr>
                     <td>Category</td>
-                    <td><input name='up_Category' class='form-control'></input></td>
+                    <td>
+                        <select name="up_Category">
+                            <option value="1">Tổ yến tinh chế</option>
+                            <option value="2">Tổ yến thô</option>
+                            <option value="3">Tổ yến chưng sẵn</option>
+                            <option value="4">Món soup</option>
+                            <option value="5">Nước yến</option>
+                        </select>
+                    </td>
                 </tr>
 
                 <tr>

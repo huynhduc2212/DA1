@@ -14,11 +14,7 @@ function getCategory_Home_List()
 
 function getCategory_Name($id)
 {
-    if ($id > 0) {
-        $sql = "SELECT * FROM categories where id = " . $id;
-        $dm = pdo_query_one($sql);
-        return $dm['name'];
-    } else {
-        return "";
-    }
+    $sql = "SELECT * FROM categories where id = " . $id;
+    $dm = pdo_query_one($sql);
+    return $dm['name'];
 }
