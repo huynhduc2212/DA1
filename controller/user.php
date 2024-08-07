@@ -200,19 +200,26 @@ if ($_GET['act']) {
                 header('Location: ?mod=page&act=home');
                 exit();
             }
+
             if (isset($_POST['submit'])) {
-                $kq = add_user(
-                    $_POST['up_name'],
-                    $_POST['up_email'],
-                    $_POST['up_password'],
-                    $_POST['up_phone'],
-                    $_POST['up_address'],
-                    $_POST['up_role']
-                );
-                if ($kq) {
-                    header('Location: ?mod=user&act=admin_user');
+                $name = trim($_POST['up_name']);
+                $email = trim($_POST['up_email']);
+                $password = trim($_POST['up_password']);
+                $phone = trim($_POST['up_phone']);
+                $address = trim($_POST['up_address']);
+                $role = trim($_POST['up_role']);
+
+                // Kiểm tra nếu các trường không bị bỏ trống
+                if (empty($name) || empty($email) || empty($password) || empty($phone) || empty($address) || empty($role)) {
+                    echo "<script>alert('Vui lòng nhập tất cả thông tin.');</script>";
                 } else {
-                    echo "<script>alert('Lỗi khi thêm người dùng vào cơ sở dữ liệu');</script>";
+                    $kq = add_user($name, $email, $password, $phone, $address, $role);
+                    if ($kq) {
+                        header('Location: ?mod=user&act=admin_user');
+                        exit();
+                    } else {
+                        echo "<script>alert('Lỗi khi thêm người dùng vào cơ sở dữ liệu');</script>";
+                    }
                 }
             }
             include_once "view/user_add.php";

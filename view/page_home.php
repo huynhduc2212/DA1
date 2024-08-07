@@ -93,7 +93,7 @@ foreach ($categories as $item) {
         <div class="container">
             <div class="block-title">
                 <h2>
-                    <a href="#" title="Tổ yến chưng sẵn">SẢN PHẨM MỚI NHẤT</a>
+                    <a href="#" title="Sản phẩm mới nhất">SẢN PHẨM MỚI NHẤT</a>
                 </h2>
             </div>
             <div class="row-bd">
@@ -203,48 +203,6 @@ foreach ($categories as $item) {
             <div class="block-blog">
                 <div class="swiper-container">
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                        <!-- <div class="swiper-slide" style="width: 400px; margin-right: 30px;">
-                            <div class="item-blog">
-                                <div class="block-thumb">
-                                    <a href="#" class="thumb" title="Ngọc yến kim miêu - set quà tết siêu tiết kiệm 2023">
-                                        <img src="assets_user/img/thumb1.webp" alt="Ngọc yến kim miêu - set quà tết siêu tiết kiệm 2023">
-                                    </a>
-                                </div>
-                                <div class="block-content">
-                                    <h3>
-                                        <a href="#" title="Ngọc yến kim miêu - set quà tết siêu tiết kiệm 2023">Ngọc yến kim miêu - set quà tết siêu tiết kiệm 2023</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide" style="width: 400px; margin-right: 30px;">
-                            <div class="item-blog">
-                                <div class="block-thumb">
-                                    <a href="#" class="thumb" title="Bánh trung thu Nguyệt Dạ Yến">
-                                        <img src="assets_user/img/thumb2.webp" alt="Bánh trung thu Nguyệt Dạ Yến">
-                                    </a>
-                                </div>
-                                <div class="block-content">
-                                    <h3>
-                                        <a href="#" title="Bánh trung thu Nguyệt Dạ Yến">Bánh trung thu Nguyệt Dạ Yến</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide" style="width: 400px; margin-right: 30px;">
-                            <div class="item-blog">
-                                <div class="block-thumb">
-                                    <a href="#" class="thumb" title="SET quà ý nghĩa dành tặng cho đồng nghiệp, đối tác">
-                                        <img src="assets_user/img/thumb3.webp" alt="SET quà ý nghĩa dành tặng cho đồng nghiệp, đối tác">
-                                    </a>
-                                </div>
-                                <div class="block-content">
-                                    <h3>
-                                        <a href="#" title="SET quà ý nghĩa dành tặng cho đồng nghiệp, đối tác">SET quà ý nghĩa dành tặng cho đồng nghiệp, đối tác</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div> -->
                         <?= $html_blog_home; ?>
                     </div>
                 </div>

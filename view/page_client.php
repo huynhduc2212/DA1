@@ -49,21 +49,6 @@
                   echo '';
                }
                ?>
-
-               <!-- <div class="account">
-                  <p>
-                     <strong>Họ tên: </strong>
-                     Thân Nguyễn
-                  </p>
-                  <p>
-                     <strong>Email: </strong>
-                     thaindepent04@gmail.com
-                  </p>
-                  <p>
-                     <strong>Địa chỉ: </strong>
-                     105/2 Bạch Đằng
-                  </p>
-               </div> -->
             </div>
          </div>
       </div>

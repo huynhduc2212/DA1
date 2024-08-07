@@ -35,7 +35,7 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
                             <div class="grid">
                               <div class="grid__item one-half cart_select">
                                 <div class="ajaxcart__qty input-group-btn">
-                                  ' . $soluong . '
+                                    ' . $soluong . '
                                 </div>
                               </div>
                             </div>

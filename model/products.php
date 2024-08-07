@@ -18,7 +18,7 @@ function getProductsByCategory($kyw, $idcategory, $limit = 0, $trang = 0)
   } else {
     $limitfrom = (($trang - 1) * $limit) - 1;
   }
-  
+
   if ($limit > 0) {
     $sql .= " limit " . $limitfrom . "," . $limit;
   }
@@ -179,24 +179,24 @@ function getAllOrderNoLimit()
 // hàm edit order
 function update_order($id, $phone, $address, $status)
 {
-    try {
-        $sql = "UPDATE orders SET 
+  try {
+    $sql = "UPDATE orders SET 
                   phone = ?, 
                   address = ?, 
                   status = ?
                   WHERE id = ?";
 
-        $params = [$phone, $address, $status, $id];
+    $params = [$phone, $address, $status, $id];
 
-        $result = pdo_execute($sql, ...$params);
+    $result = pdo_execute($sql, ...$params);
 
-        if ($result === false) {
-            throw new Exception("Không thể cập nhật thông tin đơn hàng vào cơ sở dữ liệu.");
-        }
-        return true;
-    } catch (Exception $e) {
-        return false;
+    if ($result === false) {
+      throw new Exception("Không thể cập nhật thông tin đơn hàng vào cơ sở dữ liệu.");
     }
+    return true;
+  } catch (Exception $e) {
+    return false;
+  }
 }
 
 // Hàm lấy thông tin order theo ID
@@ -209,22 +209,79 @@ function get_order_by_id($id)
 // hàm xóa order
 function delete_order($id)
 {
-    try {
-        $sql1 = "DELETE FROM orderdetails WHERE id_order = ?";
-        $stmt1 = dbConnection()->prepare($sql1);
-        $stmt1->execute([$id]);
+  try {
+    $sql1 = "DELETE FROM orderdetails WHERE id_order = ?";
+    $stmt1 = dbConnection()->prepare($sql1);
+    $stmt1->execute([$id]);
 
-        $sql2 = "DELETE FROM orders WHERE id = ?";
-        $stmt2 = dbConnection()->prepare($sql2);
-        $stmt2->execute([$id]);
+    $sql2 = "DELETE FROM orders WHERE id = ?";
+    $stmt2 = dbConnection()->prepare($sql2);
+    $stmt2->execute([$id]);
 
-        if ($stmt2->rowCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    } catch (PDOException $e) {
-        echo "Lỗi khi xóa order: " . $e->getMessage();
-        return false;
+    if ($stmt2->rowCount() > 0) {
+      return true;
+    } else {
+      return false;
     }
+  } catch (PDOException $e) {
+    echo "Lỗi khi xóa order: " . $e->getMessage();
+    return false;
+  }
+}
+
+// hàm lấy tổng sản phẩm đã bán
+function get_total_orders()
+{
+  try {
+    $sql = "SELECT COUNT(*) as total FROM orders";
+    $stmt = dbConnection()->query($sql);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+  } catch (PDOException $e) {
+    echo "Lỗi khi lấy số lượng đơn hàng: " . $e->getMessage();
+    return 0;
+  }
+}
+// hàm lấy tổng thu nhập
+function get_total_income()
+{
+  try {
+    $sql = "SELECT SUM(total) as total_income FROM orders";
+    $stmt = dbConnection()->query($sql);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['total_income'];
+  } catch (PDOException $e) {
+    echo "Lỗi khi lấy tổng thu nhập: " . $e->getMessage();
+    return 0;
+  }
+}
+// hàm lấy thu nhập theo tháng
+function get_monthly_totals()
+{
+  $conn = dbConnection();
+  $sql = "SELECT
+              DATE_FORMAT(STR_TO_DATE(order_date, '%d/%m/%Y'), '%m') AS month,
+              SUM(total) as total
+          FROM
+              orders
+          GROUP BY
+              month
+          ORDER BY
+              month";
+
+  $stmt = $conn->prepare($sql);
+  $stmt->execute();
+  $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  return $results;
+}
+
+$monthly_totals = get_monthly_totals();
+
+$xValues = [];
+$yValues = [];
+
+foreach ($monthly_totals as $row) {
+  $xValues[] = $row['month'];
+  $yValues[] = $row['total'];
 }

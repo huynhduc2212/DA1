@@ -226,7 +226,7 @@ body {
   padding: 30px;
   border-radius: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
@@ -325,10 +325,10 @@ body {
 .details .recentOrders table tr td:nth-child(3) {
   text-align: center;
 }
-.status{
+.status {
   padding-right: 7px;
 }
-a{
+a {
   text-decoration: none;
 }
 .status.delivered {
@@ -407,7 +407,10 @@ a{
 .recentCustomers table tr:hover td h4 span {
   color: var(--white);
 }
-
+td img {
+  width: 30px;
+  height: 30px;
+}
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
   .navigation {

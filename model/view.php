@@ -343,23 +343,25 @@ function show_sp_admin($products)
   foreach ($products as $item) {
     extract($item);
     $discounted_price = calculateDiscountPrice($price, $discount_percentage);
-    // $short_desc = mb_strimwidth($des, 0, 20, '...'); // Giới hạn 50 ký tự
     $html_product_admin .= '<tr>
                                     <td>' . $id . '</td>
                                     <td>' . $name . '</td>
                                     <td>' . number_format($discounted_price, 0, ',', '.') . 'đ</td>
                                     <td>' . $discount_percentage . '</td>
                                     <td>' . $id_category . '</td>
-                                    <td>' . $thumbnail . '</td>
                                     <td>
-<a href="?mod=product&act=add_product"><span class="status delivered">Add</span></a>
-<a href="?mod=product&act=edit_product&id=' . $id . '"><span class="status delivered">Edit</span>
-<a href="?mod=product&act=delete_product&id=' . $id . '"><span class="status return">Delete</span>
+                                        <img src="assets_user/img/' . $thumbnail . '"></img>
+                                    </td>
+                                    <td>
+                                        
+                                        <a href="?mod=product&act=edit_product&id=' . $id . '"><span class="status delivered">Edit</span></a>
+                                        <a href="javascript:confirmDelete(' . $id . ')"><span class="status return">Delete</span></a>
                                     </td>
                                 </tr>';
   }
   return $html_product_admin;
 }
+
 
 function show_us_admin($users)
 {
@@ -375,9 +377,8 @@ function show_us_admin($users)
                                     <td>' . $short_pass . '</td>
                                     <td>' . $role . '</td>
                                     <td>
-<a href="?mod=user&act=add_user"><span class="status delivered">Add</span></a>
 <a href="?mod=user&act=edit_user&id=' . $id . '"><span class="status delivered">Edit</span>
-<a href="?mod=user&act=delete_user&id=' . $id . '"><span class="status return">Delete</span>
+<a href="javascript:confirmDeleteUser(' . $id . ')"><span class="status return">Delete</span>
                                     </td>
                                 </tr>';
   }
@@ -399,7 +400,7 @@ function show_od_admin($order)
                                     <td>' . $address . '</td>
                                     <td>
 <a href="?mod=product&act=edit_order&id=' . $id . '"><span class="status delivered">Edit</span>
-<a href="?mod=product&act=delete_order&id=' . $id . '"><span class="status return">Delete</span>
+<a href="javascript:confirmDeleteOrder(' . $id . ')"><span class="status return">Delete</span>
                                     </td>
                                 </tr>';
   }

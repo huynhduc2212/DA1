@@ -6,6 +6,7 @@ function getBlogs()
     return pdo_query($sql);
 }
 
+// hàm hiển thị chi tiết bài viết
 function getBlogByID($id) {
     $sql = "SELECT * FROM news WHERE id = ?";
     return pdo_query_one($sql, $id);

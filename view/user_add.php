@@ -23,34 +23,35 @@
 
                 <tr>
                     <td>Name</td>
-                    <td><input type='text' name='up_name' class='form-control' /></td>
+                    <td><input type='text' name='up_name' class='form-control'></td>
                 </tr>
 
                 <tr>
                     <td>Email</td>
-                    <td><input type="email" name='up_email' class='form-control'></input></td>
+                    <td><input type="email" name='up_email' class='form-control'></td>
                 </tr>
 
                 <tr>
                     <td>Password</td>
-                    <td><input name='up_password' class='form-control'></input></td>
+                    <td><input name='up_password' class='form-control'></td>
                 </tr>
 
                 <tr>
                     <td>Phone</td>
-                    <td><input name='up_phone' class='form-control'></input></td>
+                    <td><input name='up_phone' class='form-control'></td>
                 </tr>
 
                 <tr>
                     <td>Address</td>
-                    <td><input name='up_address' class='form-control'></input></td>
+                    <td><input name='up_address' class='form-control'></td>
                 </tr>
 
                 <tr>
                     <td>Role</td>
                     <td><select name="up_role" id="role">
-                            <option value="0">User</option>
-                            <option value="1">Admin</option>
+                            <option value="0">Không</option>
+                            <option value="1">User</option>
+                            <option value="2">Admin</option>
                         </select></td>
                 </tr>
 

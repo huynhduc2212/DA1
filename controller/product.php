@@ -98,43 +98,54 @@ if ($_GET['act']) {
             include_once "view/admin_product.php";
             break;
         case 'add_product';
-            $products = getAllProductsNoLimit();
             if (!(isset($_SESSION['user']) && $_SESSION['user']['role'] == '1')) {
                 header('Location: ?mod=page&act=home');
                 exit();
             }
-            include_once 'model/connect.php';
-            include_once 'model/products.php';
-            include_once 'model/categories.php';
-
             if (isset($_POST['submit'])) {
-                $kq = add_product(
-                    $_POST['up_name'],
-                    $_POST['up_price'],
-                    $_POST['up_discount_percentage'],
-                    $_POST['up_Category'],
-                    $_FILES['up_img']['name'],
-                    $_POST['up_Des']
-                );
-                if ($kq) {
+                $name = trim($_POST['up_name']);
+                $price = trim($_POST['up_price']);
+                $discount_percentage = trim($_POST['up_discount_percentage']);
+                $category = trim($_POST['up_Category']);
+                $description = trim($_POST['up_Des']);
+
+                if (empty($name) || empty($price) || empty($category) || empty($description)) {
+                    echo "<script>alert('Vui lòng nhập tất cả thông tin sản phẩm.');</script>";
+                } else {
                     if (isset($_FILES['up_img']) && $_FILES['up_img']['error'] == 0) {
-                        $upload_result = move_uploaded_file(
-                            $_FILES['up_img']['tmp_name'],
-                            "assets_user/img/" . $_FILES['up_img']['name']
+                        $img_name = basename($_FILES['up_img']['name']);
+                        $target_path = "assets_user/img/" . $img_name;
+
+                        $kq = add_product(
+                            $name,
+                            $price,
+                            $discount_percentage,
+                            $category,
+                            $img_name,
+                            $description
                         );
-                        if ($upload_result) {
-                            header("Location: ?mod=product&act=admin_product");
-                            exit();
+
+                        if ($kq) {
+                            $upload_result = move_uploaded_file(
+                                $_FILES['up_img']['tmp_name'],
+                                $target_path
+                            );
+
+                            if ($upload_result) {
+                                header("Location: admin.php?mod=product&act=admin_product");
+                                exit();
+                            } else {
+                                echo "<script>alert('Lỗi khi di chuyển tệp');</script>";
+                            }
                         } else {
-                            echo "<script>alert('Lỗi khi di chuyển tệp');</script>";
+                            echo "<script>alert('Lỗi khi thêm sản phẩm vào cơ sở dữ liệu');</script>";
                         }
                     } else {
-                        echo "<script>alert('Lỗi khi tải tệp lên');</script>";
+                        echo "<script>alert('Vui lòng chọn tệp hình ảnh để tải lên.');</script>";
                     }
-                } else {
-                    echo "<script>alert('Lỗi khi thêm sản phẩm vào cơ sở dữ liệu');</script>";
                 }
             }
+
             include_once "view/product_add.php";
             break;
         case 'delete_product';

@@ -17,3 +17,21 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
+
+function confirmDelete(id) {
+  if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
+    window.location.href = "admin.php?mod=product&act=delete_product&id=" + id;
+  }
+}
+
+function confirmDeleteUser(id) {
+  if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
+    window.location.href = "admin.php?mod=user&act=delete_user&id=" + id;
+  }
+}
+
+function confirmDeleteOrder(id) {
+  if (confirm("Bạn có chắc chắn muốn xóa đơn hàng này không?")) {
+    window.location.href = "admin.php?mod=product&act=delete_order&id=" + id;
+  }
+}

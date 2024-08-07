@@ -107,3 +107,4 @@ function get_id_order_latest()
     $bill = pdo_query_one($sql);
     return $bill['id'];
 }
+

@@ -40,6 +40,7 @@
                     <td>Category</td>
                     <td>
                         <select name="up_Category">
+                            <option value="0">Không</option>
                             <option value="1">Tổ yến tinh chế</option>
                             <option value="2">Tổ yến thô</option>
                             <option value="3">Tổ yến chưng sẵn</option>
