@@ -1,7 +1,6 @@
 <?php
 extract($blogs_details);
 ?>
-
 <main>
     <div class="container">
         <img class="img-blog" src="assets_user/img/<?= $img ?>" alt="">

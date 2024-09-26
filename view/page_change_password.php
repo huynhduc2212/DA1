@@ -22,7 +22,7 @@
                                 <a href="?mod=user&act=userupdate">Cập nhật tài khoản</a>
                             </li>
                             <li class="<?php echo ($_GET['act'] == 'changePassword') ? 'active' : ''; ?>">
-                                <a href="?mod=user&act=changePassword">Đổi mật khẩu</a>
+                                <a href="?mod=user&act=userupdate">Đổi mật khẩu</a>
                             </li>
                             <li class="<?php echo ($_GET['act'] == 'mybill') ? 'active' : ''; ?>">
                                 <a href="?mod=page&act=mybill">Đơn hàng của tôi</a>
@@ -32,18 +32,15 @@
                 </div>
                 <div class="col-9">
 
-                    <form action="?mod=user&act=userupdate" method="post">
-                        <h1>Cập nhật thông tin</h1>
-                        <p>
-                            Đã có tài khoản, đăng nhập <a href="?mod=user&act=login" class="link-gold">tại đây</a>
-                        </p>
-                        <input type="text" name="username" placeholder="Username" required />
-                        <input type="email" name="email" placeholder="Email" required />
-                        <input type="password" name="password" placeholder="Mật khẩu" required />
-                        <input type="text" name="phone" placeholder="Số điện thoại" />
-                        <input type="text" name="fullname" placeholder="Họ và tên" />
-                        <input type="text" name="address" placeholder="Địa chỉ" />
-                        <button type="submit" name="btn_update">Cập nhật</button>
+                    <form action="?mod=user&act=changePassword" method="post">
+                        <h1>Đổi mật khẩu</h1>
+                        <?php if (isset($_GET['error'])) { ?>
+                            <span class="error"><?php echo $_GET['error']; ?></span>
+                        <?php } ?>
+                        <input type="password" name="password_old" placeholder="Mật khẩu cũ" />
+                        <input type="password" name="password_new" placeholder="Mật khẩu mới" />
+                        <input type="password" name="password_confirm" placeholder="Xác nhận mật khẩu" />
+                        <button type="submit" name="btn_changePass">Đặt lại mật khẩu</button>
                     </form>
 
                 </div>
@@ -101,6 +98,7 @@
     }
 
     .col-3 ul li.active a {
+
         color: #bf9f70;
     }
 
@@ -115,12 +113,12 @@
     .col-9 h1 {
         text-transform: uppercase;
         font-size: 19px;
-        padding: 0 73px;
-        margin-bottom: 0;
+        padding: 0 110px;
+        margin-bottom: 20px;
     }
 
     .col-9 p {
-        padding: 0 65px;
+        padding: 0 45px;
         font-size: 14px;
     }
 
@@ -145,5 +143,13 @@
 
     .col-9 button:hover {
         background-color: #b88945;
+    }
+
+    .error {
+        color: #ff0000;
+        font-size: 16px;
+        display: block;
+        padding-top: 12px;
+        padding-bottom: 6px;
     }
 </style>

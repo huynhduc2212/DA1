@@ -53,8 +53,8 @@ if ($_GET['act']) {
                 $idpro = $_POST['idpro'];
                 $tensp = $_POST['tensp'];
                 $hinhsp = $_POST['hinhsp'];
-                $soluong = $_POST['soluong'];
                 $giasp = $_POST['giasp'];
+                $soluong = $_POST['soluong'];
                 $discount_percentage = $_POST['discount_percentage'];
                 $price = calculateDiscountPrice($giasp, $discount_percentage);
 
@@ -64,9 +64,38 @@ if ($_GET['act']) {
                     'hinhsp' => $hinhsp,
                     'giasp' => $price,
                     'soluong' => $soluong,
+                    // 'soluong' => $_POST['quantity'],
                 ];
                 array_push($_SESSION['giohang'], $sp);
                 header("Location: ?mod=page&act=cart");
+            }
+
+
+            // cập nhật lại tổng tiền khi tăng số lượng sản phẩm
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (isset($_POST['increase_quantity'])) {
+                    $idpro = $_POST['increase_quantity'];
+                    $productKey = array_search($idpro, array_column($_SESSION['giohang'], 'idpro'));
+                    if ($productKey !== false) {
+                        $_SESSION['giohang'][$productKey]['soluong'] += 1;
+                    }
+                }
+
+                if (isset($_POST['decrease_quantity'])) {
+                    $idpro = $_POST['decrease_quantity'];
+                    $productKey = array_search($idpro, array_column($_SESSION['giohang'], 'idpro'));
+                    if ($productKey !== false && $_SESSION['giohang'][$productKey]['soluong'] > 1) {
+                        $_SESSION['giohang'][$productKey]['soluong'] -= 1;
+                    }
+                }
+
+                $tong = 0;
+                foreach ($_SESSION['giohang'] as $item) {
+                    $tong += $item['giasp'] * $item['soluong'];
+                }
+
+                header('Location: ?mod=page&act=cart');
+                exit();
             }
 
             $tendm = "Giỏ hàng";
@@ -92,18 +121,23 @@ if ($_GET['act']) {
             }
 
             // thêm sản phẩm yêu thích
-            if (isset($_GET['add_favorite'])) {
-                $idpro = $_GET['add_favorite'];
-                $product = getProductDetails($idpro);
+            if (isset($_SESSION['user']) && (count($_SESSION['user']) > 0)) {
+                if (isset($_GET['add_favorite'])) {
+                    $idpro = $_GET['add_favorite'];
+                    $product = getProductDetails($idpro);
 
-                if ($product) {
-                    if (!isset($_SESSION['favorite'])) {
-                        $_SESSION['favorite'] = [];
+                    if ($product) {
+                        if (!isset($_SESSION['favorite'])) {
+                            $_SESSION['favorite'] = [];
+                        }
+                        array_push($_SESSION['favorite'], $product);
                     }
-                    array_push($_SESSION['favorite'], $product);
+                    header("Location: ?mod=page&act=favorite");
                 }
-                header("Location: ?mod=page&act=favorite");
+            } else {
+                header("Location: ?mod=user&act=login");
             }
+
 
 
             include_once 'view/template_head.php';
@@ -153,7 +187,9 @@ if ($_GET['act']) {
         case 'blogDetails':
             if (isset($_GET['idblog']) && ($_GET['idblog'] > 0)) {
                 $id = $_GET['idblog'];
+
                 $blogs_details = getBlogByID($id);
+
                 $tensp = $blogs_details['name'];
                 $tendm = "Tin tức";
                 $pathpage = "Trang chủ | " . $tendm . " |" . $tensp;
@@ -180,9 +216,7 @@ if ($_GET['act']) {
                 $phone = "";
                 $address = "";
                 $email = "";
-
-                // đăng kí tài khoản => getLastID
-                $iduser = insert_user_returnID($fullname, $address, $email, $phone);
+                // $iduser = insert_user_returnID($fullname, $address, $email, $phone);
             } else {
                 $iduser = $_SESSION['user']['id'];
                 $fullname = $_SESSION['user']['fullname'];
@@ -190,6 +224,7 @@ if ($_GET['act']) {
                 $address = $_SESSION['user']['address'];
                 $email = $_SESSION['user']['email'];
             }
+
             if (isset($_POST['btn_order'])) {
                 // lấy dữ liệu trên form : thông tin người đặt người nhận
                 $fullname = $_POST['fullname'];
@@ -197,14 +232,16 @@ if ($_GET['act']) {
                 $address = $_POST['address'];
                 $email = $_POST['email'];
                 $password = rand(100000, 999999);
-                // $payment_method = $_POST['payment_method'];
-                $payment_method =  get_pttt($_POST['payment_method']);
+                $payment_method = $_POST['payment_method'];
                 $orderdate = date('d/m/Y');
 
+                // đăng kí tài khoản => getLastID
+                $iduser = insert_user_returnID($fullname, $address, $email, $phone, $password);
                 // tạo đơn hàng với iduser vừa tạo
                 // iduser / form / tổng tiền hàng 
                 // tạo mã đơn hàng
                 $total = get_total();
+
                 $today = date("mdY");
                 $today_code = $today;
                 $stt_code = get_id_order_latest() + 1;
@@ -213,6 +250,7 @@ if ($_GET['act']) {
 
                 $idorder = insert_order_returnID($code, $iduser, $orderdate, $fullname, $address, $total, $phone, $email, $payment_method);
                 $_SESSION['idorder'] = $idorder;
+
                 // tạo đơn hÀNG chi tiết
                 foreach ($_SESSION['giohang'] as $item) {
                     $idpro = $item['idpro'];

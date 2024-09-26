@@ -1,11 +1,11 @@
  <?php
     session_start();
     ob_start();
-    if (!isset($_SESSION['favorite'])) {
-        $_SESSION['favorite'] = [];
-    }
     if (!isset($_SESSION['giohang'])) {
         $_SESSION['giohang'] = [];
+    }
+    if (!isset($_SESSION['favorite'])) {
+        $_SESSION['favorite'] = [];
     }
     include_once "model/global.php";
     //điều hướng các controller

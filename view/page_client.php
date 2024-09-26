@@ -15,13 +15,16 @@
                   }
                   ?>
                   <ul>
-                     <li>
+                     <li class="<?php echo ($_GET['act'] == 'client') ? 'active' : ''; ?>">
                         <a href="?mod=user&act=client">Thông tin tài khoản</a>
                      </li>
-                     <li>
+                     <li class="<?php echo ($_GET['act'] == 'userupdate') ? 'active' : ''; ?>">
                         <a href="?mod=user&act=userupdate">Cập nhật tài khoản</a>
                      </li>
-                     <li>
+                     <li class="<?php echo ($_GET['act'] == 'changePassword') ? 'active' : ''; ?>">
+                        <a href="?mod=user&act=userupdate">Đổi mật khẩu</a>
+                     </li>
+                     <li class="<?php echo ($_GET['act'] == 'mybill') ? 'active' : ''; ?>">
                         <a href="?mod=page&act=mybill">Đơn hàng của tôi</a>
                      </li>
                   </ul>
@@ -99,6 +102,10 @@
    }
 
    .col-3 ul li a:hover {
+      color: #bf9f70;
+   }
+
+   .col-3 ul li.active a {
       color: #bf9f70;
    }
 

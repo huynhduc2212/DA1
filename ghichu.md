@@ -18,6 +18,10 @@ Tạo đơn hàng
 - idorder + cùng với việc for mảng session giỏ hàng
 => insert into đơn hàng chi tiết
 
-- voucher
-
 - client : quản lí / admin cũng quản lí được / gửi mail đơn hàng
+
+- A Toàn: tìm kiếm sản phẩm, user đăng nhập đăng kí,
+ admin thêm sửa xóa trang khách hàng, trang giới thiệu, liên hệ tĩnh, trang blog động, giao diện
+- Đức: admin thêm sửa xóa sp, quản lí đơn hàng, thống kê, tìm kiếm sản phẩm, giao diện
+- Thân: trang chủ, danh mục sp, chi tiết sp, phân trang, giỏ hàng, thanh toán, hóa đơn, lịch sử mua hàng,
+thêm sửa xóa giỏ hàng, thêm xóa sp yêu thích, giao diện

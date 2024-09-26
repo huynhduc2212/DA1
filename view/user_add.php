@@ -49,9 +49,8 @@
                 <tr>
                     <td>Role</td>
                     <td><select name="up_role" id="role">
-                            <option value="0">Không</option>
-                            <option value="1">User</option>
-                            <option value="2">Admin</option>
+                            <option value="0">User</option>
+                            <option value="1">Admin</option>
                         </select></td>
                 </tr>
 

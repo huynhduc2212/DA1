@@ -11,6 +11,7 @@ if ($_GET['act']) {
             if (isset($_SESSION['user'])) {
                 unset($_SESSION['user']);
             }
+
             header("Location: ?mod=page&act=home");
 
             include_once 'view/template_head.php';
@@ -88,8 +89,8 @@ if ($_GET['act']) {
             include_once 'view/template_header.php';
             include_once 'view/template_banner.php';
             include_once 'view/page_login.php';
-            // include_once 'view/template_near_footer.php';
-            // include_once 'view/template_footer.php';
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
             break;
         case 'signup':
             // đăng kí
@@ -147,9 +148,10 @@ if ($_GET['act']) {
             include_once 'view/template_footer.php';
             break;
         case 'userupdate':
-            // đăng kí
+            // cập nhật thông tin tài khoản
             if (isset($_POST['btn_update'])) {
                 $id = $_SESSION['user']['id'];
+                
                 $username = $_POST['username'];
                 $password = $_POST['password'];
                 $email = $_POST['email'];
@@ -191,6 +193,53 @@ if ($_GET['act']) {
             include_once 'view/template_near_footer.php';
             include_once 'view/template_footer.php';
             break;
+        case 'changePassword':
+            if (isset($_POST['btn_changePass'])) {
+                $id = $_SESSION['user']['id'];
+                $password_old = $_POST['password_old'];
+                $password_new = $_POST['password_new'];
+                $password_confirm = $_POST['password_confirm'];
+
+                if (empty($password_old)) {
+                    header("Location: ?mod=user&act=changePassword&error=Mật khẩu cũ là bắt buộc");
+                    exit();
+                }
+                if (empty($password_new)) {
+                    header("Location: ?mod=user&act=changePassword&error=Mật khẩu mới là bắt buộc");
+                    exit();
+                }
+                if (empty($password_confirm)) {
+                    header("Location: ?mod=user&act=changePassword&error=Xác nhận mật khẩu là bắt buộc");
+                    exit();
+                }
+                if (!check_password($id, $password_old)) {
+                    header("Location: ?mod=user&act=changePassword&error=Mật khẩu cũ không chính xác");
+                    exit();
+                }
+
+                if ($password_new !== $password_confirm) {
+                    header("Location: ?mod=user&act=changePassword&error=Xác nhận mật khẩu không khớp");
+                    exit();
+                }
+
+                // Cập nhật mật khẩu mới
+                change_password($id, $password_new);
+                $_SESSION['user']['password'] = $password_new;
+                header("Location: ?mod=page&act=home");
+                exit();
+            }
+
+            $tendm = "Thay đổi mật khẩu";
+            $pathpage = "Trang chủ | " . $tendm;
+            $pathpage_a = "<div class='path'><a href='index.php'> Trang chủ </a> > <span>$tendm</span> </div>";
+
+            include_once 'view/template_head.php';
+            include_once 'view/template_header.php';
+            include_once 'view/template_banner.php';
+            include_once 'view/page_change_password.php';
+            include_once 'view/template_near_footer.php';
+            include_once 'view/template_footer.php';
+            break;
         case 'admin_user';
             $users = getAllUserNoLimit();
             include_once "view/admin_user.php";
@@ -210,7 +259,7 @@ if ($_GET['act']) {
                 $role = trim($_POST['up_role']);
 
                 // Kiểm tra nếu các trường không bị bỏ trống
-                if (empty($name) || empty($email) || empty($password) || empty($phone) || empty($address) || empty($role)) {
+                if (empty($name) || empty($email) || empty($password) || empty($phone) || empty($address)) {
                     echo "<script>alert('Vui lòng nhập tất cả thông tin.');</script>";
                 } else {
                     $kq = add_user($name, $email, $password, $phone, $address, $role);

@@ -72,7 +72,7 @@ if ($_GET['act']) {
 
                 // lấy sản phẩm cùng danh mục
                 $iddm = $product_details['id_category'];
-                $product_related = getProductRelated($iddm, $id, '5');
+                $product_related = getProductRelated($iddm, $id, 5);
 
                 // hiển thị đường dẫn trong banner và tiêu đề trang
                 $tensp = $product_details['name'];

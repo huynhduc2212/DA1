@@ -13,7 +13,6 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
     $id = $item['idpro'];
     $thanhtien = $giasp * $soluong;
     $tong += $thanhtien;
-    // Đảm bảo rằng $giasp và $soluong là số
     // $giasp = is_numeric($giasp) ? (float) $giasp : 0;
     // $soluong = is_numeric($soluong) ? (int) $soluong : 0;
     $html_cart .= '<div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer cart_body items">
@@ -32,13 +31,23 @@ if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
                                 <span class="cart-price">' . number_format($giasp, 0, ',', '.') . '</span>
                               </div>
                             </div>
-                            <div class="grid">
-                              <div class="grid__item one-half cart_select">
-                                <div class="ajaxcart__qty input-group-btn">
-                                    ' . $soluong . '
+                           
+                            <form method="POST" action="?mod=page&act=cart" class="update_quantity">
+                              <div class="grid">
+                                <div class="grid__item one-half cart_select">
+                                  <div class="ajaxcart__qty input-group-btn">
+                                    <button type="submit" name="decrease_quantity" value="' . $id . '" class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text">
+                                      <i class="fa fa-minus" aria-hidden="true"></i>
+                                    </button>
+                                    <input type="text" name="updates[]" class="ajaxcart__qty-num" value="' . $soluong . '" min="1" readonly>
+                                    <button type="submit" name="increase_quantity" value="' . $id . '" class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text">
+                                      <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
+                            </form>
+                            
                             <div class="grid">
                               <div class="grid__item one-half text-right cart_prices">
                                 <span class="cart-price">' . number_format($thanhtien, 0, ',', '.') . '</span>

@@ -6,6 +6,7 @@ if (isset($bill) && is_array($bill)) {
 if (isset($user_info) && is_array($user_info)) {
   extract($user_info);
 }
+$pttt = get_pttt($payment_method);
 ?>
 <main>
   <div class="content">
@@ -62,7 +63,7 @@ if (isset($user_info) && is_array($user_info)) {
                     <div class="row">
                       <div class="col col--md-two">
                         <h2>Phương thức thanh toán</h2>
-                        <p><?= $bill['payment_method'] ?></p>
+                        <p><?= $pttt?></p>
                       </div>
                       <div class="col col--md-two">
                         <h2>Phương thức vận chuyển</h2>

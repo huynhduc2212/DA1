@@ -11,9 +11,15 @@ function insert_user($username, $fullname, $email, $password)
     return pdo_execute($sql);
 }
 
-function insert_user_returnID($username, $password, $email, $phone)
+// function insert_user_returnID($username, $password, $email, $phone)
+// {
+//     $sql = "INSERT INTO users (username, password, email, phone) values('$username','$password','$email','$phone')";
+//     return pdo_execute_returnID($sql);
+// }
+
+function insert_user_returnID($fullname, $address, $email, $phone, $password)
 {
-    $sql = "INSERT INTO users (username, password, email, phone) values('$username','$password','$email','$phone')";
+    $sql = "INSERT INTO users (fullname, address, email, phone, password) values('$fullname','$address','$email','$phone','$password')";
     return pdo_execute_returnID($sql);
 }
 
@@ -28,6 +34,18 @@ function update_user($id, $email, $fullname, $address, $phone, $password, $usern
 {
     $sql = "UPDATE users SET email = '$email', fullname = '$fullname', address = '$address',
     phone = '$phone', password = '$password', username = '$username' where id = $id";
+    return pdo_execute($sql);
+}
+
+function check_password($id, $password)
+{
+    $sql = "SELECT * FROM users WHERE id = '$id' and password = '$password'";
+    return pdo_query_one($sql);
+}
+
+function change_password($id, $password_new)
+{
+    $sql = "UPDATE users SET password = '$password_new' WHERE id = $id";
     return pdo_execute($sql);
 }
 

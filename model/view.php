@@ -40,7 +40,7 @@ function show_sp_home($products)
                                             </div>
                                             <div class="product-btn d-none d-xl-block">
                                                 <div class="actions-primary btn-views">
-                                                      <form action="?mod=page&act=cart" method="post">
+                                                    <form action="?mod=page&act=cart" method="post">
                                                       <input type="hidden" name="tensp" value="' . $name . '">
                                                       <input type="hidden" name="idpro" value="' . $id . '">
                                                       <input type="hidden" name="hinhsp" value="' . $thumbnail . '">
@@ -163,6 +163,7 @@ function showProductFlashSales($products)
                                  <input type="hidden" name="hinhsp" value="' . $thumbnail . '">
                                  <input type="hidden" name="giasp" value="' . $discounted_price . '">
                                  <input type="hidden" name="soluong" value="1">
+
                                  <button class="btn-cart" name="btn_addcart" type="submit" title="Thêm vào giỏ hàng">
                                         Thêm vào giỏ hàng
                                  </button>
@@ -200,7 +201,7 @@ function showProductRelated($products)
                                                     <a title="Xem nhanh" href="?mod=product&act=productDetails&idpro=' . $id . '" class="btn-views quick-view">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>
-                                                    <a title="Thêm vào yêu thích" href="" class="btn-views compare">
+                                                    <a title="Thêm vào yêu thích" href="?mod=page&act=favorite&add_favorite" class="btn-views compare">
                                                         <i class="fa-solid fa-heart"></i>
                                                     </a>
                                                 </div>
@@ -224,6 +225,7 @@ function showProductRelated($products)
                                                          <input type="hidden" name="hinhsp" value="' . $thumbnail . '">
                                                          <input type="hidden" name="giasp" value="' . $discounted_price . '">
                                                          <input type="hidden" name="soluong" value="1">
+
                                                          <button class="btn-cart" name="btn_addcart" type="submit" title="Thêm vào giỏ hàng">
                                                                         Thêm vào giỏ hàng
                                                          </button>

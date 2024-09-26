@@ -86,10 +86,15 @@ $html_product_related = showProductRelated($product_related);
                       <div class="flex-quantity">
                         <div class="custom custom-btn-number show">
                           <label class="sl section">Số lượng:</label>
-                          <div class="input_number_product form-control">
+                          <!-- <div class="input_number_product form-control">
                             <button class="btn_num num_1 button button_qty" type="button" onclick="var result = document.getElementById('qty'); var qtypro = result.value; if( !isNaN( qtypro ) && qtypro > 1 ) result.value--;return false;">-</button>
                             <input type="text" id="qty" name="quantity" value="1" maxlength="3" class="form-control prd_quantity" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" onchange="if(this.value == 0)this.value=1;">
                             <button class="btn_num num_2 button button_qty" type="button" onclick="var result = document.getElementById('qty'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;">+</button>
+                          </div> -->
+                          <div class="input_number_product form-control">
+                            <button class="btn_num num_1 button button_qty" type="button">-</button>
+                            <input type="text" id="qty" name="soluong" value="1" maxlength="3" class="form-control prd_quantity">
+                            <button class="btn_num num_2 button button_qty" type="button">+</button>
                           </div>
                         </div>
                         <div class="btn-mua button_actions clearfix">
@@ -97,7 +102,7 @@ $html_product_related = showProductRelated($product_related);
                             <button type="submit" class="btn btn_base normal_button btn_add_cart add_to_cart btn-cart btn-soldout" name="btn_addcart">
                               <span>Thêm vào giỏ hàng</span>
                             </button>
-                            <button type="button" class="btn btn-lg btn-gray btn_buy btn-buyNow">
+                            <button type="button" class="btn btn-lg btn-gray btn_buy btn_buynow">
                               <span>Mua ngay</span>
                             </button>
                           </div>
@@ -156,3 +161,23 @@ $html_product_related = showProductRelated($product_related);
     </section>
   </div>
 </main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var decreaseBtn = document.querySelector('.btn_num.num_1');
+    var increaseBtn = document.querySelector('.btn_num.num_2');
+    var quantityInput = document.getElementById('qty');
+
+    decreaseBtn.addEventListener('click', function() {
+      var currentValue = parseInt(quantityInput.value);
+      if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+      }
+    });
+
+    increaseBtn.addEventListener('click', function() {
+      var currentValue = parseInt(quantityInput.value);
+      quantityInput.value = currentValue + 1;
+    });
+  });
+</script>

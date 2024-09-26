@@ -197,3 +197,6 @@
   font-size: 22px;
 }
 /* End :: cart */
+.update_quantity {
+  display: contents;
+}

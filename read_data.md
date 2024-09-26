@@ -47,7 +47,10 @@ INSERT INTO products (id, name, price, thumbnail, id_category, discount_percenta
 (33,'Thượng Vy Yến đảo Saffron',95000,'nuocyen10.webp',5,0,'aaaa',0),
 (34,'Thượng Vy Yến biển - Gừng',57000,'nuocyen11.webp',5,0,'aaaa',0),
 (35,'Thượng Vy Yến Đảo Nhân Sâm',135000,'nuocyen12.webp',5,0,'aaaa',0),
-(35,'Yến đảo Đông trùng hạ thảo,150000,'nuocyen13.webp',5,0,'aaaa',0),
+(36,'Yến đảo Đông trùng hạ thảo,150000,'nuocyen13.webp',5,0,'aaaa',0),
+
+INSERT INTO products (id, name, price, thumbnail, id_category, discount_percentage, des,quantity) VALUES
+(37,'Soup Vi cá - bào ngư - tổ yến,699000,'monsoup4.webp',4,0,'aaaa',0);
 
 INSERT INTO Images (id_product, img, display_order) VALUES
 (1, 'toyentinhche1.webp', 0),
@@ -161,3 +164,7 @@ INSERT INTO Images (id_product, img, display_order) VALUES
 
 (36, 'nuocyen13.webp', 0),
 (36, 'nuocyen13_1.webp', 1);
+
+INSERT INTO Images (id_product, img, display_order) VALUES
+(37, 'monsoup4.webp', 0),
+(37, 'monsoup4_1.webp', 1);

@@ -65,7 +65,8 @@ function get_ttdh($n)
 
 function insert_order_returnID($code, $iduser, $orderdate, $fullname, $address, $total, $phone, $email, $payment_method)
 {
-    $sql = "INSERT INTO orders (code, iduser, order_date,fullname, address , total, phone, email, payment_method) values('$code','$iduser','$orderdate','$fullname','$address','$total','$phone','$email', '$payment_method')";
+    $sql = "INSERT INTO orders (code, iduser, order_date,fullname, address , total, phone, email, payment_method)
+    values('$code','$iduser','$orderdate','$fullname','$address','$total','$phone','$email', '$payment_method')";
     return pdo_execute_returnID($sql);
 }
 
@@ -107,4 +108,5 @@ function get_id_order_latest()
     $bill = pdo_query_one($sql);
     return $bill['id'];
 }
+
 
